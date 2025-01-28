@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "ARCs mini tournament"
+title: "Arcs mini tournament"
 author: "Liam Mason"
 categories: posts
 tags: [posts]
-image: cuba-2.jpg
+image: arcs-mini-tournament.jpg
 ---
 
 This is what happened at our Arcs mini tournament!
