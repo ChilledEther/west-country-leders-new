@@ -14,7 +14,7 @@ menu:
 # Available social icons are powered by Font Awesome, so you can use any icon that they offer
 social:
 - {icon: 'facebook',  link:   'https://www.facebook.com'}
-- {icon: 'laptop',   link: 'https://discord.com'}
+- {icon: 'discord',   link: 'https://discord.com'}
 - {icon: 'envelope',  link:   'mailto:westcountryleders@gmail.com'}
 
 # Customize site text
