@@ -63,3 +63,8 @@
   padding: 5px;
   @include social-media-icon($rss-color, $icon-transition-time);
 }
+
+.fa-discord {
+  padding: 5px;
+  @include social-media-icon($github-color, $icon-transition-time);
+}
