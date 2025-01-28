@@ -13,9 +13,9 @@ menu:
 
 # Available social icons are powered by Font Awesome, so you can use any icon that they offer
 social:
-- {icon: 'facebook',  link: 'https://www.facebook.com'}
-- {icon: 'discord',   link: 'https://discord.com'}
-- {icon: 'envelope',  link: 'mailto:westcountryleders@gmail.com'}
+- {icon: 'facebook', iconType: brands, link: 'https://www.facebook.com'}
+- {icon: 'discord',  iconType: brands, link: 'https://discord.com'}
+- {icon: 'envelope', iconType: solid, link: 'mailto:westcountryleders@gmail.com', }
 
 # Customize site text
 pagination:
