@@ -4,7 +4,7 @@ title: "It's a brand new day"
 author: "Liam Mason"
 categories: posts
 tags: [posts]
-image: arcs-mini-tournament.jpg
+image: JamesandDan.jpg
 ---
 
 Today was a great day!
