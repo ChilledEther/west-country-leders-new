@@ -11,6 +11,7 @@ We hold a number of regular board game meet ups. If you would like to come along
 - **YHA**
   
   image
+  
   text
 
 ## __Monthly__
@@ -18,24 +19,30 @@ We hold a number of regular board game meet ups. If you would like to come along
 - **Kiln Workshop**
   
   image
+  
   text
 
 - **Advanced Retreat**
 
   image
+  
   text
 
 - **The Old Duke**
 
   image
+  
   text
 
 - **Replay**
 
   image
+  
   text
 
 - **Excelsior Games**
 
   image
+
+  text
   text
