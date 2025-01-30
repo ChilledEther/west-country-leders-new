@@ -10,7 +10,7 @@ We hold a number of regular board game meet ups. If you would like to come along
 ## __Weekly__
 - **YHA**
   
-  [image]
+  image
   text
 
 ## __Monthly__
