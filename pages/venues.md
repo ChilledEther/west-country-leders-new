@@ -12,8 +12,8 @@ We hold a number of regular board game meet ups. If you would like to come along
   
   image
 
-Time:
-Location:
+When: Every Monday | 17:30-22:00.
+Where: Youth Hostels Association. 14 Narrow Quay, BS1 4QA.
 
 The Youth Hostels Association
 
@@ -22,8 +22,9 @@ The Youth Hostels Association
 - **Kiln Workshop**
   
   image
-Time:
-Location:
+
+When:
+Where:
   
   text
 
@@ -31,8 +32,8 @@ Location:
 
   image
 
-Time:
-Location:
+When:
+Where:
   
   text
 
@@ -40,8 +41,8 @@ Location:
 
   image
 
-Time:
-Location:
+When:
+Where:
   
   text
 
@@ -49,8 +50,8 @@ Location:
 
   image
 
-Time:
-Location:
+When:
+Where:
   
   text
 
@@ -58,8 +59,7 @@ Location:
 
   image
 
-Time:
-Location:
+When:
+Where:
 
-  text
-  text
+text
