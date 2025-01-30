@@ -9,21 +9,27 @@ We hold a number of regular board game meet ups. If you would like to come along
 
 ## __Weekly__
 - **YHA**
+  
   text
 
 ## __Monthly__
 
 - **Kiln Workshop**
+  
   text
 
 - **Advanced Retreat**
+  
   text
 
 - **The Old Duke**
+  
   text
 
 - **Replay**
+  
   text
 
 - **Excelsior Games**
-- text
+
+  text
