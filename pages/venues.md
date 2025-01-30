@@ -1,6 +1,6 @@
 ---
 layout: page
-title: test
+title: Venues
 category: venues
 permalink: /venues
 ---
