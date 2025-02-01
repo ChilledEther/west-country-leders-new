@@ -8,7 +8,8 @@ permalink: /venues
 We hold a number of regular board game meet ups. If you would like to come along to any of them, please let us know via Discord or email!
 
 ## __Weekly__
-**__YHA__**
+
+### __YHA__
   
   image
 
@@ -20,7 +21,7 @@ text
 
 ## __Monthly__
 
-__**Kiln Workshop**__
+### __Kiln Workshop__
   
   image
 
@@ -30,7 +31,7 @@ Where: Kiln Workshop. 63 North Rd, Bishopston, BS6 5AD
   
   text
 
-__**Advanced Retreat**__
+### __Advanced Retreat__
 
   image
 
@@ -40,7 +41,7 @@ Where: 18a Backfields Ln, St Paul's, BS2 8QW
   
   text
 
-__**The Old Duke**__
+### __The Old Duke__
 
   image
 
@@ -50,7 +51,7 @@ Where: 45 King St, BS1 4ER
   
   text
 
-__**Replay**__
+### __Replay__
 
   image
 
@@ -60,7 +61,7 @@ Where: 196 Cheltenham Rd, Montpelier, BS6 5RB
   
   text
 
-__**Excelsior Games**__
+### __Excelsior Games__
 
   image
 
