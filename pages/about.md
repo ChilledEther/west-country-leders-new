@@ -4,6 +4,7 @@ title: About
 permalink: /about
 ---
 
+![image](https://github.com/user-attachments/assets/359691d5-2098-4ac0-9e54-600d599da89f)
 
 
 ## __West Country Leders__
