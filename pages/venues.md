@@ -23,9 +23,9 @@ Excelsior Games | 4th Sunday. Monthly.       | 11:00-17:00   | Free
   image
 
 Where: 18a Backfields Ln, St Paul's, BS2 8QW
-  
-Advanced Retreat is a retro arcade club, hidden behind Stokes Croft! We use the space for a monthly board game evening, but a full membership can be purchased with AR in order to use their arcade machines on their club nights. 
-  
+
+Advanced Retreat is a retro arcade club, hidden behind Stokes Croft! We use the space for a monthly board game evening, but a full membership can be purchased with AR in order to use their arcade machines on their club nights.
+
 
 ### __Excelsior Games__
 
@@ -37,11 +37,11 @@ Daytime gaming, ideal for a lazy Sunday afternoon! We also run a games design ta
 
 
 ### __Kiln Workshop__
-  
+
   image
 
 Where: Kiln Workshop. 63 North Rd, Bishopston, BS6 5AD
-  
+
 The owners of the Kiln Studio let us use their pottery studio once a month. It's a really nice cosy little space, with large tables and great lighting! Good for larger euros, and table hogs!
 
 
@@ -50,26 +50,26 @@ The owners of the Kiln Studio let us use their pottery studio once a month. It's
   image
 
 Where: 45 King St, BS1 4ER
-  
+
 A really fun venue above the Jazz bar on King Street! We can stay late, and play loud! Perfect for negotiation and social deduction games!
-  
+
 
 ### __Replay__
 
   image
 
 Where: 196 Cheltenham Rd, Montpelier, BS6 5RB
-  
+
 Replay give WCL members cheaper gaming one Saturday a month! Once of the nicest gaming cafés in Bristol. Booking is required for this venue, so see the Discord for more information.
 
-  
+
 ### __YHA__
-  
+
   image
 
 Where: Youth Hostels Association. 14 Narrow Quay, BS1 4QA
 
-We head to the Youth Hostel Association by the harbourside every Monday evening. 
+We head to the Youth Hostel Association by the harbourside every Monday evening.
 It's nice and quiet, and we generally have the mezzanine to ourselves!
 Perfect for smaller board games and card games that don't need too much table space.
 
@@ -81,3 +81,9 @@ image
 Where: [BGA](https://boardgamearena.com/welcome)
 
 We also host regularly Board Game Arena evenings online.
+
+### __SAMPLE ONE__
+
+![sample-one](../assets/img/sample-one.png)
+
+| We also host regularly Board Game Arena evenings online. | <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19876.033125657275!2d-2.6573181152343897!3d51.485615484021054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48718d87f3c2c861%3A0x3ea2cf3e3a2630f7!2sBristol%20City%20Council%20-%20Adult%20Learning!5e0!3m2!1sen!2suk!4v1738425738084!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> |
