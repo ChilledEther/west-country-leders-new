@@ -19,21 +19,29 @@ jobs:
     - name: checkout-local
       uses: actions/checkout@v4
 
+    - run: printenv
+
     - name: make-live
       shell: pwsh
       run: |
+        Write-Output "Setting git config"
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
+        Write-Output "Creating tempory repo directory"
         mkdir ~/repos
         cd ~/repos
 
+        Write-Output "Clong live repo"
         git clone https://github.com/ChilledEther/west-country-leders.git
         cd ./west-country-leders
 
+        Write-Output "Creating feature branch"
         $date = Get-Date -Format ddMMyy-mmHHss
         git checkout -b feature/$date
 
-        # Copy to branch
-
-        # Submit
+        Write-Output "Copying files across"
+        Copy-Item -Path ../west-country-leders-new/* ./ -Recurse
+        git add .
+        git commit -m "release: make-live $date"
+        git push
