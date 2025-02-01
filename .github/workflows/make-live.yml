@@ -20,8 +20,8 @@ jobs:
       id: generate-token
       uses: actions/create-github-app-token@v1
       with:
-          app-id: ${{ vars.CHILLEDAUTOMATION_ID }}
-          private-key: ${{ secrets.CHILLEDGHAUTOMATION }}
+        app-id: ${{ vars.CHILLEDAUTOMATION_ID }}
+        private-key: ${{ secrets.CHILLEDGHAUTOMATION }}
 
     - name: make-live
       shell: pwsh
@@ -29,8 +29,11 @@ jobs:
         Write-Output "Setting git config"
         gh auth setup-git
         git config --global push.autoSetupRemote true
-        git config --global user.name 'chilledghautomation[bot]'
-        git config --global user.email '1130425+chilledghautomation[bot]@users.noreply.github.com'
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+        # git config --global user.name 'chilledghautomation[bot]'
+        # git config --global user.email '1130425+chilledghautomation[bot]@users.noreply.github.com'
 
         Write-Output "Creating tempory repo directory"
         mkdir ~/repos
@@ -50,4 +53,5 @@ jobs:
         git commit -m "release: make-live $date"
         git push
       env:
-        GH_TOKEN: ${{ steps.generate-token.outputs.token }}
+        GH_TOKEN: ${{ github.token }}
+        # GH_TOKEN: ${{ steps.generate-token.outputs.token }}
