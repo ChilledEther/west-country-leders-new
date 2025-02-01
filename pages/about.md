@@ -4,7 +4,7 @@ title: About
 permalink: /about
 ---
 
-assets/img/WCL-mascot-logo.png
+image: assets/img/WCL-mascot-logo.png
 
 ## __West Country Leders__
 West Country Leders are a Bristol based board game community. We are friendly and welcoming to people both new to the hobby and those who have been gaming for their entire life.
