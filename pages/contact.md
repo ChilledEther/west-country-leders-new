@@ -6,8 +6,8 @@ permalink: /contact
 
 West Country Leders is ran by a group of individuals (not for profit).
 
-The main way to communicate with club memebers is via our [Discord server]([resentatio](https://discord.gg/JuuxmmbgG7))
-Using @mods in any channel will alert the leadership team.
+The main way to communicate with club memebers is via our Discord server.
+Using *@mods* in any channel will alert the leadership team.
 
 Discord: [Click here to join!](https://discord.gg/JuuxmmbgG7)
 
