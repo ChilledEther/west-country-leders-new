@@ -41,7 +41,7 @@ jobs:
         git checkout -b feature/$date
 
         Write-Output "Copying files across"
-        # Copy-Item -Path ../west-country-leders-new/* ./ -Recurse
-        # git add .
-        # git commit -m "release: make-live $date"
-        # git push
+        Copy-Item -Path ${{ github.workspace }}/* ./ -Recurse
+        git add .
+        git commit -m "release: make-live $date"
+        git push
