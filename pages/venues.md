@@ -9,7 +9,9 @@ We hold a number of regular board game meet ups. If you would like to come along
 
 Venue          |  Frequency          |  Time          |  Price
 ---------------|---------------------|----------------|--------
-YHA            |  Weekly, Mondays    |  17:30-22🕥    |  Free
+YHA            |  Weekly, Mondays    |  17:30-22:00   |  Free
+Kiln Workshop  |  Monthly, 1st Sunday|  18:15-23:00   | Free
+Advanced Retreat|  Monthly, 2nd Saturday |  18:30-00🕥|  £3
 
 
 
