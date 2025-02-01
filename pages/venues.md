@@ -86,4 +86,6 @@ We also host regularly Board Game Arena evenings online.
 
 ![sample-one](../assets/img/sample-one.png)
 
-| We also host regularly Board Game Arena evenings online. | <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19876.033125657275!2d-2.6573181152343897!3d51.485615484021054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48718d87f3c2c861%3A0x3ea2cf3e3a2630f7!2sBristol%20City%20Council%20-%20Adult%20Learning!5e0!3m2!1sen!2suk!4v1738425738084!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> |
+We also host regularly Board Game Arena evenings online.
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19876.033125657275!2d-2.6573181152343897!3d51.485615484021054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48718d87f3c2c861%3A0x3ea2cf3e3a2630f7!2sBristol%20City%20Council%20-%20Adult%20Learning!5e0!3m2!1sen!2suk!4v1738425738084!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
