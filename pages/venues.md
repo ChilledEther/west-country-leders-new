@@ -24,7 +24,7 @@ Excelsior Games | Monthly, 4th Sunday       | 11:00-17:00   | Free
 
 Where: 18a Backfields Ln, St Paul's, BS2 8QW
   
-  text
+Advanced Retreat is a retro arcade club, hidden behind Stokes Croft! We use the space for a monthly board game evening, but a full membership can be purchased with AR in order to use their arcade machines on their club nights. 
   
 
 ### __Excelsior Games__
@@ -33,7 +33,7 @@ Where: 18a Backfields Ln, St Paul's, BS2 8QW
 
 Where: 51-53 Merchant St, Broadmead, BS1 3EE
 
-text
+Daytime gaming, ideal for a lazy Sunday afternoon! We also run a games design table during this event, for anyone to come along and work on your own board games with like-minded people!
 
 
 ### __Kiln Workshop__
@@ -42,7 +42,7 @@ text
 
 Where: Kiln Workshop. 63 North Rd, Bishopston, BS6 5AD
   
-  text
+The owners of the Kiln Studio let us use their pottery studio once a month. It's a really nice cosy little space, with large tables and great lighting! Good for larger euros, and table hogs!
 
 
 ### __The Old Duke__
@@ -51,7 +51,7 @@ Where: Kiln Workshop. 63 North Rd, Bishopston, BS6 5AD
 
 Where: 45 King St, BS1 4ER
   
-  text
+A really fun venue above the Jazz bar on King Street! We can stay late, and play loud! Perfect for negotiation and social deduction games!
   
 
 ### __Replay__
@@ -60,7 +60,7 @@ Where: 45 King St, BS1 4ER
 
 Where: 196 Cheltenham Rd, Montpelier, BS6 5RB
   
-  text
+Replay give WCL members cheaper gaming one Saturday a month! Once of the nicest gaming cafés in Bristol. Booking is required for this venue, so see the Discord for more information.
 
   
 ### __YHA__
@@ -69,6 +69,15 @@ Where: 196 Cheltenham Rd, Montpelier, BS6 5RB
 
 Where: Youth Hostels Association. 14 Narrow Quay, BS1 4QA
 
-We head to the Youth Hostel Assosciation by the Harbouside every monday evening. 
+We head to the Youth Hostel Association by the harbourside every Monday evening. 
 It's nice and quiet, and we generally have the mezzanine to ourselves!
 Perfect for smaller board games and card games that don't need too much table space.
+
+
+### __BGA__
+
+image
+
+Where: [BGA](https://boardgamearena.com/welcome)
+
+We also host regularly Board Game Arena evenings online.
