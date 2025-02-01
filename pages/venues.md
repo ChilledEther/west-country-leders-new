@@ -9,13 +9,13 @@ We hold a number of regular board game meet ups. If you would like to come along
 
 Venue            |  Frequency              |  Time          |  Price
 ---------------  |---------------------    |----------------|--------
-YHA              |  Weekly, Mondays        |  17:30-22:00   |  Free
-Chance & Counters | Weekly, Tuesdays       |  18:00-23:00   | £1/hours
-Kiln Workshop    |  Monthly, 1st Sunday    |  18:15-23:00   | Free
-Advanced Retreat  |  Monthly, 2nd Saturday |  18:30-00:30    |£3
-The Old Duke     |   Monthly, 3rd Saturday | 18:00-01:00     | Free
-Replay            | Monthly, 4th Saturday   |  18:00-23:00   | £1/hour
-Excelsior Games | Monthly, 4th Sunday       | 11:00-17:00   | Free
+YHA              |  Mondays. Weekly.        |  17:30-22:00   |  Free
+Chance & Counters | Tuesdays. Weekly.       |  18:00-23:00   | £1/hours
+Kiln Workshop    |  1st Sunday. Monthly.    |  18:15-23:00   | Free
+Advanced Retreat  | 2nd Saturday. Monthly. |  18:30-00:30    |£3
+The Old Duke     |  3rd Saturday. Monthly. | 18:00-01:00     | Free
+Replay            | 4th Saturday. Monthly.   |  18:00-23:00   | £1/hour
+Excelsior Games | 4th Sunday. Monthly.       | 11:00-17:00   | Free
 
 
 ### __Advanced Retreat__
