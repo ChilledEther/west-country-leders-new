@@ -13,7 +13,7 @@ We hold a number of regular board game meet ups. If you would like to come along
   
   image
 
-When: Every Monday | 17:30-22:00
+When: Every Monday, 17:30-22:00
 
 Where: Youth Hostels Association. 14 Narrow Quay, BS1 4QA
 
@@ -25,7 +25,7 @@ text
   
   image
 
-When: Every 1st Sunday | 18:15-23:00
+When: Every 1st Sunday, 18:15-23:00
 
 Where: Kiln Workshop. 63 North Rd, Bishopston, BS6 5AD
   
@@ -35,7 +35,7 @@ Where: Kiln Workshop. 63 North Rd, Bishopston, BS6 5AD
 
   image
 
-When: Every 2nd Saturday | 18:30-00:30
+When: Every 2nd Saturday, 18:30-00:30
 
 Where: 18a Backfields Ln, St Paul's, BS2 8QW
   
@@ -45,7 +45,7 @@ Where: 18a Backfields Ln, St Paul's, BS2 8QW
 
   image
 
-When: Every 3rd Saturday | 18:00-01:00
+When: Every 3rd Saturday, 18:00-01:00
 
 Where: 45 King St, BS1 4ER
   
@@ -55,7 +55,7 @@ Where: 45 King St, BS1 4ER
 
   image
 
-When: Every 4th Saturday | 18:00-23:00
+When: Every 4th Saturday, 18:00-23:00
 
 Where: 196 Cheltenham Rd, Montpelier, BS6 5RB
   
@@ -65,7 +65,7 @@ Where: 196 Cheltenham Rd, Montpelier, BS6 5RB
 
   image
 
-When: Every 4th Sunday | 11:00-17:00
+When: Every 4th Sunday, 11:00-17:00
 
 Where: 51-53 Merchant St, Broadmead, BS1 3EE
 
