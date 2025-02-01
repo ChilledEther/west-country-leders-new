@@ -17,10 +17,6 @@ Replay            | Monthly, 4th Saturday   |  18:00-23:00   | £1/hour
 Excelsior Games | Monthly, 4th Sunday       | 11:00-17:00   | Free
 
 
-
-lorem                 | lorem ipsum           | lorem ipsum dolor     | lorem ipsum dolor sit
-
-
 ### __Advanced Retreat__
 
   image
@@ -32,7 +28,7 @@ Where: 18a Backfields Ln, St Paul's, BS2 8QW
   text
   
 
-  ### __Excelsior Games__
+### __Excelsior Games__
 
   image
 
