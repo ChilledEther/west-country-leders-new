@@ -25,6 +25,7 @@ jobs:
       shell: pwsh
       run: |
         Write-Output "Setting git config"
+        git config --global push.autoSetupRemote true
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
