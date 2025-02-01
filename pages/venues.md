@@ -10,7 +10,7 @@ We hold a number of regular board game meet ups. If you would like to come along
 Venue            |  Frequency              |  Time          |  Price
 ---------------  |---------------------    |----------------|--------
 YHA              |  Mondays. Weekly.        |  17:30-22:00   |  Free
-Chance & Counters | Tuesdays. Weekly.       |  18:00-23:00   | £1/hours
+Chance & Counters | Tuesdays. Weekly.       |  18:00-23:00   | £1/hour
 Kiln Workshop    |  1st Sunday. Monthly.    |  18:15-23:00   | Free
 Advanced Retreat  | 2nd Saturday. Monthly. |  18:30-00:30    |£3
 The Old Duke     |  3rd Saturday. Monthly. | 18:00-01:00     | Free
