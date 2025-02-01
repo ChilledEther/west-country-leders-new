@@ -21,6 +21,13 @@ jobs:
 
     - run: printenv
 
+    - name: Generate a token
+      id: generate-token
+      uses: actions/create-github-app-token@v1
+      with:
+          app-id: ${{ vars.CHILLEDAUTOMATION_ID }}
+          private-key: ${{ secrets.CHILLEDGHAUTOMATION }}
+
     - name: make-live
       shell: pwsh
       run: |
@@ -48,4 +55,4 @@ jobs:
         git commit -m "release: make-live $date"
         git push
       env:
-        GH_TOKEN: ${{ github.token }}
+        GH_TOKEN: ${{ steps.generate-token.outputs.token }}
