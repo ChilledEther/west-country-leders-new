@@ -9,6 +9,7 @@ We hold a number of regular board game meet ups. If you would like to come along
 
 Venue          |  Frequency          |  Time          |  Price
 ---------------|---------------------|----------------|--------
+YHA            |  Weekly, Mondays    |  17:30-22🕥    |  Free
 
 
 
