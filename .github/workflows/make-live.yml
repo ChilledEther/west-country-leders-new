@@ -1,0 +1,39 @@
+name: Promote to live
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout-local
+      uses: actions/checkout@v4
+
+    - name: make-live
+      shell: pwsh
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+        mk dir ~/repos
+        cd ~/repos
+
+        git clone https://github.com/ChilledEther/west-country-leders.git
+        cd ./west-country-leders
+
+        $date = Get-Date -Format ddMMyy-mmHHss
+        git checkout -b feature/$date
+
+        # Copy to branch
+
+        # Submit
