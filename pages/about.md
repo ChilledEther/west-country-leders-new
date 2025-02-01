@@ -16,16 +16,6 @@ What you can expect from WCL:
 - Online gaming via Board Game Arena, TTS, Steam, and Consoles.
 
 
-## __Get in touch__
-
-The best way to keep up to date with WCL, is to join our [Discord server](https://discord.gg/JuuxmmbgG7).
-This is the main way we communicate.
-
-You can also email us: westcountryleders@gmail.com.
-
-Or feel free to just come along to one of our [regular events](insert link to venues page here).
-
-
 
 
 
