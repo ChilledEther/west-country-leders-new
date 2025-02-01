@@ -52,5 +52,4 @@ jobs:
         git commit -m "release: make-live $date"
         git push
       env:
-        # GH_TOKEN: ${{ github.token }}
         GH_TOKEN: ${{ steps.generate-token.outputs.token }}
