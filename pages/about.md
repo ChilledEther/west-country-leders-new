@@ -15,7 +15,7 @@ What you can expect from WCL:
 - Board gaming events organised every single week across Bristol.
 - A friendly and inclusive club to make new friends.
 - Teaching sessions for any board games you would like to learn.
-- Regular competitive tournaments for our most played games.
+- Regular competitive tournaments for our most played games (Root, Twilight Imperium, Arcs + more to come!)
 - Online gaming via Board Game Arena, TTS, Steam, and Consoles.
 - Regular non-board game trips to watch films, go on walks, and take photographs.
 
