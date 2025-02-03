@@ -31,7 +31,8 @@ Advanced Retreat is a retro arcade club, hidden behind Stokes Croft! We use the 
 
 ### __Excelsior Games__
 
-  image
+![image](https://github.com/user-attachments/assets/c4154dd3-9ad0-469f-b1ce-b1e7147f2123)
+
   
 Daytime gaming, ideal for a lazy Sunday afternoon! We also run a games design table during this event, for anyone to come along and work on your own board games with like-minded people!
 
