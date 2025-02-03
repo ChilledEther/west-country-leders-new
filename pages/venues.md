@@ -20,8 +20,7 @@ Excelsior Games | 4th Sunday. Monthly.       | 11:00-17:00   | Free
 
 ### __Advanced Retreat__
 
-![image](https://github.com/user-attachments/assets/ffb86602-ce85-4851-a950-d028c6871973)
-
+![advanced-retreat](../assets/img/advanced-retreat.png)
 
 Advanced Retreat is a retro arcade club, hidden behind Stokes Croft! We use the space for a monthly board game evening, but a full membership can be purchased with AR in order to use their arcade machines on their club nights.
 
@@ -31,7 +30,7 @@ Advanced Retreat is a retro arcade club, hidden behind Stokes Croft! We use the 
 
 ### __Excelsior Games__
 
-![image](https://github.com/user-attachments/assets/c4154dd3-9ad0-469f-b1ce-b1e7147f2123)
+![excelsior](../assets/img/excelsion.png)
 
 
 Daytime gaming, ideal for a lazy Sunday afternoon! We also run a games design table during this event, for anyone to come along and work on your own board games with like-minded people!
@@ -42,7 +41,7 @@ Daytime gaming, ideal for a lazy Sunday afternoon! We also run a games design ta
 
 ### __Kiln Workshop__
 
-![image](https://github.com/user-attachments/assets/3939059c-fb86-4f21-9709-474b3605795e)
+![kiln](../assets/img/kiln.png)
 
 
 The owners of the Kiln Studio let us use their pottery studio once a month. It's a really nice cosy little space, with large tables and great lighting! Good for larger euros, and table hogs!
