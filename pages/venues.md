@@ -42,7 +42,8 @@ Daytime gaming, ideal for a lazy Sunday afternoon! We also run a games design ta
 
 ### __Kiln Workshop__
 
-  image
+![image](https://github.com/user-attachments/assets/3939059c-fb86-4f21-9709-474b3605795e)
+
 
 The owners of the Kiln Studio let us use their pottery studio once a month. It's a really nice cosy little space, with large tables and great lighting! Good for larger euros, and table hogs!
 
