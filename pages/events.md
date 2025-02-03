@@ -4,7 +4,7 @@ title: Events
 permalink: /events
 ---
 
-[!IMPORTANT]
+> [!IMPORTANT]
 > Please contact us via Discord or email if you are planning to attend one of the below events.
 > We have a max capacity for some venues, and we would hate for you to arrive and not be able to join us!
 
