@@ -21,4 +21,4 @@ What you can expect from WCL:
 
 If you love to play board games, or would like to enter into the hobby and be part of a welcoming group of enthusiasts, why not [join our Discord today](https://discord.gg/JuuxmmbgG7)!
 
-We are always improving as a club, and so if you have any suggestions on how we can improve, we’d love to hear from you on westcountryleders@gmail.
+We are always improving as a club, and so if you have any suggestions on how we can improve, we’d love to hear from you on <a href="mailto:westcountryleders@gmail.com">westcountryleders@gmail.com</a>.
