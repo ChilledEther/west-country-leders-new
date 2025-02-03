@@ -20,7 +20,8 @@ Excelsior Games | 4th Sunday. Monthly.       | 11:00-17:00   | Free
 
 ### __Advanced Retreat__
 
-  image
+![image](https://github.com/user-attachments/assets/ffb86602-ce85-4851-a950-d028c6871973)
+
 
 Where: 18a Backfields Ln, St Paul's, BS2 8QW
 
