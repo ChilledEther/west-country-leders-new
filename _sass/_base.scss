@@ -45,7 +45,7 @@ body img {
   align: middle;
   margin: 5px auto auto auto;
   display: block;
-  max-width: 600px;
+  max-width: 100%;
 }
 
 p {
@@ -119,9 +119,4 @@ table, th, td {
 th, td {
   padding: 15px;
   text-align: left;
-}
-
-img {
-  height: auto;
-  max-width: 100%;
 }
