@@ -82,9 +82,9 @@ Perfect for smaller board games and card games that don't need too much table sp
   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2486.458571061569!2d-2.59868772832214!3d51.449736482182196!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48718dd6745caad7%3A0xfa062c9e2c242995!2sYHA%20Bristol!5e0!3m2!1sen!2suk!4v1738507636326!5m2!1sen!2suk" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 
-### __BGA__
+### __Board Game Arena (BGA)__
 
-image
+![board-game-arena](../assets/img/board-game-arena.png)
 
 We also host regularly Board Game Arena evenings online.
 
