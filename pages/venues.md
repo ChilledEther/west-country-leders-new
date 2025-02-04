@@ -10,7 +10,7 @@ We hold a number of regular board game meet ups. If you would like to come along
 Venue            |  Frequency              |  Time          |  Price
 ---------------  |---------------------    |----------------|--------
 [YHA](#yha)              |  Mondays. Weekly.        |  17:30-22:00   |  Free
-Chance & Counters | Tuesdays. Weekly.       |  18:00-23:00   | £1/hour
+[Chance & Counters](chance-&-counters) | Tuesdays. Weekly.       |  18:00-23:00   | £1/hour
 [Kiln Workshop](#kiln-workshop)    |  1st Sunday. Monthly.    |  18:15-23:00   | Free
 [Advanced Retreat](#advanced-retreat)  | 2nd Saturday. Monthly. |  18:30-00:30    |£3
 [The Old Duke](#the-old-duke)     |  3rd Saturday. Monthly. | 18:00-01:00     | Free
@@ -26,7 +26,7 @@ Advanced Retreat is a retro arcade club, hidden behind Stokes Croft! We use the 
 **Location:** 18a Backfields Ln, St Paul's, BS2 8QW
   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2485.7935628891273!2d-2.589706765091819!3d51.461946564189!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48718e73a2cb7943%3A0x97d9eaa777fcdc2a!2sAdvanced%20Retreat%20Members%20Club!5e0!3m2!1sen!2suk!4v1738507330699!5m2!1sen!2suk" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-  ### __Chance & Counters__
+### __Chance & Counters__
 
   image
 
