@@ -47,7 +47,8 @@ The owners of the Kiln Studio let us use their pottery studio once a month. It's
 
 ### __The Old Duke__
 
-  image
+![image](https://github.com/user-attachments/assets/6474994e-8351-46c3-a034-60582b688fb4)
+
 
  A really fun venue above the Jazz bar on King Street! We can stay late, and play loud! Perfect for negotiation and social deduction games!
 
