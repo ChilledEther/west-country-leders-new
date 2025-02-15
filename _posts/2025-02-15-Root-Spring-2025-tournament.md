@@ -4,7 +4,7 @@ title: "Root Spring 2025 Tournament"
 author: "Liam Mason"
 categories: posts
 tags: [posts]
-image: ![image](https://github.com/user-attachments/assets/eee3ae4d-4f14-46bc-a586-8d41e2881d05)
+image: Root-poster.png
 
 ---
 
