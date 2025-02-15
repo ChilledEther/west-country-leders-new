@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://westcountryleders.co.uk/sitemap
