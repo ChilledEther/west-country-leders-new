@@ -45,13 +45,17 @@ jobs:
         git clone https://github.com/ChilledEther/west-country-leders.git
         cd ./west-country-leders
 
-        Get-ChildItem -Path ./ -Recurse | Out-String
-        exit 0
-
         $date = Get-Date -Format yyyy-MM-dd_HH:mm:ss
         Write-Output "Copying files across"
         Try {
           Copy-Item -Path ${{ github.workspace }}/* ./ -Recurse -Force
+
+          git remote --verbose
+          git status
+
+          Get-ChildItem -Path ./ -Recurse | Out-String
+          exit 0
+
           git add .
           git commit -m "release: make-live $date"
           git push
