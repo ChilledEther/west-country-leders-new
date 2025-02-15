@@ -24,16 +24,17 @@ jobs:
         private-key: ${{ secrets.CHILLEDGHAUTOMATION }}
         owner: ChilledEther
 
-    - name: make-live
-      shell: pwsh
+    - name: git-setup
       run: |
-        Write-Output "Setting git config"
+        echo "Setting git config"
         gh auth setup-git
         git config --global push.autoSetupRemote true
-
         git config --global user.name 'chilledghautomation[bot]'
         git config --global user.email '1130425+chilledghautomation[bot]@users.noreply.github.com'
 
+    - name: make-live
+      shell: pwsh
+      run: |
         Write-Output "Creating tempory repo directory"
         mkdir ~/repos
         cd ~/repos
