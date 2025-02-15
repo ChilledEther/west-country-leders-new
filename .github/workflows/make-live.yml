@@ -43,7 +43,7 @@ jobs:
         cd ./west-country-leders
 
         Write-Output "Copying files across"
-        Copy-Item -Path ${{ github.workspace }}/* ./ -Recurse
+        Copy-Item -Path ${{ github.workspace }}/* ./ -Recurse -Force
         git add .
         git commit -m "release: make-live $date"
         git push
