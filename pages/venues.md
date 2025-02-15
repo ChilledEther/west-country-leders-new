@@ -28,9 +28,10 @@ Venue            |  Frequency              |  Time          |  Price
 
 ### __Excelsior Games__
 
-![excelsior](../assets/img/excelsior.png)
+![image](https://github.com/user-attachments/assets/3a5e3d59-8822-4a37-94b1-fe8925ffc6b2)
 
 Daytime gaming, ideal for a lazy Sunday afternoon! We also run a games design table during this event, for anyone to come along and work on your own board games with like-minded people!
+We also run a games design meet up during this event. So if you have your own game ideas, come along and share what you're working on!
 
 **Location:** 51-53 Merchant St, Broadmead, BS1 3EE
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4180.9412363184165!2d-2.5932829724131308!3d51.458109932464396!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48718e716d01d22f%3A0xeab38084c783dd7a!2sExcelsior%20Comics%20Ltd!5e0!3m2!1sen!2suk!4v1738507536047!5m2!1sen!2suk" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
