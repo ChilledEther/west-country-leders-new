@@ -37,6 +37,8 @@ jobs:
     - name: make-live
       shell: pwsh
       run: |
+        $stagingDirectory = (Get-Location).Path
+
         Write-Output "Creating temporary repo directory"
         mkdir ~/repos
         cd ~/repos
@@ -58,7 +60,7 @@ jobs:
           Get-ChildItem -Path ./ -Recurse -Exclude $exclusions | Remove-Item -Recurse
 
           Write-Output "Copying across staging artifacts"
-          Copy-Item -Path ${{ github.workspace }}/* ./ -Recurse -Force
+          Copy-Item -Path $stagingDirectory/* ./ -Recurse
 
           git remote set-url origin $productionGit
           git remote --verbose
