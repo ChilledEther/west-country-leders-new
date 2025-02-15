@@ -19,9 +19,7 @@ Venue            |  Frequency              |  Time          |  Price
 
 ### __Chance and Counters__
 
-  image
-
-  The board games café, Chance & Counters host a weekly cheap games evening designed to facilitate meeting new people! A few of us usually go along to play something from the huge collection of games that C&C have. There are two Chance & Counters cafés in Bristol, and this one is on Gloucester Road!
+The board games café, Chance & Counters host a weekly cheap games evening designed to facilitate meeting new people! A few of us usually go along to play something from the huge collection of games that C&C have. There are two Chance & Counters cafés in Bristol, and this one is on Gloucester Road!
 
   **Location:** 79A Gloucester Road, BS7 8AS
   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2485.276732747502!2d-2.592363866792998!3d51.47143454786868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48718f6b88301d8b%3A0xcfa213285d0cd61d!2sChance%20%26%20Counters!5e0!3m2!1sen!2suk!4v1738693280878!5m2!1sen!2suk" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -49,7 +47,6 @@ The owners of the Kiln Studio let us use their pottery studio once a month. It's
 
 ![image](https://github.com/user-attachments/assets/6474994e-8351-46c3-a034-60582b688fb4)
 
-
  A really fun venue above the Jazz bar on King Street! We can stay late, and play loud! Perfect for negotiation and social deduction games!
 
  **Location:** 45 King St, BS1 4ER
@@ -59,7 +56,6 @@ The owners of the Kiln Studio let us use their pottery studio once a month. It's
 
 ![image](https://github.com/user-attachments/assets/6e8ac4f0-fdab-4ce1-91dc-49470af153b2)
 
-
 Replay give WCL members cheaper gaming one Saturday a month! Once of the nicest gaming cafés in Bristol. Booking is required for this venue, so see the Discord for more information.
 
 **Location:** 196 Cheltenham Rd, Montpelier, BS6 5RB
@@ -67,7 +63,7 @@ Replay give WCL members cheaper gaming one Saturday a month! Once of the nicest 
 
 ### __YHA__
 
-  image
+![image](https://github.com/user-attachments/assets/3a321a17-49e9-4b21-9d5a-4cb5b6637b59)
 
 We head to the Youth Hostel Association by the harbourside every Monday evening.
 It's nice and quiet, and we generally have the mezzanine to ourselves!
