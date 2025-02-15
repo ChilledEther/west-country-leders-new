@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Arcs mini tournament"
+title: "Arcs: Spring 2025 mini tournament"
 author: "Liam Mason"
 categories: posts
 tags: [posts]
