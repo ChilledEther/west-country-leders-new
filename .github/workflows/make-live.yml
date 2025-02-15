@@ -37,17 +37,17 @@ jobs:
     - name: make-live
       shell: pwsh
       run: |
-        Write-Output "Creating tempory repo directory"
+        Write-Output "Creating temporary repo directory"
         mkdir ~/repos
         cd ~/repos
 
-        Write-Output "Clong live repo"
+        Write-Output "Cloning live repo"
         $productionGit = 'https://github.com/ChilledEther/west-country-leders.git'
         git clone $productionGit
         cd ./west-country-leders
 
         $date = Get-Date -Format yyyy-MM-dd_HH:mm:ss
-        Write-Output "Copying files across"
+
         Try {
           Write-Output "Cleaning production"
           $exclusions = @(
@@ -60,12 +60,12 @@ jobs:
           Write-Output "Copying across staging artifacts"
           Copy-Item -Path ${{ github.workspace }}/* ./ -Recurse -Force
 
+          git remote set-url origin $productionGit
           git remote --verbose
           git status
 
           exit 0
 
-          git remote set-url origin $productionGit
           git add .
           git commit -m "release: make-live $date"
           git push
