@@ -42,10 +42,6 @@ jobs:
         git clone https://github.com/ChilledEther/west-country-leders.git
         cd ./west-country-leders
 
-        Write-Output "Creating feature branch"
-        $date = Get-Date -Format ddMMyy-mmHHss
-        git checkout -b feature/$date
-
         Write-Output "Copying files across"
         Copy-Item -Path ${{ github.workspace }}/* ./ -Recurse
         git add .
