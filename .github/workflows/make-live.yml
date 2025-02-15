@@ -66,8 +66,6 @@ jobs:
           git remote --verbose
           git status
 
-          exit 0
-
           git add .
           git commit -m "release: make-live $date"
           git push
