@@ -9,7 +9,7 @@ We hold a number of regular board game meet ups. If you would like to come along
 
 Venue            |  Frequency              |  Time          |  Price
 ---------------  |---------------------    |----------------|--------
-[YHA](#yha)              |  Mondays. Weekly.        |  17:30-22:00   |  Free
+[YHA](#yha)              |  2nd Monday. Monthly.        |  17:30-22:00   |  Free
 [Chance and Counters](#chance-and-counters) | Tuesdays. Weekly.       |  18:00-23:00   | £1/hour
 [Kiln Workshop](#kiln-workshop)    |  1st Sunday. Monthly.    |  18:15-23:00   | Free
 [The Old Duke](#the-old-duke)     |  3rd Saturday. Monthly. | 18:00-01:00     | Free
