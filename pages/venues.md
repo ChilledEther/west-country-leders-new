@@ -55,7 +55,8 @@ The owners of the Kiln Studio let us use their pottery studio once a month. It's
 
 ### __Replay__
 
-  image
+![image](https://github.com/user-attachments/assets/6e8ac4f0-fdab-4ce1-91dc-49470af153b2)
+
 
 Replay give WCL members cheaper gaming one Saturday a month! Once of the nicest gaming cafés in Bristol. Booking is required for this venue, so see the Discord for more information.
 
