@@ -31,6 +31,8 @@ jobs:
         git config --global push.autoSetupRemote true
         git config --global user.name 'chilledghautomation[bot]'
         git config --global user.email '1130425+chilledghautomation[bot]@users.noreply.github.com'
+      env:
+        GH_TOKEN: ${{ steps.generate-token.outputs.token }}
 
     - name: make-live
       shell: pwsh
