@@ -4,7 +4,7 @@ title: "Two new venues!"
 author: "Liam Mason"
 categories: posts
 tags: [posts]
-image: wcl-mascot.png
+image: Excelsior-combine.png
 ---
 
 ## __Two new regular venues for WCL members!__
