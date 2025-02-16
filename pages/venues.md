@@ -76,6 +76,6 @@ Perfect for smaller board games and card games that don't need too much table sp
 
 ![board-game-arena](../assets/img/board-game-arena.png)
 
-We also host regularly Board Game Arena evenings online.
+We also host regular Board Game Arena evenings online.
 
 **Location:** [BGA](https://boardgamearena.com/welcome)
