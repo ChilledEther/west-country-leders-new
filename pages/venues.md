@@ -13,7 +13,7 @@ Venue            |  Frequency              |  Time          |  Price
 [Chance and Counters](#chance-and-counters) | Tuesdays. Weekly.       |  18:00-23:00   | £1/hour
 [Kiln Workshop](#kiln-workshop)    |  1st Sunday. Monthly.    |  18:15-23:00   | Free
 [The Old Duke](#the-old-duke)     |  3rd Saturday. Monthly. | 18:00-01:00     | Free
-[Replay](#replay)            | 4th Saturday. Monthly.   |  18:00-23:00   | £1/hour
+[Replay](#replay)            | 4th Saturday. Monthly.   |  18:00-23:00   | £0.80/hour
 [Excelsior Games](#excelsior-games) | 4th Sunday. Monthly.       | 11:00-17:00   | Free
 
 
@@ -56,7 +56,7 @@ The owners of the Kiln Studio let us use their pottery studio once a month. It's
 
 ![image](https://github.com/user-attachments/assets/6e8ac4f0-fdab-4ce1-91dc-49470af153b2)
 
-Replay give WCL members cheaper gaming one Saturday a month! One of the nicest gaming cafés in Bristol. Booking is required for this venue, so see the Discord for more information.
+Replay give WCL members cheaper gaming (less than £1/hour!) one Saturday a month! One of the nicest gaming cafés in Bristol. Booking is required for this venue, so see the Discord for more information.
 
 **Location:** 196 Cheltenham Rd, Montpelier, BS6 5RB
   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5911.537230877614!2d-2.5973041727780974!3d51.46742346539875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48718e0b9ea095cf%3A0x8a40fd52ead5f683!2sReplay%20Bristol%20Board%20Game%20Cafe!5e0!3m2!1sen!2suk!4v1738507615351!5m2!1sen!2suk" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
