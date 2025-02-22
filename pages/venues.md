@@ -13,7 +13,7 @@ Venue            |  Frequency              |  Time          |  Price
 [Chance and Counters](#chance-and-counters) | Tuesdays. Weekly.       |  18:00-23:00   | £1/hour
 [Kiln Workshop](#kiln-workshop)    |  1st Sunday. Monthly.    |  18:15-23:00   | Free
 [The Old Duke](#the-old-duke)     |  3rd Saturday. Monthly. | 18:00-01:00     | Free
-[Replay](#replay)            | 4th Saturday. Monthly.   |  18:00-23:00   | £0.80/hour
+[Replay](#replay)            | 4th Saturday. Monthly.   |  18:00-23:00   | 80p/hr
 [Excelsior Games](#excelsior-games) | 4th Sunday. Monthly.       | 11:00-17:00   | Free
 
 
