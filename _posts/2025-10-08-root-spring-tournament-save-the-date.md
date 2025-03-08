@@ -6,4 +6,5 @@ categories: posts
 tags: [posts]
 image: root-may-10-date-poster.png
 ---
+
 ## Save the date for the first WCL Root tournament of 2025!
