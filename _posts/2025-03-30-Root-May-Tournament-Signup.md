@@ -4,7 +4,7 @@ title: "Root-May-Tournament-Sign-Up-Announcment"
 author: "Liam Mason"
 categories: posts
 tags: [posts]
-image: mayledersignup.png
+image: rootmaysignupposter.png
 
 ---
 Sign up now!
