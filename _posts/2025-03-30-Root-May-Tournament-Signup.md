@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Root: May-Tournament Sign-Up Announcment"
+title: "Root: May Tournament Sign-Up Announcment"
 author: "Liam Mason"
 categories: posts
 tags: [posts]
