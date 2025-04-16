@@ -27,6 +27,11 @@ The board games café, Chance & Counters host a weekly cheap games evening desig
 
 ### __The Crafty Egg__
 
+We head to East Bristol once every two weeks to play at The Crafty Egg on Church Road. We have a large space reserved just for our group, and can use their nice big tables and control the lighing and music levels too!
+
+**Location:** 203-207, Church Rd, Redfield, Bristol BS5 9HL
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5912.583831640347!2d-2.5631956980458503!3d51.459344800246235!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48718fb36b14ac5f%3A0x8f718d81e890ce02!2sThe%20Crafty%20Egg!5e0!3m2!1sen!2suk!4v1744802376797!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
 ### __Excelsior Games__
 
 ![image](https://github.com/user-attachments/assets/3a5e3d59-8822-4a37-94b1-fe8925ffc6b2)
