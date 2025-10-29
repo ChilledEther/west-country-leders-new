@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Root: Autumn 2024 Tournament"
+title: "Root: Autumn 2025 Tournament"
 author: "Liam Mason"
 categories: posts
 tags: [posts]
