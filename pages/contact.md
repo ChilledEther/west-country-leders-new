@@ -13,4 +13,3 @@ Discord: [Click here to join!](https://discord.gg/JuuxmmbgG7)
 
 Alternatively, you can email: <a href="mailto:westcountryleders@gmail.com">westcountryleders@gmail.com</a>
 
-Or feel free to just pop by any of our [regular events](venues.md)
