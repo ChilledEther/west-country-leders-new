@@ -1,7 +1,8 @@
 ---
 layout: page-test
 title: Test
-permalink: /about
+category: text
+permalink: /test
 ---
 
 Test page
