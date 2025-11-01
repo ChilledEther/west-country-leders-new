@@ -1,6 +1,6 @@
 ---
-layout: page
-title: About
+layout: page-test
+title: Test
 permalink: /about
 ---
 
