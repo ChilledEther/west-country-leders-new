@@ -4,7 +4,7 @@ title: "Twilight Imperium Tournament Presentation: October 2025"
 author: "Liam Mason"
 categories: posts
 tags: [posts]
-image: oct-TI-poster.png
+image: assets/img/oct-TI-poster.png
 
 ---
 October saw another fantastic WCL Twilight imperium tournament run by our amazing community leaders and TI obsessive, James!
