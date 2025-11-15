@@ -4,7 +4,7 @@ title: "Root Tournament Presentation: November 2025"
 author: "Liam Mason"
 categories: posts
 tags: [posts]
-image: assets/img/Winner_oct_25.-2.jpg
+image: winner_oct_25.-2.jpg
 
 Big thank you to everyone who attended our November Root tournament!
 Stay tuned for the announcment of our next Root tournament which will likely be taking place in Spring 2026!
