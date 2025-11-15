@@ -4,7 +4,7 @@ title: "Root Tournament Presentation: November 2025"
 author: "Liam Mason"
 categories: posts
 tags: [posts]
-image: winner_oct_25.-2.jpg
+image: Winner_oct_25.-2.jpg
 
 ---
 
