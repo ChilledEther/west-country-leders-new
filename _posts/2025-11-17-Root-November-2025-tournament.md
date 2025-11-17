@@ -19,4 +19,4 @@ Check out photos and stats from the tournament, alongwith the feedback form belo
 We are also asking for feedback from any of our November tournament participants!
 It really does help us improve the events that we run, and shouldn't take longer than a couple of minutes to submit!
 
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLScr0SaMncKjg_SfL2DarYQYi9mtMbDq4FfBWP801nUq9QBm1A/viewform?embedded=true" width="640" height="3865" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLScr0SaMncKjg_SfL2DarYQYi9mtMbDq4FfBWP801nUq9QBm1A/viewform?embedded=true" width="100%" height="3865" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
