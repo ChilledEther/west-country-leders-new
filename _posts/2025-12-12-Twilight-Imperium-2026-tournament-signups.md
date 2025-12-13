@@ -4,7 +4,7 @@ title: "Twilight Imperium 2026 tournament signups"
 author: "Liam Mason"
 categories: posts
 tags: [posts]
-image: TI-2026-signups.jpg
+image: New-TI-2026-poster.jpg
 
 ---
 
