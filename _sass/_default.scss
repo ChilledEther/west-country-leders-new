@@ -5,32 +5,33 @@
 */
 
 .container {
-  width: $container-width;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
+  max-width: $container-width;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
+
 .container a {
-  text-decoration: underline;
+  // Styles handled in _base.scss now, but ensuring specific overrides if needed
 }
+
 .content-wrapper {
-  padding-top: $header-thickness+10px;
-  margin: auto;
+  padding-top: $header-thickness + 40px;
+  padding-bottom: 60px;
+  margin: 0 auto;
   display: block;
-  width: $container-width - 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
+
 .content-wrapper h1 {
-  margin: 20px 0px 5px;
+  margin: 0 0 30px 0;
+  text-align: center;
 }
-@media (max-width: $container-width) {
-  .container {
-    width: 95vw;
-    margin-left: auto;
-    margin-right: auto;
-  }
+
+@media (max-width: $tablet-width) {
   .content-wrapper {
-    padding-top: $header-thickness+10px;
-    margin: auto;
-    display: block;
-    width: 95vw;
+    padding-top: $header-thickness + 20px;
   }
 }
