@@ -27,8 +27,14 @@
   transition: all 0.3s ease;
   display: inline-block;
   
+  // Disable the animated underline from the header's .menu-link class
+  &::after {
+    display: none !important;
+  }
+  
   &:hover {
     color: $accent-color;
+    text-decoration: none;
     transform: translateY(-2px);
   }
 }
