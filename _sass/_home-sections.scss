@@ -20,11 +20,13 @@
   @media (max-width: 1100px) {
     // On mobile/tablet, it sits nicely above the hero card
     position: relative; // Keeps it in flow
+    display: block; // Ensure it behaves like a block
     top: auto;
     left: auto;
     right: auto;
     width: 100%;
     margin: 0 auto 30px; // Center and push down
+    text-align: center; // Center the card inside if overflow
     transform: rotate(0deg); 
     filter: none;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
