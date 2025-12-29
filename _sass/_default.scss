@@ -41,7 +41,7 @@
 
 @media (max-width: $tablet-width) {
   .content-wrapper {
-    padding-top: $header-thickness + 20px;
+    padding-top: $header-thickness + 50px;
   }
 }
 
@@ -54,5 +54,11 @@
   
   .footer {
     margin-top: 30px; 
+  }
+
+  @media (max-width: $tablet-width) {
+    .content-wrapper {
+      padding-top: $header-thickness + 50px; // Match other pages on mobile
+    }
   }
 }
