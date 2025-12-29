@@ -32,22 +32,32 @@
 }
 
 .notice-card {
-  background-color: #f7f1e3; // Lighter parchment
-  background-image: url("https://www.transparenttextures.com/patterns/cream-paper.png");
-  border: 1px solid #d1ccc0;
-  border-radius: 2px; // Sharp corners like a paper flyer
-  padding: 20px;
+  background-color: #f7f1e3;
+  // Layering a paper texture with subtle stains
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(139, 69, 19, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(139, 69, 19, 0.05) 0%, transparent 40%),
+    url("https://www.transparenttextures.com/patterns/cream-paper.png");
+  
+  padding: 35px 25px; // Increased padding to avoid text getting clipped
   position: relative;
   
-  // Tape effect or Pin effect
-  &::after {
+  // Torn/Damaged paper effect via clip-path
+  clip-path: polygon(
+    2% 2%, 15% 1%, 28% 3%, 42% 1%, 55% 2%, 70% 1%, 85% 3%, 98% 2%,
+    99% 15%, 97% 28%, 99% 42%, 98% 55%, 99% 70%, 97% 85%, 98% 97%,
+    85% 99%, 70% 97%, 55% 99%, 42% 98%, 28% 99%, 15% 97%, 2% 98%,
+    1% 85%, 3% 70%, 1% 55%, 2% 42%, 1% 28%, 3% 15%
+  );
+  
+  &::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    box-shadow: inset 0 0 20px rgba(0,0,0,0.05);
+    background: linear-gradient(135deg, rgba(0,0,0,0.03) 0%, transparent 50%, rgba(255,255,255,0.1) 100%);
     pointer-events: none;
   }
 }
@@ -71,11 +81,11 @@
 
 .notice-pin-wrapper {
   position: absolute;
-  top: -15px;
+  top: -12px; // Positioned relative to notice-board-container
   left: 50%;
   transform: translateX(-50%);
-  z-index: 10;
-  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3));
+  z-index: 30; // Above the clipped notice-card
+  filter: drop-shadow(0 5px 8px rgba(0,0,0,0.5));
 }
 
 .notice-pin {
