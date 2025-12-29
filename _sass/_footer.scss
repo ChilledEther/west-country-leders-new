@@ -9,21 +9,46 @@
   width: 100%;
   box-sizing: border-box;
 
-  // Glassmorphism - matching header
-  background-color: rgba(255, 255, 255, 0.95); // Matching header opacity exactly
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  // Enhanced Wooden Plank Effect
+  background-color: $wood-medium;
+  background-image: 
+    // Small Nails
+    radial-gradient(circle at 12px 12px, rgba(0,0,0,0.5) 2px, transparent 3px),
+    radial-gradient(circle at calc(100% - 12px) 12px, rgba(0,0,0,0.5) 2px, transparent 3px),
+    radial-gradient(circle at 12px calc(100% - 12px), rgba(0,0,0,0.5) 2px, transparent 3px),
+    radial-gradient(circle at calc(100% - 12px) calc(100% - 12px), rgba(0,0,0,0.5) 2px, transparent 3px),
+    // Grain Lines
+    repeating-linear-gradient(
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.04) 2px,
+      rgba(0,0,0,0.04) 4px
+    ),
+    // Vertical Planks
+    linear-gradient(90deg, transparent 198px, rgba(0,0,0,0.15) 198px, rgba(255,255,255,0.05) 200px),
+    // Warm Wood Gradient
+    linear-gradient(to bottom, $wood-light 0%, $wood-medium 50%, color.adjust($wood-medium, $lightness: -8%) 100%);
   
-  box-shadow: $box-shadow;
-  border: none; // Match header's clean shadow look
-  border-radius: 50px; // Matching header pill shape
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 8px, 200px 100%, 100% 100%;
+  
+  border: 4px solid $wood-border;
+  border-top-width: 7px; // Stronger top edge for the footer plank
+  
+  box-shadow: 
+    0 -4px 12px rgba(0, 0, 0, 0.1), // Rise shadow
+    inset 0 2px 0 rgba(255, 255, 255, 0.2), // Inner highlight
+    inset 0 -2px 0 rgba(0,0,0,0.1); // Inner shadow
+    
+  border-radius: 15px;
 }
 
 .footer a {
-  color: $brand-color;
+  color: $wood-border;
   padding: 0 15px;
   text-decoration: none;
-  font-size: 1.1rem; // Slightly more modest icon size
+  font-size: 1.2rem;
+  font-weight: 800; // Chunkier
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
   transition: all 0.3s ease;
   display: inline-block;
   
@@ -33,21 +58,21 @@
   }
   
   &:hover {
-    color: $accent-color;
+    color: $wood-dark;
     text-decoration: none;
-    transform: translateY(-2px);
+    transform: translateY(-3px) scale(1.1);
   }
 }
 
 .footer-description {
   display: block;
-  margin-top: 0.5rem; // Reduced margin
-  color: color.adjust($text-color, $lightness: 20%);
-  font-size: 0.75rem; // Smaller text for a sleeker look
-  font-weight: 600;
+  margin-top: 1rem;
+  color: $wood-border;
+  font-size: 0.8rem;
+  font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 @media (max-width: $header-breakpoint) {

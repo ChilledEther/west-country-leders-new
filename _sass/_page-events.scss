@@ -8,11 +8,11 @@
   width: 100%;
   box-sizing: border-box;
 
-  // Glassmorphism - consistency with hero card
-  background: rgba(255, 255, 255, 0.9);
+  // Parchment style - consistency with hero card
+  background: rgba(252, 248, 243, 0.95);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba($wood-border, 0.1);
   border-radius: 40px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }

@@ -18,10 +18,10 @@
 .hero-glass-card {
   position: relative;
   z-index: 2;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(252, 248, 243, 0.92); // Warm parchment-like white
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba($wood-border, 0.1);
   padding: 40px;
   border-radius: $border-radius * 2;
   max-width: 800px;
