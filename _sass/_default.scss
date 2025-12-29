@@ -48,11 +48,11 @@
 // Optimization for Front Page / Hero layout
 .layout-front-page {
   .content-wrapper {
-    padding-top: $header-thickness + 60px; // Gap from header
-    padding-bottom: 30px; // Half of bottom gap
+    padding-top: $header-thickness + 80px; // 20px (header top) + 64px (header) + 60px (gap)
+    padding-bottom: 30px; // Total 60px gap to footer below
   }
   
   .footer {
-    margin-top: 30px; // Other half of bottom gap (Total 60px)
+    margin-top: 30px; 
   }
 }

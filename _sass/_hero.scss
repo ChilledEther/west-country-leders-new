@@ -12,9 +12,7 @@
   padding: 30px; 
   box-sizing: border-box;
   border-radius: 40px; 
-  overflow: hidden;
-  
-  // No internal background needed anymore as body background shows through
+  // No overflow: hidden to allow the card shadow to breathe naturally
 }
 
 .hero-glass-card {
@@ -45,7 +43,8 @@
   width: 180px;
   height: auto;
   flex-shrink: 0;
-  filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
+  box-shadow: none; // Disable global rectangular shadow
+  filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1)); // Keep the clean mascot-shape shadow
   
   @media (max-width: $tablet-width) {
     width: 120px;
