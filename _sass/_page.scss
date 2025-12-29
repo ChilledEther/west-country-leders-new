@@ -4,6 +4,22 @@
   max-width: $content-max-width;
   display: block;
   margin: 0 auto;
-  padding: 0;
+  padding: 40px;
   width: 100%;
+  box-sizing: border-box;
+
+  // Glassmorphism - consistency with hero card
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 40px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: $tablet-width) {
+  .page-content {
+    padding: 25px 20px;
+    border-radius: 20px;
+  }
 }
