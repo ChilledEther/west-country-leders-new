@@ -105,8 +105,8 @@
   Responsiveness with a dropdown menu
 */
 
-// Use tablet width for breakpoint instead of container width, as 1200px is too wide to switch to mobile menu
-@media (min-width: $tablet-width) {
+// Use nav-breakpoint width for breakpoint to handle earlier switch to mobile menu
+@media (min-width: $nav-breakpoint) {
   .dropbtn {
     display: none;
   }
@@ -115,7 +115,7 @@
   }
 }
 
-@media (max-width: $tablet-width) {
+@media (max-width: $nav-breakpoint) {
   .menu-list {
     display: none;
   }
