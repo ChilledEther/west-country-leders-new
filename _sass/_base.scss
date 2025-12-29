@@ -240,93 +240,111 @@ tr:hover td {
   background-color: rgba($accent-color, 0.05);
 }
 
-// Mobile-specific table styles - make scrollable
+// Mobile-specific table styles - card layout
 @media (max-width: $tablet-width) {
-  // Allow horizontal scroll on page content for tables
-  .page-content, .post-content, .page-events-content {
-    overflow-x: auto;
-  }
-  
   table {
     display: block;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    white-space: nowrap;
-    
-    // Ensure rounded corners are visible
-    border-radius: $border-radius;
-  }
-  
-  // Reset display for table children so they render properly
-  thead, tbody, tr {
-    display: table;
-    width: 100%;
-    table-layout: fixed;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
   }
   
   thead {
-    display: table-header-group;
+    display: none; // Hide header row - we'll use ::before for labels
   }
   
   tbody {
-    display: table-row-group;
+    display: block;
   }
   
   tr {
-    display: table-row;
+    display: block;
+    margin-bottom: 16px;
+    background: white;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    overflow: hidden;
   }
   
-  th, td {
-    display: table-cell;
-    padding: 12px 15px;
-    font-size: 0.9rem;
-    min-width: 100px; // Ensure columns have reasonable width
+  tr:hover td {
+    background-color: transparent; // Disable hover effect on cards
   }
   
-  // First column wider for venue names
-  th:first-child, td:first-child {
-    min-width: 140px;
-  }
-
-  th {
-    font-size: 0.8rem;
-  }
-  
-  // Custom scrollbar styling for webkit browsers
-  table::-webkit-scrollbar {
-    height: 8px;
-  }
-  
-  table::-webkit-scrollbar-track {
-    background: rgba($brand-color, 0.1);
-    border-radius: 4px;
-  }
-  
-  table::-webkit-scrollbar-thumb {
-    background: rgba($brand-color, 0.4);
-    border-radius: 4px;
+  td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid #f0f0f0;
+    text-align: right;
     
-    &:hover {
-      background: rgba($brand-color, 0.6);
+    // Label styling via ::before
+    &::before {
+      content: "";
+      font-weight: 600;
+      color: $brand-color;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      text-align: left;
+      margin-right: auto;
+      padding-right: 15px;
     }
+    
+    // Reset border radius since cards handle it
+    border-radius: 0 !important;
+  }
+  
+  td:last-child {
+    border-bottom: none;
+  }
+  
+  // Link styling in cards
+  td a {
+    font-weight: 600;
+  }
+  
+  // === Column labels using nth-child ===
+  // This works for the venues table structure: Venue | Frequency | Time | Price
+  // Can be extended for other tables or made more generic
+  
+  td:nth-child(1)::before {
+    content: "Venue";
+  }
+  
+  td:nth-child(2)::before {
+    content: "Frequency";
+  }
+  
+  td:nth-child(3)::before {
+    content: "Time";
+  }
+  
+  td:nth-child(4)::before {
+    content: "Price";
+  }
+  
+  // For tables with different column counts, add more rules as needed
+  // These will just show empty labels for tables that don't match
+  td:nth-child(5)::before,
+  td:nth-child(6)::before {
+    content: ""; // No label for extra columns
   }
 }
 
-// Phone-specific - more compact
+// Phone-specific - slightly more compact cards
 @media (max-width: $phone-width) {
-  th, td {
-    padding: 10px 12px;
-    font-size: 0.85rem;
-    min-width: 90px;
+  tr {
+    margin-bottom: 12px;
   }
   
-  th:first-child, td:first-child {
-    min-width: 120px;
-  }
-  
-  th {
-    font-size: 0.75rem;
-    letter-spacing: 0.02em;
+  td {
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    
+    &::before {
+      font-size: 0.75rem;
+    }
   }
 }
 
