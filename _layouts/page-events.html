@@ -101,36 +101,15 @@ layout: default
           const summary = (chunk.match(/SUMMARY(?:;[^:]*)?:([^\r\n]+)/) || [])[1];
           const dtstart = (chunk.match(/DTSTART(?:;[^:]*)?:([^\r\n]+)/) || [])[1];
           const location = (chunk.match(/LOCATION(?:;[^:]*)?:([^\r\n]+)/) || [])[1];
-          const description = (chunk.match(/DESCRIPTION(?:;[^:]*)?:([^\r\n]+)/) || [])[1];
 
           if (dtstart) {
             const start = parseIcsDate(dtstart);
             // Show future events within next 3 months
             if (start && start >= now && start <= maxDate) {
-              let cleanDesc = "";
-              if (description) {
-                  // Basic cleanup
-                  cleanDesc = description
-                    .trim()
-                    .replace(/\\n/g, '<br>')
-                    .replace(/\\,/g, ',')
-                    .replace(/\\/g, '');
-                    
-                  // Strip HTML just in case
-                  let temp = document.createElement("div");
-                  temp.innerHTML = cleanDesc;
-                  cleanDesc = temp.textContent || temp.innerText || "";
-                  
-                  if (cleanDesc.length > 150) {
-                      cleanDesc = cleanDesc.substring(0, 150) + '...';
-                  }
-              }
-
               events.push({
                 title: (summary || "Event").trim().replace(/\\/g, ''),
                 start: start,
-                location: (location || "Bristol").trim().replace(/\\,/g, ',').replace(/\\/g, ''),
-                description: cleanDesc
+                location: (location || "Bristol").trim().replace(/\\,/g, ',').replace(/\\/g, '')
               });
             }
           }
@@ -169,29 +148,9 @@ layout: default
             meta.appendChild(dateSpan);
             meta.appendChild(locSpan);
             
-            // Optional: Description
-            if (evt.description) {
-                const descP = document.createElement('p');
-                descP.className = 'event-paper-desc';
-                descP.textContent = evt.description;
-                card.appendChild(descP); // Prepend or append? layout has title, meta below.
-            }
-            
             // Build card structure
-            card.prepend(meta); // Meta below title? or Title first? SCSS has margin-top for Title. 
-            // In SCSS: Title margin-top: 25px (space for pin).
-            // So Title first, then Meta.
-            // Let's re-assemble.
-            
-            card.innerHTML = ''; // clear
             card.appendChild(title);
             card.appendChild(meta);
-            if (evt.description) {
-                 const descP = document.createElement('p');
-                 descP.className = 'event-paper-desc';
-                 descP.textContent = evt.description;
-                 card.appendChild(descP);
-            }
             
             wrapper.appendChild(pinWrapper);
             wrapper.appendChild(card);
