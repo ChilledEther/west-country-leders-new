@@ -172,7 +172,7 @@
   transition: all 0.2s;
   
   &:hover {
-    background-color: lighten($wood-dark, 10%);
+    background-color: color.adjust($wood-dark, $lightness: 10%);
     transform: scale(1.05);
   }
 }
