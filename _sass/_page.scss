@@ -8,18 +8,25 @@
   width: 100%;
   box-sizing: border-box;
 
-  // Parchment style - consistency with hero card
-  background: rgba(252, 248, 243, 0.95);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 2px solid rgba($wood-border, 0.1);
-  border-radius: 40px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  // Refined Recycled Paper Style (Grainy, not spotty)
+  background-color: $parchment-base;
+  background-image: 
+    repeating-linear-gradient(45deg, rgba(0,0,0,0.01) 0px, rgba(0,0,0,0.01) 1px, transparent 1px, transparent 2px),
+    linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 50%, rgba(0,0,0,0.02) 100%);
+  background-size: 3px 3px, 100% 100%;
+
+  border: 2px solid $parchment-border;
+  outline: 6px solid rgba($parchment-border, 0.15);
+  outline-offset: -12px;
+  
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
 }
 
 @media (max-width: $tablet-width) {
   .page-content {
     padding: 25px 20px;
     border-radius: 20px;
+    outline: none; // Save space on mobile
   }
 }

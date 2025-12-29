@@ -18,12 +18,25 @@
 .hero-glass-card {
   position: relative;
   z-index: 2;
-  background: rgba(252, 248, 243, 0.92); // Warm parchment-like white
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 2px solid rgba($wood-border, 0.1);
+  
+  // Refined Recycled Paper Style (Grainy, not spotty)
+  background-color: $parchment-base;
+  background-image: 
+    // Fine Paper Grain
+    repeating-linear-gradient(45deg, rgba(0,0,0,0.01) 0px, rgba(0,0,0,0.01) 1px, transparent 1px, transparent 2px),
+    // Subtle Color Variation
+    linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 50%, rgba(0,0,0,0.02) 100%);
+  background-size: 3px 3px, 100% 100%;
+  
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  
+  border: 2px solid $parchment-border;
+  outline: 4px solid rgba($parchment-border, 0.2);
+  outline-offset: -10px; // Double border effect
+  
   padding: 40px;
-  border-radius: $border-radius * 2;
+  border-radius: 20px; // Slightly more formal rounding for paper
   max-width: 800px;
   width: 100%;
   display: flex;
@@ -36,6 +49,7 @@
     flex-direction: column;
     text-align: center;
     padding: 30px 20px;
+    outline: none; // Save space on mobile
   }
 }
 
@@ -56,7 +70,7 @@
   h1, h2, h3 {
     margin-top: 0;
     margin-bottom: 20px;
-    color: $brand-color;
+    color: $wood-dark;
     border-bottom: none;
     padding-bottom: 0;
   }
