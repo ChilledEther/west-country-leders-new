@@ -3,7 +3,7 @@
 # Pagination settings (v2)
 pagination:
   enabled: true
-  per_page: 5
+  per_page: 9
   permalink: "/posts/:num/"
   title: ":title - page :num"
   index_page_before: 2
