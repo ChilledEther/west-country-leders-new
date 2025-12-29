@@ -1,0 +1,44 @@
+$base-font-family: "Inter", "Roboto", sans-serif;
+$body-font-family: "Inter", "Roboto", sans-serif;
+$code-font-family: "Source Code Pro", monospace;
+
+$brand-color: #2c3e50; // Dark slate
+$accent-color: #e67e22; // Vibrant orange
+$text-color: #333333;
+$background-color: #f8f9fa;
+
+$container-width: 1200px;
+$header-breakpoint: $container-width + 40px;
+$nav-breakpoint: 940px; // Earlier switch to mobile menu to prevent wrapping
+$content-max-width: 1000px; // Unified width for pages
+$tablet-width: 768px;
+$phone-width: 480px;
+
+// Wooden Theme Colors (Vibrant & Warm)
+$wood-light: #f3d19e; 
+$wood-medium: #d4a76a;
+$wood-dark: #6e4c2f;
+$wood-border: #4d2d18;
+
+// Parchment / Paper Colors
+$parchment-base: #fcf8f3;
+$parchment-dark: #f2e6d9;
+$parchment-border: #d4a76a;
+
+$header-thickness: 64px;
+$border-radius: 12px;
+$box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+$icon-transition-time: 0.3s;
+$envelope-color: #f39c12;
+$twitter-color: #00aced;
+$instagram-color: #375989;
+$github-color: #343434;
+$linkedin-color: #0073a4;
+$facebook-color: #3d5b99;
+$google-color: #e64a41;
+$pinterest-color: #bd081c;
+$medium-color: #00ab6c;
+$codepen-color: black;
+$rss-color: #ff6600;
+$discord-color: #5865F2; // Modern Discord Blurple

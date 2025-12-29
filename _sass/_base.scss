@@ -1,3 +1,6 @@
+@use "variables" as *;
+@use "sass:color";
+
 /*
   Reset some basic elements
 */
@@ -16,45 +19,91 @@ dl, dd, ol, ul, figure {
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
   margin-bottom: .5rem;
-  font-weight: bold;
+  font-weight: 700;
   line-height: 1.25;
   text-rendering: optimizeLegibility;
+  color: $wood-dark;
+  letter-spacing: -0.02em;
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 2.5rem;
+  margin-top: 1rem;
 }
 h2 {
-  margin-top: 1rem;
-  font-size: 1.5rem;
+  margin-top: 2rem;
+  font-size: 2rem;
+  border-bottom: 2px solid rgba($brand-color, 0.1);
+  padding-bottom: 0.5rem;
 }
 h3 {
   margin-top: 1.5rem;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
 }
 h4, h5, h6 {
   margin-top: 1rem;
-  font-size: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
 /* Body */
 body {
   font-family: $base-font-family;
-}
-body img {
-  align: middle;
-  margin: 5px auto auto auto;
-  display: block;
-  max-width: 100%;
+  background-color: $background-color;
+  
+  // Set the global site background with a subtle dark tint for readability
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+    url('../img-core/wintery-wcl-backdrop.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; // Content scrolls over the background
+  
+  color: $text-color;
+  line-height: 1.6;
+  
+  // Fixed gradient overlay to fade out content as it scrolls to the top
+  &::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 140px; 
+    // Subtle fade from background color to transparent
+    background: linear-gradient(to bottom, rgba($background-color, 0.9) 20%, rgba($background-color, 0) 100%);
+    z-index: 900;
+    pointer-events: none;
+  }
 }
 
+/* Images & Iframes */
+body img, iframe {
+  margin: 20px auto;
+  display: block;
+  max-width: 100%;
+  width: 100%; // Ensure it fills container
+  border: none;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  transition: transform 0.3s ease;
+  
+  // Prevent double scrollbars where possible
+  &[src*="docs.google.com"] {
+    overflow: hidden;
+  }
+}
+
+// Ensure the container doesn't scroll horizontally
+.post-content, .page-content, .page-events-content {
+  overflow-x: hidden;
+}
+
+/* Paragraphs */
 p {
   display: block;
   margin-top: 1em;
   margin-bottom: 1em;
-  margin-left: 0;
-  margin-right: 0;
-  line-height: 1.65;
   font-family: $body-font-family;
 }
 
@@ -66,18 +115,13 @@ ul, ol, dl {
   font-family: $body-font-family;
 }
 
-ol li {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  margin-left: 1.5rem;
-}
-
 li {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 dt {
   font-weight: bold;
+  color: $brand-color;
 }
 dd {
   margin-bottom: .5rem;
@@ -88,8 +132,15 @@ dd {
 */
 
 a {
-  color: $brand-color;
+  color: $discord-color; // Using Discord/Link color
   text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $accent-color;
+    text-decoration: underline;
+  }
 }
 
 /*
@@ -97,30 +148,52 @@ a {
 */
 
 blockquote {
-  margin: 10px 20px 10px;
-  padding: 0px 15px;
-  border-left: 0.25em solid #ccc;
-  color: #999;
-  line-height: 1.5;
+  margin: 20px 0;
+  padding: 15px 20px;
+  border-left: 4px solid $accent-color;
+  background: white;
+  border-radius: 0 $border-radius $border-radius 0;
+  color: color.adjust($text-color, $lightness: 20%);
+  font-style: italic;
+  box-shadow: $box-shadow;
 }
 
 /**
  * Tables
  */
 table {
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   margin-bottom: 30px;
   width: 100%;
+  background: white;
+  border-radius: $border-radius;
+  overflow: hidden;
+  box-shadow: $box-shadow;
 }
 
-table, th, td {
-  border: 1px solid black;
-}
 th, td {
   padding: 15px;
   text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  background-color: $brand-color;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:hover td {
+  background-color: rgba($accent-color, 0.05);
 }
 
 html {
-  scroll-padding-top: 66px
+  scroll-padding-top: $header-thickness + 20px;
 }

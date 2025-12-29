@@ -1,0 +1,138 @@
+@use "variables" as *;
+@use "sass:color";
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 20px 0;
+}
+
+.post-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 2px solid $parchment-border;
+  background-color: $parchment-base;
+  
+  // Subtle "Game Box" Shadow
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    border-color: $wood-medium;
+
+    .post-card-image {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.post-card-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background-color: $wood-light;
+  border-bottom: 2px solid rgba($parchment-border, 0.2);
+}
+
+.post-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  margin: 0 !important; // Override global margin
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.post-card-body {
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  
+  // Parchment Texture for the card body
+  background-image: 
+    repeating-linear-gradient(45deg, rgba(0,0,0,0.01) 0px, rgba(0,0,0,0.01) 1px, transparent 1px, transparent 2px);
+  background-size: 3px 3px;
+}
+
+.post-card-date {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: $wood-medium;
+  margin-bottom: 8px;
+  letter-spacing: 0.05em;
+}
+
+.post-card-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: $wood-dark;
+  margin: 0 0 12px 0;
+  line-height: 1.3;
+}
+
+.post-card-excerpt {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.5;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.post-card-footer {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px dashed rgba($parchment-border, 0.4);
+  text-align: right;
+  
+  span {
+    display: inline-block;
+    padding: 6px 16px;
+    background-color: $wood-light;
+    border: 2px solid $wood-border;
+    border-radius: 6px;
+    color: $wood-border;
+    font-size: 0.8rem;
+    font-weight: 800;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 0 $wood-border;
+
+    &::after {
+      content: ' →';
+      transition: margin-left 0.2s;
+    }
+  }
+}
+
+.post-card:hover .post-card-footer span {
+  background-color: $wood-medium;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 0 $wood-border;
+  
+  &::after {
+    margin-left: 5px;
+  }
+}
+
+
+@media (max-width: $tablet-width) {
+  .posts-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}

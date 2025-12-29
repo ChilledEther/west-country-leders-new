@@ -1,0 +1,17 @@
+<a href="{{ post.url | relative_url }}" class="post-card">
+  {% if post.image %}
+  <div class="post-card-image-wrapper">
+    <img src="{{ site.baseurl }}/assets/img/{{ post.image }}" class="post-card-image" alt="{{ post.title }}">
+  </div>
+  {% endif %}
+  <div class="post-card-body">
+    <div class="post-card-date">{{ post.date | date: "%B %-d, %Y" }}</div>
+    <h2 class="post-card-title">{{ post.title }}</h2>
+    <div class="post-card-excerpt">
+      {{ post.excerpt | strip_html | truncate: 160 }}
+    </div>
+    <div class="post-card-footer">
+      <span>Read Update</span>
+    </div>
+  </div>
+</a>

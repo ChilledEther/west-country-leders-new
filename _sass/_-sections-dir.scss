@@ -1,12 +1,15 @@
 // Importing Sass/SCSS partials from `sass_dir` (defaults to `_sass`)
-@import "base",
-        "code",
-        "default",
-        "footer",
-        "header",
-        "home",
-        "page",
-        "page-events",
-        "post",
-        "social-icons";
+@use "base";
+@use "code";
+@use "default";
+@use "footer";
+@use "header";
+@use "hero";
+@use "home";
+@use "home-sections";
+@use "page";
+@use "page-events";
+@use "post";
+@use "post-grid";
+@use "social-icons";
 // SCSS files roughly correspond to HTML files in _includes and _layouts

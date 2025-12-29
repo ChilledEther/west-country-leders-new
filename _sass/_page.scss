@@ -1,6 +1,34 @@
+@use "variables" as *;
+
 .page-content {
-  max-width: 600px;
+  max-width: $content-max-width;
   display: block;
-  margin: 10px auto 10px;
-  padding: 0px 10px 10px;
+  margin: 0 auto;
+  padding: 40px;
+  width: 100%;
+  box-sizing: border-box;
+
+  // Refined Meeple Watercolour Style
+  background-color: $parchment-base;
+  background-image: 
+    linear-gradient(rgba($parchment-base, 0.85), rgba($parchment-base, 0.85)),
+    url('../img-core/meeple-watercolour.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border: 2px solid $parchment-border;
+  outline: 6px solid rgba($parchment-border, 0.15);
+  outline-offset: -12px;
+  
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+@media (max-width: $tablet-width) {
+  .page-content {
+    padding: 25px 20px;
+    border-radius: 20px;
+    outline: none; // Save space on mobile
+  }
 }

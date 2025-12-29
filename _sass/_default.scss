@@ -1,34 +1,58 @@
+@use "variables" as *;
+
 /*
   Site container
 */
 
 .container {
-  width: $container-width;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
+  max-width: $container-width;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
-.container a {
-  text-decoration: underline;
-}
+
 .content-wrapper {
-  padding-top: $header-thickness+10px;
-  margin: auto;
+  padding-top: $header-thickness + 80px; // Increased padding to account for fixed header + gap
+  padding-bottom: 60px;
+  margin: 0 auto;
   display: block;
-  width: $container-width - 20px;
+  width: 100%;
+  box-sizing: border-box;
+  
+  // Fade effect for content scrolling under header
+  /* 
+     We can't easily mask the wrapper itself relative to the viewport if the wrapper scrolls with the body.
+     However, if we use mask-image: linear-gradient(...), it tracks the element.
+     The BEST way to "dissipate" content as it hits the top is a fixed white gradient overlay.
+  */
 }
+
+// Make sure body has relative positioning for any absolute children if needed, 
+// though we will use fixed for the overlay.
+// We'll add the overlay via a pseudo-element on the body in _base.scss or here if global.
+// Let's attach it to .container which wraps everything but is centered.
+// Actually, applying it to body is safer to cover full width.
+
 .content-wrapper h1 {
-  margin: 20px 0px 5px;
+  margin: 0 0 30px 0;
+  text-align: center;
 }
-@media (max-width: $container-width) {
-  .container {
-    width: 95vw;
-    margin-left: auto;
-    margin-right: auto;
-  }
+
+@media (max-width: $tablet-width) {
   .content-wrapper {
-    padding-top: $header-thickness+10px;
-    margin: auto;
-    display: block;
-    width: 95vw;
+    padding-top: $header-thickness + 20px;
+  }
+}
+
+// Optimization for Front Page / Hero layout
+.layout-front-page {
+  .content-wrapper {
+    padding-top: $header-thickness + 80px; // 20px (header top) + 64px (header) + 60px (gap)
+    padding-bottom: 30px; // Total 60px gap to footer below
+  }
+  
+  .footer {
+    margin-top: 30px; 
   }
 }

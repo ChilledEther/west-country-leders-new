@@ -1,44 +1,63 @@
+@use "variables" as *;
+
 .post-content {
-  width: 600px;
+  max-width: $content-max-width;
   display: block;
-  margin: 10px auto 10px;
+  margin: 0 auto;
+  padding: 40px;
+  width: 100%;
+  box-sizing: border-box;
+
+  // Refined Meeple Watercolour Style
+  background-color: $parchment-base;
+  background-image: 
+    linear-gradient(rgba($parchment-base, 0.85), rgba($parchment-base, 0.85)),
+    url('../img-core/meeple-watercolour.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border: 2px solid $parchment-border;
+  outline: 6px solid rgba($parchment-border, 0.15);
+  outline-offset: -12px;
+  
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
 }
+
+// Responsive iframe container to handle tall Google Forms
+.responsive-iframe-container {
+  width: 100%;
+  overflow: hidden;
+  margin: 20px 0;
+  
+  iframe {
+    width: 100% !important;
+    border: none;
+  }
+}
+
 .post-date {
   display: block;
-  margin-bottom: 1rem;
-  color: #9a9a9a;
-  font-size:0.8rem;
+  margin-bottom: 2rem;
+  color: $wood-medium;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.85rem;
 }
+
 .featured-image img {
-  align: middle;
-  margin: 5px auto 25px;
+  margin: 0 auto 30px;
   display: block;
-  max-width: 600px;
+  max-width: 100%;
 }
-@media (max-width: $container-width) {
-  .post-content {
-    width: 60vw;
-    display: block;
-    margin: 10px auto 10px;
-  }
-  .featured-image img {
-    align: middle;
-    margin: 5px auto 25px;
-    display: block;
-    max-width: 60vw;
-  }
-}
+
 @media (max-width: $tablet-width) {
   .post-content {
-    width: 95vw;
-    display: block;
-    margin: 10px auto 10px;
-  }
-  .featured-image img {
-    align: middle;
-    margin: 5px auto 25px;
-    display: block;
-    max-width: 95vw;
+    padding: 25px 20px;
+    border-radius: 20px;
+    outline: none;
   }
 }
 .post-share {
