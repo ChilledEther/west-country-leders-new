@@ -9,4 +9,201 @@ layout: default
   <article>
     {{ content }}
   </article>
+
+  <div id="dynamic-events-container" class="events-grid">
+    <!-- Dynamic torn-paper events will be injected here -->
+    <div id="events-loading" style="text-align: center; padding: 40px;">
+      <i class="fa-solid fa-dice-d20 fa-spin" style="font-size: 3rem; color: #d4a76a;"></i>
+      <p style="margin-top: 15px; color: #6e4c2f; font-weight: bold;">Unrolling the scrolls...</p>
+    </div>
+  </div>
+
+  <div id="static-calendar-container" style="display: none;">
+    <iframe src="https://calendar.google.com/calendar/embed?src=westcountryleders%40gmail.com&height=600&wkst=1&ctz=Europe%2FLondon&showPrint=0&hl=en_GB&showCalendars=0&showTabs=0&mode=AGENDA&src=d2VzdGNvdW50cnlsZWRlcnNAZ21haWwuY29t&color=%234285F4" style="border-width:0" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
+  </div>
 </div>
+
+<script>
+  (function() {
+    const calendarEmail = "westcountryleders@gmail.com";
+    const icalUrl = "https://calendar.google.com/calendar/ical/" + encodeURIComponent(calendarEmail) + "/public/basic.ics";
+    const proxyUrl = "https://corsproxy.io/?" + encodeURIComponent(icalUrl);
+    
+    const container = document.getElementById('dynamic-events-container');
+    const loading = document.getElementById('events-loading');
+    const staticCalendar = document.getElementById('static-calendar-container');
+
+    function showFallback() {
+      if (loading) loading.style.display = 'none';
+      // If we failed to load dynamic events, show the static iframe
+      if (container && container.children.length <= 1) { // 1 because loading div is inside
+        if (staticCalendar) staticCalendar.style.display = 'block';
+        if (container) container.style.display = 'none';
+      }
+    }
+
+    // Safety timeout
+    const safetyTimer = setTimeout(showFallback, 5000);
+
+    function parseIcsDate(icsDate) {
+      if (!icsDate) return null;
+      const val = icsDate.trim();
+      const year = val.substring(0, 4);
+      const month = parseInt(val.substring(4, 6)) - 1;
+      const day = val.substring(6, 8);
+      
+      // Check if it's a date-only string (length 8) or has time
+      let hour = 0, min = 0;
+      if (val.length > 8 && val.includes('T')) {
+          hour = val.substring(9, 11);
+          min = val.substring(11, 13);
+      }
+      
+      return new Date(Date.UTC(year, month, day, hour, min));
+    }
+
+    function formatEventDate(date) {
+      return date.toLocaleDateString('en-GB', { 
+        weekday: 'short', 
+        day: 'numeric', 
+        month: 'short', 
+        year: 'numeric', 
+        hour: '2-digit', 
+        minute: '2-digit' 
+      });
+    }
+
+    fetch(proxyUrl)
+      .then(res => {
+        if (!res.ok) throw new Error('Proxy error');
+        return res.text();
+      })
+      .then(content => {
+        clearTimeout(safetyTimer);
+        
+        if (!content || !content.includes('BEGIN:VEVENT')) {
+          showFallback();
+          return;
+        }
+
+        // Unfold lines
+        const unfoldedContent = content.replace(/\r\n[ \t]/g, '').replace(/\n[ \t]/g, '');
+        const chunks = unfoldedContent.split('BEGIN:VEVENT');
+        const now = new Date();
+        const maxDate = new Date();
+        maxDate.setMonth(now.getMonth() + 3);
+
+        const events = [];
+
+        // Skip header chunk
+        for (let i = 1; i < chunks.length; i++) {
+          const chunk = chunks[i];
+          const summary = (chunk.match(/SUMMARY(?:;[^:]*)?:([^\r\n]+)/) || [])[1];
+          const dtstart = (chunk.match(/DTSTART(?:;[^:]*)?:([^\r\n]+)/) || [])[1];
+          const location = (chunk.match(/LOCATION(?:;[^:]*)?:([^\r\n]+)/) || [])[1];
+          const description = (chunk.match(/DESCRIPTION(?:;[^:]*)?:([^\r\n]+)/) || [])[1];
+
+          if (dtstart) {
+            const start = parseIcsDate(dtstart);
+            // Show future events within next 3 months
+            if (start && start >= now && start <= maxDate) {
+              let cleanDesc = "";
+              if (description) {
+                  // Basic cleanup
+                  cleanDesc = description
+                    .trim()
+                    .replace(/\\n/g, '<br>')
+                    .replace(/\\,/g, ',')
+                    .replace(/\\/g, '');
+                    
+                  // Strip HTML just in case
+                  let temp = document.createElement("div");
+                  temp.innerHTML = cleanDesc;
+                  cleanDesc = temp.textContent || temp.innerText || "";
+                  
+                  if (cleanDesc.length > 150) {
+                      cleanDesc = cleanDesc.substring(0, 150) + '...';
+                  }
+              }
+
+              events.push({
+                title: (summary || "Event").trim().replace(/\\/g, ''),
+                start: start,
+                location: (location || "Bristol").trim().replace(/\\,/g, ',').replace(/\\/g, ''),
+                description: cleanDesc
+              });
+            }
+          }
+        }
+
+        events.sort((a, b) => a.start - b.start);
+
+        if (events.length > 0) {
+          // Hide loading
+          if (loading) loading.style.display = 'none';
+          
+          events.forEach(evt => {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'event-card-wrapper';
+            
+            const pinWrapper = document.createElement('div');
+            pinWrapper.className = 'event-paper-pin-wrapper';
+            pinWrapper.innerHTML = '<i class="fa-solid fa-thumbtack"></i>';
+            
+            const card = document.createElement('div');
+            card.className = 'event-paper-card';
+            
+            const title = document.createElement('h3');
+            title.className = 'event-paper-title';
+            title.textContent = evt.title;
+            
+            const meta = document.createElement('div');
+            meta.className = 'event-paper-meta';
+            
+            const dateSpan = document.createElement('span');
+            dateSpan.innerHTML = `<i class="fa-solid fa-calendar-days"></i> ${formatEventDate(evt.start)}`;
+            
+            const locSpan = document.createElement('span');
+            locSpan.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${evt.location}`;
+            
+            meta.appendChild(dateSpan);
+            meta.appendChild(locSpan);
+            
+            // Optional: Description
+            if (evt.description) {
+                const descP = document.createElement('p');
+                descP.className = 'event-paper-desc';
+                descP.textContent = evt.description;
+                card.appendChild(descP); // Prepend or append? layout has title, meta below.
+            }
+            
+            // Build card structure
+            card.prepend(meta); // Meta below title? or Title first? SCSS has margin-top for Title. 
+            // In SCSS: Title margin-top: 25px (space for pin).
+            // So Title first, then Meta.
+            // Let's re-assemble.
+            
+            card.innerHTML = ''; // clear
+            card.appendChild(title);
+            card.appendChild(meta);
+            if (evt.description) {
+                 const descP = document.createElement('p');
+                 descP.className = 'event-paper-desc';
+                 descP.textContent = evt.description;
+                 card.appendChild(descP);
+            }
+            
+            wrapper.appendChild(pinWrapper);
+            wrapper.appendChild(card);
+            container.appendChild(wrapper);
+          });
+        } else {
+          showFallback();
+        }
+      })
+      .catch(err => {
+        console.error("Events fetch error:", err);
+        showFallback();
+      });
+  })();
+</script>
