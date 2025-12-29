@@ -1,0 +1,69 @@
+@use "variables" as *;
+
+.hero-section {
+  position: relative;
+  width: 95%; 
+  max-width: 1000px;
+  min-height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto; 
+  padding: 30px; 
+  box-sizing: border-box;
+  border-radius: 40px; 
+  overflow: hidden;
+  
+  // No internal background needed anymore as body background shows through
+}
+
+.hero-glass-card {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 40px;
+  border-radius: $border-radius * 2;
+  max-width: 800px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  
+  @media (max-width: $tablet-width) {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px 20px;
+  }
+}
+
+.hero-mascot {
+  width: 180px;
+  height: auto;
+  flex-shrink: 0;
+  filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
+  
+  @media (max-width: $tablet-width) {
+    width: 120px;
+    margin-bottom: 10px;
+  }
+}
+
+.hero-content {
+  h1, h2, h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: $brand-color;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  
+  p {
+    margin-bottom: 0;
+    font-size: 1.05rem;
+  }
+}

@@ -44,3 +44,15 @@
     padding-top: $header-thickness + 20px;
   }
 }
+
+// Optimization for Front Page / Hero layout
+.layout-front-page {
+  .content-wrapper {
+    padding-top: $header-thickness + 60px; // Restored generous buffer from header
+    padding-bottom: 40px;
+  }
+  
+  .footer {
+    margin-top: 40px; 
+  }
+}
