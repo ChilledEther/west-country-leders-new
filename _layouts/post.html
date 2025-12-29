@@ -24,3 +24,37 @@ layout: default
     {% include disqus.html %}
   {% endif %}
 </div>
+
+<script>
+  // Auto-wrap and resize iframes
+  (function() {
+    const iframes = document.querySelectorAll('.post-content iframe');
+    iframes.forEach(iframe => {
+      // Check if already wrapped
+      if (!iframe.parentElement.classList.contains('responsive-iframe-container')) {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'responsive-iframe-container';
+        iframe.parentNode.insertBefore(wrapper, iframe);
+        wrapper.appendChild(iframe);
+      }
+      
+      // Google Forms specific enhancements
+      if (iframe.src.includes('docs.google.com/forms')) {
+        // Revert to standard scrolling behavior as per user request.
+        // We ensure it is full width and has a decent minimum height, but we respect the embed's scrollbar 
+        // to avoid excessive whitespace.
+        
+        iframe.style.width = '100% !important';
+        
+        // Use attribute height if present, else default to ample screen space
+        let targetHeight = iframe.getAttribute('height');
+        if (!targetHeight) {
+            iframe.style.minHeight = '80vh';
+        } else {
+             // If manual height is set, respect it but ensure it's responsive
+             iframe.style.height = targetHeight + 'px';
+        }
+      }
+    });
+  })();
+</script>

@@ -25,6 +25,18 @@
   box-shadow: 0 15px 35px rgba(0,0,0,0.15);
 }
 
+// Responsive iframe container to handle tall Google Forms
+.responsive-iframe-container {
+  width: 100%;
+  overflow: hidden;
+  margin: 20px 0;
+  
+  iframe {
+    width: 100% !important;
+    border: none;
+  }
+}
+
 .post-date {
   display: block;
   margin-bottom: 2rem;

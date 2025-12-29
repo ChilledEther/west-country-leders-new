@@ -82,9 +82,21 @@ body img, iframe {
   margin: 20px auto;
   display: block;
   max-width: 100%;
+  width: 100%; // Ensure it fills container
+  border: none;
   border-radius: $border-radius;
   box-shadow: $box-shadow;
   transition: transform 0.3s ease;
+  
+  // Prevent double scrollbars where possible
+  &[src*="docs.google.com"] {
+    overflow: hidden;
+  }
+}
+
+// Ensure the container doesn't scroll horizontally
+.post-content, .page-content, .page-events-content {
+  overflow-x: hidden;
 }
 
 /* Paragraphs */
