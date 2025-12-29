@@ -95,9 +95,11 @@
   filter: drop-shadow(0 5px 8px rgba(0,0,0,0.5));
 }
 
-.notice-pin {
-  font-size: 1.8rem;
-  color: #e74c3c;
+.notice-meeple-pin {
+  width: 32px;
+  height: 32px;
+  fill: #e74c3c;
+  display: block;
 }
 
 #notice-status {
