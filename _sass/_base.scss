@@ -5,9 +5,22 @@
   Reset some basic elements
 */
 
-body, h1, h2, h3, h4, h5, h6,
-p, blockquote, pre, hr,
-dl, dd, ol, ul, figure {
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+hr,
+dl,
+dd,
+ol,
+ul,
+figure {
   margin: 0;
   padding: 0;
 }
@@ -17,8 +30,13 @@ dl, dd, ol, ul, figure {
 */
 
 /* Headings */
-h1, h2, h3, h4, h5, h6 {
-  margin-bottom: .5rem;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0.5rem;
   font-weight: 700;
   line-height: 1.25;
   text-rendering: optimizeLegibility;
@@ -40,7 +58,9 @@ h3 {
   margin-top: 1.5rem;
   font-size: 1.5rem;
 }
-h4, h5, h6 {
+h4,
+h5,
+h6 {
   margin-top: 1rem;
   font-size: 1.1rem;
   font-weight: 600;
@@ -50,18 +70,17 @@ h4, h5, h6 {
 body {
   font-family: $base-font-family;
   background-color: $background-color;
-  
+
   // Set the global site background with a subtle dark tint for readability
-  background-image: 
-    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
-    url('../img-core/wintery-wcl-backdrop.webp');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("../img-core/wintery-wcl-backdrop.webp");
   background-size: cover;
   background-position: center;
   background-attachment: fixed; // Content scrolls over the background
-  
+
   color: $text-color;
   line-height: 1.6;
-  
+
   // Fixed gradient overlay to fade out content as it scrolls to the top
   &::before {
     content: "";
@@ -69,16 +88,21 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 140px; 
+    height: 140px;
     // Subtle fade from background color to transparent
-    background: linear-gradient(to bottom, rgba($background-color, 0.9) 20%, rgba($background-color, 0) 100%);
+    background: linear-gradient(
+      to bottom,
+      rgba($background-color, 0.9) 20%,
+      rgba($background-color, 0) 100%
+    );
     z-index: 900;
     pointer-events: none;
   }
 }
 
 /* Images & Iframes */
-body img, iframe {
+body img,
+iframe {
   margin: 20px auto;
   display: block;
   max-width: 100%;
@@ -87,7 +111,7 @@ body img, iframe {
   border-radius: $border-radius;
   box-shadow: $box-shadow;
   transition: transform 0.3s ease;
-  
+
   // Prevent double scrollbars where possible
   &[src*="docs.google.com"] {
     overflow: hidden;
@@ -95,7 +119,9 @@ body img, iframe {
 }
 
 // Ensure the container doesn't scroll horizontally
-.post-content, .page-content, .page-events-content {
+.post-content,
+.page-content,
+.page-events-content {
   overflow-x: hidden;
 }
 
@@ -108,7 +134,9 @@ p {
 }
 
 /* Lists */
-ul, ol, dl {
+ul,
+ol,
+dl {
   margin-top: 1rem;
   margin-bottom: 1rem;
   margin-left: 1.5rem;
@@ -124,7 +152,7 @@ dt {
   color: $brand-color;
 }
 dd {
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
 /*
@@ -159,7 +187,8 @@ blockquote {
 }
 
 /**
- * Tables
+ * Tables - Responsive
+ * Works with both markdown tables and wrapped HTML tables
  */
 table {
   border-collapse: separate;
@@ -168,11 +197,11 @@ table {
   width: 100%;
   background: white;
   border-radius: $border-radius;
-  overflow: hidden;
   box-shadow: $box-shadow;
 }
 
-th, td {
+th,
+td {
   padding: 15px;
   text-align: left;
   border-bottom: 1px solid #eee;
@@ -186,12 +215,119 @@ th {
   font-size: 0.9rem;
 }
 
+// Preserve rounded corners on header
+th:first-child {
+  border-top-left-radius: $border-radius;
+}
+
+th:last-child {
+  border-top-right-radius: $border-radius;
+}
+
+tr:last-child td:first-child {
+  border-bottom-left-radius: $border-radius;
+}
+
+tr:last-child td:last-child {
+  border-bottom-right-radius: $border-radius;
+}
+
 tr:last-child td {
   border-bottom: none;
 }
 
 tr:hover td {
   background-color: rgba($accent-color, 0.05);
+}
+
+// Mobile-specific table styles - make scrollable
+@media (max-width: $tablet-width) {
+  // Allow horizontal scroll on page content for tables
+  .page-content, .post-content, .page-events-content {
+    overflow-x: auto;
+  }
+  
+  table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    
+    // Ensure rounded corners are visible
+    border-radius: $border-radius;
+  }
+  
+  // Reset display for table children so they render properly
+  thead, tbody, tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+  }
+  
+  thead {
+    display: table-header-group;
+  }
+  
+  tbody {
+    display: table-row-group;
+  }
+  
+  tr {
+    display: table-row;
+  }
+  
+  th, td {
+    display: table-cell;
+    padding: 12px 15px;
+    font-size: 0.9rem;
+    min-width: 100px; // Ensure columns have reasonable width
+  }
+  
+  // First column wider for venue names
+  th:first-child, td:first-child {
+    min-width: 140px;
+  }
+
+  th {
+    font-size: 0.8rem;
+  }
+  
+  // Custom scrollbar styling for webkit browsers
+  table::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  table::-webkit-scrollbar-track {
+    background: rgba($brand-color, 0.1);
+    border-radius: 4px;
+  }
+  
+  table::-webkit-scrollbar-thumb {
+    background: rgba($brand-color, 0.4);
+    border-radius: 4px;
+    
+    &:hover {
+      background: rgba($brand-color, 0.6);
+    }
+  }
+}
+
+// Phone-specific - more compact
+@media (max-width: $phone-width) {
+  th, td {
+    padding: 10px 12px;
+    font-size: 0.85rem;
+    min-width: 90px;
+  }
+  
+  th:first-child, td:first-child {
+    min-width: 120px;
+  }
+  
+  th {
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+  }
 }
 
 html {
