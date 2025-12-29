@@ -8,12 +8,14 @@
   width: 100%;
   box-sizing: border-box;
 
-  // Refined Recycled Paper Style (Grainy, not spotty)
+  // Refined Meeple Watercolour Style
   background-color: $parchment-base;
   background-image: 
-    repeating-linear-gradient(45deg, rgba(0,0,0,0.01) 0px, rgba(0,0,0,0.01) 1px, transparent 1px, transparent 2px),
-    linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 50%, rgba(0,0,0,0.02) 100%);
-  background-size: 3px 3px, 100% 100%;
+    linear-gradient(rgba($parchment-base, 0.85), rgba($parchment-base, 0.85)),
+    url('../img-core/meeple-watercolour.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
   border: 2px solid $parchment-border;
   outline: 6px solid rgba($parchment-border, 0.15);
@@ -60,7 +62,12 @@
   background-image: 
     radial-gradient(circle at 20% 30%, rgba(139, 69, 19, 0.05) 0%, transparent 40%),
     radial-gradient(circle at 80% 70%, rgba(139, 69, 19, 0.05) 0%, transparent 40%),
+    linear-gradient(rgba(247, 241, 227, 0.8), rgba(247, 241, 227, 0.8)),
+    url('../img-core/meeple-watercolour.png'),
     url("https://www.transparenttextures.com/patterns/cream-paper.png");
+  background-size: 100% 100%, 100% 100%, 100% 100%, contain, auto;
+  background-position: center;
+  background-repeat: no-repeat;
   
   padding: 30px;
   position: relative;
