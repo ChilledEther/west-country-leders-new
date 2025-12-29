@@ -1,30 +1,38 @@
 # Change 'comments' to true for Disqus comments
 disqus:
   comments: false
-  disqus_shortname: 'millennial-3'
+  disqus_shortname: "millennial-3"
 
 # If you are not using Google Analytics, please change 'google-ID' to an empty string
-google-ID: 'UA-112060364-2'
+google-ID: "UA-112060364-2"
 
 menu:
-- {name: 'Events',  url: 'events'}
-- {name: 'Venues',  url: 'venues'}
-- {name: 'About',   url: 'about'}
-- {name: 'Contact', url: 'contact'}
+  - { name: "Posts", url: "posts" }
+  - { name: "Events", url: "events" }
+  - { name: "Venues", url: "venues" }
+  - { name: "Contact", url: "contact" }
 
 # Available social icons are powered by Font Awesome, so you can use any icon that they offer
 social:
-- {icon: 'facebook', iconType: brands, link: 'https://www.facebook.com/groups/738523578349183'}
-- {icon: 'discord',  iconType: brands, link: 'https://discord.gg/JuuxmmbgG7'}
-- {icon: 'envelope', iconType: solid,  link: 'mailto:westcountryleders@gmail.com'}
+  - {
+      icon: "facebook",
+      iconType: brands,
+      link: "https://www.facebook.com/groups/738523578349183",
+    }
+  - { icon: "discord", iconType: brands, link: "https://discord.gg/JuuxmmbgG7" }
+  - {
+      icon: "envelope",
+      iconType: solid,
+      link: "mailto:westcountryleders@gmail.com",
+    }
 
 # Customize site text
 pagination:
-  next_page: 'Newer'
-  previous_page: 'Older'
+  next_page: "Newer"
+  previous_page: "Older"
 
-sharing_button_prompt: 'Feel free to share!'
+sharing_button_prompt: "Feel free to share!"
 
-related_posts: 'You may also enjoy...'
+related_posts: "You may also enjoy..."
 
-post_date_prefix: 'Written on'
+post_date_prefix: "Written on"

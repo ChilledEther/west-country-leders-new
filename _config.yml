@@ -1,19 +1,26 @@
 # Site Build Settings
 
-# jekyll-paginate configuration
-paginate:            5
+# Pagination settings (v2)
+pagination:
+  enabled: true
+  per_page: 5
+  permalink: "/posts/:num/"
+  title: ":title - page :num"
+  index_page_before: 2
+  index_page_after: 2
+  sort_field: "date"
+  sort_reverse: true
 
 # Build settings
-markdown:            kramdown
-highlighter:         rouge
-permalink:           /:title
-plugins:             [jekyll-paginate, jekyll-sitemap, jekyll-feed, jekyll-seo-tag]
+markdown: kramdown
+highlighter: rouge
+permalink: /:title
+plugins: [jekyll-paginate-v2, jekyll-sitemap, jekyll-feed, jekyll-seo-tag]
 
 # Customise atom feed settings (this is where Jekyll-Feed gets configuration information)
-title:		           "West Country Leders"
-description:	       "board gamers"
-author:              "Liam Mason"
-
+title: "West Country Leders"
+description: "board gamers"
+author: "Liam Mason"
 # RSS 2.0 can be used instead of Atom by uncommenting following two lines
 #feed:
 #  path: rss-feed.xml
