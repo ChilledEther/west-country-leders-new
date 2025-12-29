@@ -8,6 +8,7 @@ $text-color: #333333;
 $background-color: #f8f9fa;
 
 $container-width: 1200px;
+$header-breakpoint: $container-width + 40px;
 $content-max-width: 1000px; // Unified width for pages
 $tablet-width: 768px;
 $phone-width: 480px;

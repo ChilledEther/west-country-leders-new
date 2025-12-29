@@ -2,30 +2,52 @@
 @use "sass:color";
 
 .footer {
-  background: white;
-  color: $text-color;
   text-align: center;
-  padding: 40px 0;
+  padding: 15px 20px; // Slimmer padding
+  margin: 40px auto;
+  max-width: $container-width; // Exactly matches header width
   width: 100%;
-  border-top: 1px solid #eee;
-  margin-top: 40px;
+  box-sizing: border-box;
+
+  // Glassmorphism - matching header
+  background-color: rgba(255, 255, 255, 0.95); // Matching header opacity exactly
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  
+  box-shadow: $box-shadow;
+  border: none; // Match header's clean shadow look
+  border-radius: 50px; // Matching header pill shape
 }
 
 .footer a {
   color: $brand-color;
-  padding: 0 10px;
+  padding: 0 15px;
   text-decoration: none;
-  font-weight: 600;
-  transition: color 0.2s;
+  font-size: 1.1rem; // Slightly more modest icon size
+  transition: all 0.3s ease;
+  display: inline-block;
   
   &:hover {
     color: $accent-color;
+    transform: translateY(-2px);
   }
 }
 
 .footer-description {
   display: block;
-  margin-top: 1rem;
-  color: color.adjust($text-color, $lightness: 30%);
-  font-size: 0.9rem;
+  margin-top: 0.5rem; // Reduced margin
+  color: color.adjust($text-color, $lightness: 20%);
+  font-size: 0.75rem; // Smaller text for a sleeker look
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+@media (max-width: $header-breakpoint) {
+  .footer {
+    width: calc(100% - 20px);
+    margin: 30px auto;
+    border-radius: 20px; // Match mobile header rounding
+  }
 }

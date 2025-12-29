@@ -29,8 +29,6 @@
   float: none;
 }
 
-$header-breakpoint: $container-width + 40px;
-
 @media (max-width: $header-breakpoint) {
   .site-header {
     width: calc(100% - 20px);

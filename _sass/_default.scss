@@ -12,10 +12,6 @@
   box-sizing: border-box;
 }
 
-.container a {
-  // Styles handled in _base.scss now, but ensuring specific overrides if needed
-}
-
 .content-wrapper {
   padding-top: $header-thickness + 80px; // Increased padding to account for fixed header + gap
   padding-bottom: 60px;
