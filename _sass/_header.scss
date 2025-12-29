@@ -49,6 +49,7 @@
 
 .site-header a:hover {
   color: $accent-color;
+  text-decoration: none; // Disable global underline
 }
 
 .site-title {
@@ -69,6 +70,7 @@
   padding: 0 15px;
   font-weight: 600;
   position: relative;
+  display: inline-block; // Ensure it behaves as a block for the underline positioning
   
   // Underline effect
   &::after {
@@ -76,15 +78,15 @@
     position: absolute;
     width: 0;
     height: 2px;
-    bottom: 10px;
+    bottom: 12px; // Positioned below the baseline of the text
     left: 50%;
     background-color: $accent-color;
     transition: all 0.3s ease;
   }
   
   &:hover::after {
-    width: 80%;
-    left: 10%;
+    width: 60%;
+    left: 20%;
   }
 }
 
