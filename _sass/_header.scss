@@ -4,8 +4,15 @@
   min-height: $header-thickness;
   width: 100%;
   max-width: $container-width;
+  
+  // Fixed positioning to keep it static "floating"
   position: fixed;
-  top: 0;
+  top: 20px;
+  
+  // Centering the fixed element
+  left: 50%;
+  transform: translateX(-50%);
+  
   // Glassmorphism
   background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
@@ -15,31 +22,24 @@
   z-index: 1000;
   padding: 0 20px;
   box-sizing: border-box;
+
+  border-radius: 50px; // Pill shape
   
-  // Centering trick if container is wider than screen, but max-width handles it.
-  // We need to ensure it aligns with the main container which has margin: 0 auto;
-  // Since it's fixed, we might need left: 50%; transform: translateX(-50%); 
-  // OR just match the container's logic if the body isn't scrolling horizontally.
-  // Actually, standard modern headers often span the full width of the viewport.
-  // BUT the user wants "same width". 
-  // Let's make the wrapper fixed, but the content inside limited.
-  
-  // Re-thinking: Usually 'fixed' headers span 100vw. If we limit it to $container-width, it looks like a floating bar.
-  // Given the current design was width: $container-width, maybe they want it centered.
-  left: 50%;
-  transform: translateX(-50%);
-  border-bottom-left-radius: $border-radius;
-  border-bottom-right-radius: $border-radius;
-  margin-top: 10px; // Floating effect
+  margin: 0; // Remove auto margins as we key off left/transform
+  float: none;
 }
 
 $header-breakpoint: $container-width + 40px;
+
 @media (max-width: $header-breakpoint) {
   .site-header {
-    width: calc(100% - 20px); // Small gap on sides
+    width: calc(100% - 20px);
     max-width: none;
-    border-radius: $border-radius;
-    top: 10px;
+    border-radius: 20px; // Slightly less rounded on mobile to save space? Or keep consistent.
+    top: 10px; // On mobile, maybe keep the gap? 
+               // User asked "hit the top". Let's stick to top: 0 consistent behavior.
+    top: 0;
+    margin-top: 10px;
   }
 }
 
