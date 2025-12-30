@@ -10,6 +10,15 @@ layout: default
     {{ content }}
   </article>
 
+  <!-- JS-dependent text (managed in layout, not in content file) -->
+  <p class="events-description">
+    <span class="js-events-text"><strong>Displayed below are our upcoming gatherings for the next 3 months:</strong></span>
+    <noscript>
+      <style>.js-events-text { display: none !important; }</style>
+      <strong>Displayed below is our event calendar:</strong>
+    </noscript>
+  </p>
+
   <div id="dynamic-events-container" class="events-grid">
     <!-- Dynamic torn-paper events will be injected here -->
     <div id="events-loading" style="text-align: center; padding: 40px;">
