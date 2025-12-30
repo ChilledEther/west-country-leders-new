@@ -2,18 +2,18 @@
 
 .hero-section {
   position: relative;
-  width: 95%; 
+  width: 100%;
   max-width: 1000px;
   min-height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto; 
-  padding: 30px; 
+  margin: 0 auto;
+  padding: 30px;
   box-sizing: border-box;
-  border-radius: 40px; 
+  border-radius: 40px;
   // No overflow: hidden to allow the card shadow to breathe naturally
-  
+
   @media (max-width: 1100px) {
     flex-direction: column;
   }
@@ -22,23 +22,25 @@
 .hero-glass-card {
   position: relative;
   z-index: 2;
-  
+
   // Refined Meeple Watercolour Style
   background-color: $parchment-base;
-  background-image: 
-    linear-gradient(rgba($parchment-base, 0.85), rgba($parchment-base, 0.85)),
-    url('../img-core/meeple-watercolour.webp');
+  background-image: linear-gradient(
+      rgba($parchment-base, 0.85),
+      rgba($parchment-base, 0.85)
+    ),
+    url("../img-core/meeple-watercolour.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  
+
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  
+
   border: 2px solid $parchment-border;
   outline: 4px solid rgba($parchment-border, 0.2);
   outline-offset: -10px; // Double border effect
-  
+
   padding: 40px;
   border-radius: 20px; // Slightly more formal rounding for paper
   max-width: 800px;
@@ -48,11 +50,11 @@
   align-items: center;
   gap: 30px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-  
+
   @media (max-width: $tablet-width) {
     flex-direction: column;
     text-align: center;
-    padding: 30px 20px;
+    padding: 25px 20px;
     outline: none; // Save space on mobile
   }
 }
@@ -62,8 +64,10 @@
   height: auto;
   flex-shrink: 0;
   box-shadow: none; // Disable global rectangular shadow
-  filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1)); // Keep the clean mascot-shape shadow
-  
+  filter: drop-shadow(
+    0 5px 15px rgba(0, 0, 0, 0.1)
+  ); // Keep the clean mascot-shape shadow
+
   @media (max-width: $tablet-width) {
     width: 120px;
     margin-bottom: 10px;
@@ -71,14 +75,16 @@
 }
 
 .hero-content {
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     margin-top: 0;
     margin-bottom: 20px;
     color: $wood-dark;
     border-bottom: none;
     padding-bottom: 0;
   }
-  
+
   p {
     margin-bottom: 0;
     font-size: 1.05rem;
