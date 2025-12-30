@@ -15,7 +15,7 @@ Alongside our more spontaneous events, we also organise a number of regular boar
 
 ### **Kiln Workshop**
 
-![kiln](/assets/img/kiln.png)
+![kiln]({{ '/assets/img/kiln.png' | relative_url }})
 
 The owners of the Kiln Studio let us use their pottery studio once a month. It's a really nice cosy little space, with large tables and great lighting! Good for larger euros, and table hogs!
 
@@ -25,7 +25,7 @@ The owners of the Kiln Studio let us use their pottery studio once a month. It's
 
 ### **The Old Duke**
 
-![image](https://github.com/user-attachments/assets/6474994e-8351-46c3-a034-60582b688fb4)
+![Old Duke]({{ '/assets/img/Old Duke Combine.png' | relative_url }})
 
 A really fun venue above the Jazz bar on King Street! We can stay late, and play loud! Perfect for negotiation and social deduction games!
 
@@ -35,7 +35,7 @@ A really fun venue above the Jazz bar on King Street! We can stay late, and play
 
 ### **Replay**
 
-![image](https://github.com/user-attachments/assets/6e8ac4f0-fdab-4ce1-91dc-49470af153b2)
+![Replay]({{ '/assets/img/Replay combine.png' | relative_url }})
 
 Replay give WCL members cheaper gaming (less than £1/hour!) one Saturday a month! One of the nicest gaming cafés in Bristol. Booking is required for this venue, so see the Discord for more information.
 
@@ -45,7 +45,7 @@ Replay give WCL members cheaper gaming (less than £1/hour!) one Saturday a mont
 
 ### **Board Game Arena (BGA)**
 
-![board-game-arena](/assets/img/board-game-arena.webp)
+![board-game-arena]({{ '/assets/img/board-game-arena.webp' | relative_url }})
 
 We also host regular Board Game Arena evenings online.
 
