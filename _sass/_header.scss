@@ -14,6 +14,11 @@
   left: 50%;
   transform: translateX(-50%);
   
+  // Flexbox for proper title/menu alignment
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
   // Enhanced Wooden Plank Effect (Single Horizontal Plank)
   background-color: $wood-medium;
   background-image: 
@@ -58,11 +63,10 @@
   .site-header {
     width: calc(100% - 20px);
     max-width: none;
-    border-radius: 20px; // Slightly less rounded on mobile to save space? Or keep consistent.
-    top: 10px; // On mobile, maybe keep the gap? 
-               // User asked "hit the top". Let's stick to top: 0 consistent behavior.
+    border-radius: 20px;
     top: 0;
     margin-top: 10px;
+    padding: 0 20px; // Reduced padding on mobile for more title space
   }
 }
 
@@ -81,17 +85,19 @@
 }
 
 .site-title {
-  font-size: 1.6rem;
+  font-size: clamp(0.95rem, 4vw, 1.6rem); // Responsive: min 0.95rem, grows with viewport, max 1.6rem
   font-weight: 900; // Extra bold for cartoony look
   line-height: $header-thickness;
   margin: 0;
-  float: left;
   letter-spacing: -0.03em;
+  white-space: nowrap; // Prevent title from wrapping
+  flex-shrink: 0; // Don't shrink below content size
 }
 
 .menu-list {
   line-height: $header-thickness;
-  float: right;
+  display: flex;
+  align-items: center;
 }
 
 .menu-link {
@@ -120,9 +126,7 @@
     display: none;
   }
   
-  .site-title {
-    font-size: 1.2rem;
-  }
+  // Note: .site-title now uses clamp() for responsive sizing, no fixed override needed
 
   .dropbtn {
     background-color: transparent;
@@ -137,8 +141,8 @@
   
   .dropdown {
     position: relative;
-    display: block;
-    float: right;
+    display: flex;
+    align-items: center;
   }
   
   .dropdown-content {
