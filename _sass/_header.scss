@@ -91,7 +91,10 @@
   margin: 0;
   letter-spacing: -0.03em;
   white-space: nowrap; // Prevent title from wrapping
-  flex-shrink: 0; // Don't shrink below content size
+  flex-shrink: 1; // Allow shrinking if needed to fit menu button
+  min-width: 0; // Allow shrinking below content size
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .menu-list {
@@ -131,18 +134,20 @@
   .dropbtn {
     background-color: transparent;
     color: $brand-color;
-    padding: 0 10px;
+    padding: 0 5px; // Reduced padding for small screens
     height: $header-thickness;
-    font-size: 1.5rem; // Hamburger icon size
+    font-size: 1.3rem; // Slightly smaller icon
     border: none;
     cursor: pointer;
     line-height: $header-thickness;
+    flex-shrink: 0; // Never shrink the menu button
   }
   
   .dropdown {
     position: relative;
     display: flex;
     align-items: center;
+    flex-shrink: 0; // Never shrink - always show menu button
   }
   
   .dropdown-content {

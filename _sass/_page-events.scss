@@ -36,14 +36,30 @@
 // Dynamic Events Layout
 .events-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  // Use min() to ensure cards shrink on screens narrower than 300px
+  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
   gap: 40px; // Larger gap for torn paper spacing
   margin-top: 30px;
   margin-bottom: 40px;
+  width: 100%;
+  box-sizing: border-box;
+  
+  @media (max-width: $tablet-width) {
+    gap: 30px;
+  }
+  
+  @media (max-width: $phone-width) {
+    gap: 25px;
+    // Single column on very small screens
+    grid-template-columns: 1fr;
+  }
 }
 
 .event-card-wrapper {
   position: relative;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   // This acts as the grid item
   transition: transform 0.2s ease;
   
@@ -73,11 +89,20 @@
   padding: 30px;
   position: relative;
   min-height: 200px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  
+  // Contain text within card
+  overflow: hidden;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
   
   // Torn/Damaged paper effect
   clip-path: polygon(
@@ -99,6 +124,16 @@
     bottom: 0;
     background: linear-gradient(135deg, rgba(0,0,0,0.03) 0%, transparent 50%, rgba(255,255,255,0.1) 100%);
     pointer-events: none;
+  }
+  
+  @media (max-width: $tablet-width) {
+    padding: 25px 20px;
+    min-height: 180px;
+  }
+  
+  @media (max-width: $phone-width) {
+    padding: 20px 15px;
+    min-height: 150px;
   }
 }
 
@@ -123,19 +158,25 @@
   font-family: $base-font-family;
   font-weight: 800;
   color: $wood-dark;
-  font-size: 1.4rem;
+  font-size: clamp(1rem, 4vw, 1.4rem); // Responsive font size
   margin: 25px 0 10px; // Space for pin
   line-height: 1.2;
+  width: 100%;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .event-paper-meta {
   color: #666;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: clamp(0.75rem, 2.5vw, 0.9rem); // Responsive font size
   margin-bottom: 15px;
   display: flex;
   flex-direction: column;
   gap: 5px;
+  width: 100%;
+  max-width: 100%;
   
   i {
     color: $wood-medium;

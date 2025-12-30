@@ -8,6 +8,14 @@
   max-width: $container-width; // Exactly matches header width
   width: 100%;
   box-sizing: border-box;
+  
+  // Flexbox for icon alignment - row with wrap so description goes below
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0; // No gap needed, icons have their own padding
 
   // Enhanced Wooden Plank Effect (Single Horizontal Plank)
   background-color: $wood-medium;
@@ -46,15 +54,23 @@
   border-radius: 15px;
 }
 
+// Social icons - inline in a row
+.footer > a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .footer a {
   color: $wood-border;
-  padding: 0 15px;
+  padding: 0 12px; // Slightly tighter padding
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 3vw, 1.2rem); // Responsive icon size
   font-weight: 800; // Chunkier
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
   transition: all 0.3s ease;
   display: inline-block;
+  flex-shrink: 0; // Never shrink icons
   
   // Disable the animated underline from the header's .menu-link class
   &::after {
@@ -70,13 +86,16 @@
 
 .footer-description {
   display: block;
-  margin-top: 1rem;
+  width: 100%;
+  margin-top: 0.75rem;
   color: $wood-border;
-  font-size: 0.8rem;
+  font-size: clamp(0.65rem, 2vw, 0.8rem); // Responsive text size
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   opacity: 0.8;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 @media (max-width: $header-breakpoint) {
@@ -84,5 +103,10 @@
     width: calc(100% - 20px);
     margin: 30px auto;
     border-radius: 20px; // Match mobile header rounding
+    padding: 12px 15px; // Tighter padding on mobile
+  }
+  
+  .footer a {
+    padding: 0 8px; // Tighter icon spacing on mobile
   }
 }
