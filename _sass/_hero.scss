@@ -77,10 +77,14 @@
 }
 
 .hero-content {
-  // Ensure content stays within bounds
+  // Ensure content stays within bounds - critical for containing text
   min-width: 0; // Allow flex child to shrink below content size
+  width: 100%; // Fill available width
+  max-width: 100%; // Never exceed parent
+  overflow: hidden; // Clip any overflow to prevent spilling outside card
   overflow-wrap: break-word;
   word-wrap: break-word;
+  word-break: break-word; // More aggressive word breaking for small screens
   
   h1,
   h2,
