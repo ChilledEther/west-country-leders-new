@@ -74,12 +74,15 @@ body {
   // Set the global site background with a subtle dark tint for readability
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url("../img-core/wcl-tin.webp");
-  background-size: cover;
-  background-position: center;
+  background-size: cover; // Zoomed out - shows more of the image (adjust % to zoom in/out)
+  background-position: center top; // Fixed to top to prevent vertical shift
   background-attachment: fixed; // Content scrolls over the background
 
   color: $text-color;
   line-height: 1.6;
+  
+  // Prevent layout shift when scrollbar appears/disappears
+  overflow-y: scroll; // Always show scrollbar to prevent background shift
 
   // Fixed gradient overlay to fade out content as it scrolls to the top
   &::before {

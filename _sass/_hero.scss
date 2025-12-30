@@ -6,16 +6,13 @@
   max-width: $content-max-width; // Match page-content max-width for consistency
   min-height: auto;
   display: flex;
+  flex-direction: column; // Always stack vertically - banner above hero card
   align-items: center;
   justify-content: center;
   margin: 0 auto;
   padding: 0; // No wrapper padding - hero-glass-card handles internal padding
   box-sizing: border-box;
   // No overflow: hidden to allow the card shadow to breathe naturally
-
-  @media (max-width: 1100px) {
-    flex-direction: column;
-  }
 }
 
 .hero-glass-card {
