@@ -116,6 +116,9 @@
 
 // Use nav-breakpoint width for breakpoint to handle earlier switch to mobile menu
 @media (min-width: $nav-breakpoint) {
+  .dropdown {
+    display: none; // Hide entire dropdown container on desktop
+  }
   .dropbtn {
     display: none;
   }

@@ -3,38 +3,25 @@ layout: default
 ---
 
 <section class="hero-section">
-    <div id="dynamic-notice-board" class="notice-board-container">
-      <div class="notice-pin-wrapper">
-        <svg class="notice-meeple-pin" viewBox="0 0 100 100">
-          <path d="M50,15.2c-6.1,0-11,4.9-11,11c0,6.1,4.9,11,11,11s11-4.9,11-11C61,20.2,56.1,15.2,50,15.2z M27.8,42.4l-7.2,12.5v16.1h12.3l4.1-12.2h5.1v46h15.9v-46h5.1l4.1,12.2h12.3V54.9l-7.2-12.5H27.8z"/>
-        </svg>
+    <!-- Next Event Banner - flows naturally, no overlap -->
+    <div id="next-event-banner" class="next-event-banner">
+      <div class="event-banner-icon">
+        <i class="fa-solid fa-dice-d20"></i>
       </div>
-      <div class="notice-card">
-        <div class="notice-content">
-          <h2 id="notice-status">Next Gathering</h2>
-          
-          <div id="event-loading-spinner" style="text-align: center; padding: 10px;">
-            <i class="fa-solid fa-dice-d20 fa-spin" style="font-size: 1.5rem; color: #d4a76a;"></i>
-          </div>
-          
-          <div id="event-display-area" class="event-details" style="display: none;">
-            <div class="event-info">
-              <h3 id="event-title-display">Pending...</h3>
-              <p id="event-meta-display" class="event-meta">
-                <span><i class="fa-solid fa-calendar-days"></i> <span id="event-date-display">...</span></span>
-                <span><i class="fa-solid fa-location-dot"></i> <span id="event-venue-display">...</span></span>
-              </p>
-            </div>
-            <div class="event-action">
-              <a href="{{ '/events' | relative_url }}" class="event-button">
-                Calendar
-              </a>
-            </div>
-          </div>
-        </div>
+      <div class="event-banner-content">
+        <span class="event-banner-label">Next Gathering:</span>
+        <span id="event-banner-title" class="event-banner-title">
+          <i class="fa-solid fa-dice-d20 fa-spin" style="font-size: 0.9rem;"></i>
+        </span>
+        <span id="event-banner-date" class="event-banner-date"></span>
       </div>
+      <a href="{{ '/events' | relative_url }}" class="event-banner-button">
+        <i class="fa-solid fa-calendar-days"></i>
+        <span>Events</span>
+      </a>
     </div>
 
+    <!-- Main Hero Card -->
     <div class="hero-glass-card">
       <div class="hero-content">
         <h1>{{ page.title }}</h1>
@@ -46,22 +33,18 @@ layout: default
   <script>
     (function() {
       const calendarEmail = "westcountryleders@gmail.com";
-      // Using an alternative CORS proxy that's often more reliable
       const icalUrl = "https://calendar.google.com/calendar/ical/" + encodeURIComponent(calendarEmail) + "/public/basic.ics";
       const proxyUrl = "https://corsproxy.io/?" + encodeURIComponent(icalUrl);
       
-      const spinner = document.getElementById('event-loading-spinner');
-      const displayArea = document.getElementById('event-display-area');
-      const titleEl = document.getElementById('event-title-display');
-      const dateEl = document.getElementById('event-date-display');
-      const venueEl = document.getElementById('event-venue-display');
+      const titleEl = document.getElementById('event-banner-title');
+      const dateEl = document.getElementById('event-banner-date');
 
       function showFallback() {
-        if (spinner) spinner.style.display = 'none';
-        if (displayArea) displayArea.style.display = 'flex';
+        // Show a default message if loading fails
+        if (titleEl) titleEl.textContent = 'Check our calendar!';
       }
 
-      // Safety timeout: If it takes more than 4 seconds, just show the fallback
+      // Safety timeout
       const safetyTimer = setTimeout(showFallback, 4000);
 
       function parseIcsDate(icsDate) {
@@ -75,11 +58,11 @@ layout: default
         return new Date(Date.UTC(year, month, day, hour, min));
       }
 
-      function formatDisplayDate(date) {
+      function formatShortDate(date) {
         return date.toLocaleDateString('en-GB', { 
-          weekday: 'long', 
+          weekday: 'short', 
           day: 'numeric', 
-          month: 'long', 
+          month: 'short',
           hour: '2-digit',
           minute: '2-digit'
         });
@@ -97,28 +80,22 @@ layout: default
             return;
           }
 
-          // Unfold the ICS content (handle line folding)
-          // Lines starting with whitespace are continuations of the previous line
           const unfoldedContent = content.replace(/\r\n[ \t]/g, '').replace(/\n[ \t]/g, '');
-
           const events = [];
           const chunks = unfoldedContent.split('BEGIN:VEVENT');
           const now = new Date();
 
           for (let i = 1; i < chunks.length; i++) {
             const chunk = chunks[i];
-            // Regex to capture value after property name
             const summary = (chunk.match(/SUMMARY(?:;[^:]*)?:([^\r\n]+)/) || [])[1];
             const dtstart = (chunk.match(/DTSTART(?:;[^:]*)?:([^\r\n]+)/) || [])[1];
-            const location = (chunk.match(/LOCATION(?:;[^:]*)?:([^\r\n]+)/) || [])[1];
 
             if (dtstart) {
               const start = parseIcsDate(dtstart);
               if (start && start >= now) {
                 events.push({
-                  title: (summary || "Unnamed Event").trim().replace(/\\/g, ''),
-                  start: start,
-                  location: (location || "Check Discord").trim().replace(/\\,/g, ',').replace(/\\/g, '')
+                  title: (summary || "Event").trim().replace(/\\/g, ''),
+                  start: start
                 });
               }
             }
@@ -128,11 +105,11 @@ layout: default
 
           if (events.length > 0) {
             const next = events[0];
-            titleEl.textContent = next.title;
-            dateEl.textContent = formatDisplayDate(next.start);
-            venueEl.textContent = next.location;
+            if (titleEl) titleEl.textContent = next.title;
+            if (dateEl) dateEl.textContent = '• ' + formatShortDate(next.start);
+          } else {
+            showFallback();
           }
-          showFallback();
         })
         .catch(function(err) {
           console.error("Calendar fetch error:", err);
