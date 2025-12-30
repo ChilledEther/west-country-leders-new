@@ -2,99 +2,156 @@
 @use "sass:color";
 
 // ============================================
+// Board Game Theme Colors
+// ============================================
+$game-primary: #2d1b4e;      // Deep purple (game box feel)
+$game-secondary: #1a3a4a;    // Teal/slate blue
+$game-accent: #00d4aa;       // Vibrant teal glow
+$game-highlight: #ffd700;    // Gold for premium feel
+$game-text: #e8e0f0;         // Light lavender text
+$game-text-muted: #a89cc8;   // Muted purple text
+
+// ============================================
 // Next Event Banner - Inline, No Overlap
-// Styled as a wooden game ticket/ribbon
+// Styled as a board game night ticket
 // ============================================
 
 .next-event-banner {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 15px;
+  gap: 18px;
   width: 100%;
   max-width: $content-max-width;
   margin: 0 auto 20px;
-  padding: 12px 20px;
+  padding: 14px 24px;
   box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
   
-  // Wooden ribbon/ticket style
-  background-color: $wood-medium;
-  background-image: 
-    // Subtle wood grain
-    repeating-linear-gradient(
-      to bottom,
-      transparent,
-      transparent 1px,
-      rgba(0,0,0,0.02) 1.5px,
-      transparent 2px
-    ),
-    linear-gradient(to bottom, $wood-light 0%, $wood-medium 50%, color.adjust($wood-medium, $lightness: -5%) 100%);
+  // Board game table felt gradient
+  background: linear-gradient(
+    135deg,
+    $game-primary 0%,
+    color.mix($game-primary, $game-secondary, 60%) 50%,
+    $game-secondary 100%
+  );
   
-  border: 3px solid $wood-border;
-  border-radius: 10px;
+  // Subtle hex grid pattern overlay (like game board)
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.08;
+    background-image: 
+      radial-gradient(circle at 50% 50%, $game-accent 1px, transparent 1px);
+    background-size: 20px 20px;
+    pointer-events: none;
+  }
+  
+  // Glowing edge accent
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    padding: 2px;
+    background: linear-gradient(
+      135deg,
+      rgba($game-accent, 0.5) 0%,
+      transparent 30%,
+      transparent 70%,
+      rgba($game-highlight, 0.3) 100%
+    );
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask: 
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  
+  border: 2px solid rgba($game-accent, 0.3);
+  border-radius: 12px;
   box-shadow: 
-    0 4px 12px rgba(0,0,0,0.2),
-    inset 0 1px 0 rgba(255,255,255,0.3);
+    0 4px 20px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba($game-accent, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   
   @media (max-width: $tablet-width) {
     flex-wrap: wrap;
-    gap: 10px;
-    padding: 10px 15px;
+    gap: 12px;
+    padding: 12px 18px;
   }
   
   @media (max-width: $phone-width) {
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
     text-align: center;
+    padding: 16px 20px;
   }
 }
 
 .event-banner-icon {
-  font-size: 1.5rem;
-  color: $wood-border;
-  text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+  font-size: 1.8rem;
+  color: $game-accent;
+  filter: drop-shadow(0 0 8px rgba($game-accent, 0.5));
+  animation: dice-glow 2s ease-in-out infinite alternate;
+  position: relative;
+  z-index: 1;
+  
+  @keyframes dice-glow {
+    0% { filter: drop-shadow(0 0 6px rgba($game-accent, 0.4)); }
+    100% { filter: drop-shadow(0 0 12px rgba($game-accent, 0.7)); }
+  }
   
   @media (max-width: $phone-width) {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
   }
 }
 
 .event-banner-content {
   display: flex;
-  flex-direction: column; // Stack label above event info
+  flex-direction: column;
   align-items: center;
   gap: 4px;
   flex-wrap: wrap;
   justify-content: center;
+  position: relative;
+  z-index: 1;
 }
 
 .event-banner-label {
   font-weight: 800;
-  font-size: 0.85rem;
-  color: $wood-border;
+  font-size: 0.8rem;
+  color: $game-accent;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
-  text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 10px rgba($game-accent, 0.5);
   
   @media (max-width: $phone-width) {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
   }
 }
 
 .event-banner-title {
   font-weight: 700;
-  font-size: 0.95rem;
-  color: $wood-dark;
+  font-size: 1rem;
+  color: $game-text;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   
   @media (max-width: $phone-width) {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
 }
 
 .event-banner-date {
   font-weight: 600;
   font-size: 0.8rem;
-  color: rgba($wood-border, 0.8);
+  color: $game-text-muted;
   
   @media (max-width: $phone-width) {
     font-size: 0.75rem;
@@ -104,37 +161,45 @@
 .event-banner-button {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px 14px;
-  background-color: $wood-dark;
-  color: #f7f1e3 !important;
-  border-radius: 6px;
+  gap: 8px;
+  padding: 10px 18px;
+  background: linear-gradient(135deg, $game-accent 0%, color.adjust($game-accent, $lightness: -15%) 100%);
+  color: $game-primary !important;
+  border-radius: 8px;
   text-decoration: none !important;
-  font-weight: 700;
+  font-weight: 800;
   font-size: 0.8rem;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
-  box-shadow: 0 3px 0 color.adjust($wood-dark, $lightness: -15%);
+  letter-spacing: 0.05em;
+  box-shadow: 
+    0 4px 0 color.adjust($game-accent, $lightness: -25%),
+    0 6px 20px rgba($game-accent, 0.3);
   transition: all 0.2s ease;
   flex-shrink: 0;
+  position: relative;
+  z-index: 1;
   
   &:hover {
-    background-color: color.adjust($wood-dark, $lightness: 8%);
+    background: linear-gradient(135deg, color.adjust($game-accent, $lightness: 5%) 0%, $game-accent 100%);
     transform: translateY(-2px);
-    box-shadow: 0 5px 0 color.adjust($wood-dark, $lightness: -15%);
+    box-shadow: 
+      0 6px 0 color.adjust($game-accent, $lightness: -25%),
+      0 10px 30px rgba($game-accent, 0.4);
   }
   
   &:active {
-    transform: translateY(1px);
-    box-shadow: 0 1px 0 color.adjust($wood-dark, $lightness: -15%);
+    transform: translateY(2px);
+    box-shadow: 
+      0 2px 0 color.adjust($game-accent, $lightness: -25%),
+      0 4px 10px rgba($game-accent, 0.2);
   }
   
   i {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
   
   @media (max-width: $phone-width) {
-    padding: 6px 12px;
+    padding: 8px 16px;
     font-size: 0.75rem;
   }
 }
