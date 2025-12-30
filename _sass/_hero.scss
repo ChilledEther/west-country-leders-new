@@ -3,15 +3,14 @@
 .hero-section {
   position: relative;
   width: 100%;
-  max-width: 1000px;
+  max-width: $content-max-width; // Match page-content max-width for consistency
   min-height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  padding: 30px;
+  padding: 0; // No wrapper padding - hero-glass-card handles internal padding
   box-sizing: border-box;
-  border-radius: 40px;
   // No overflow: hidden to allow the card shadow to breathe naturally
 
   @media (max-width: 1100px) {
@@ -38,24 +37,27 @@
   -webkit-backdrop-filter: blur(5px);
 
   border: 2px solid $parchment-border;
-  outline: 4px solid rgba($parchment-border, 0.2);
-  outline-offset: -10px; // Double border effect
+  outline: 6px solid rgba($parchment-border, 0.15); // Match page-content outline
+  outline-offset: -12px; // Match page-content
 
-  padding: 40px;
-  border-radius: 20px; // Slightly more formal rounding for paper
-  max-width: 800px;
+  padding: 40px; // Match page-content desktop padding
+  border-radius: 12px; // Match page-content border-radius
+  max-width: $content-max-width; // Match page-content max-width
   width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 30px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15); // Match page-content shadow
+  box-sizing: border-box;
 
   @media (max-width: $tablet-width) {
     flex-direction: column;
     text-align: center;
-    padding: 25px 20px;
-    outline: none; // Save space on mobile
+    padding: 25px 20px; // Match page-content mobile padding
+    border-radius: 20px; // Match page-content mobile border-radius
+    outline: none; // Match page-content - save space on mobile
+    gap: 20px;
   }
 }
 
@@ -75,6 +77,11 @@
 }
 
 .hero-content {
+  // Ensure content stays within bounds
+  min-width: 0; // Allow flex child to shrink below content size
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  
   h1,
   h2,
   h3 {
@@ -83,10 +90,27 @@
     color: $wood-dark;
     border-bottom: none;
     padding-bottom: 0;
+    // Responsive heading size: shrinks on small screens
+    font-size: clamp(1.4rem, 5vw, 2.5rem);
+    line-height: 1.2;
   }
 
   p {
     margin-bottom: 0;
-    font-size: 1.05rem;
+    // Responsive paragraph size
+    font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+    line-height: 1.5;
+  }
+  
+  // Extra small screen adjustments
+  @media (max-width: $phone-width) {
+    h1, h2, h3 {
+      font-size: clamp(1.2rem, 6vw, 1.6rem);
+      margin-bottom: 15px;
+    }
+    
+    p {
+      font-size: 0.9rem;
+    }
   }
 }
