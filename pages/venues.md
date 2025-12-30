@@ -15,7 +15,7 @@ Alongside our more spontaneous events, we also organise a number of regular boar
 
 ### **Kiln Workshop**
 
-![kiln](../assets/img/kiln.png)
+![kiln](/assets/img/kiln.png)
 
 The owners of the Kiln Studio let us use their pottery studio once a month. It's a really nice cosy little space, with large tables and great lighting! Good for larger euros, and table hogs!
 
@@ -45,7 +45,7 @@ Replay give WCL members cheaper gaming (less than £1/hour!) one Saturday a mont
 
 ### **Board Game Arena (BGA)**
 
-![board-game-arena](../assets/img/board-game-arena.png)
+![board-game-arena](/assets/img/board-game-arena.webp)
 
 We also host regular Board Game Arena evenings online.
 
