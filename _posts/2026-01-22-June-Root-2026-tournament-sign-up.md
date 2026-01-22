@@ -4,7 +4,7 @@ title: "June 2026 Root tournament sign up"
 author: "Liam Mason"
 categories: posts
 tags: [posts]
-image: June-26-sign-up-poster.png
+image: Cropped.png
 ---
 
 We're excited to announce that sign up for our first 2026 Root tournament is now open!
