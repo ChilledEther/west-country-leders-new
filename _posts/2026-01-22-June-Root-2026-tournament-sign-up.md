@@ -6,6 +6,9 @@ categories: posts
 tags: [posts]
 image: June-26-sign-up-poster.png
 ---
+
+June-26-sign-up-poster.png
+
 We're excited to announce that sign up for our first 2026 Root tournament is now open!
 Please submit the below form if you would like to sign up for our June '26 Root tournament!
 
