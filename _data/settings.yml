@@ -8,6 +8,7 @@ google-ID: "UA-112060364-2"
 
 menu:
   - { name: "Posts", url: "posts" }
+  - { name: "Tournaments", url: "tournaments", dropdown: true }
   - { name: "Events", url: "events" }
   - { name: "Venues", url: "venues" }
   - { name: "Contact", url: "contact" }

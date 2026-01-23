@@ -17,6 +17,11 @@ highlighter: rouge
 permalink: /posts/:title
 plugins: [jekyll-paginate-v2, jekyll-sitemap, jekyll-feed, jekyll-seo-tag]
 
+collections:
+  tournaments:
+    output: true
+    permalink: /tournaments/:title/
+
 # Customise atom feed settings (this is where Jekyll-Feed gets configuration information)
 title: "West Country Leders"
 description: "board gamers"

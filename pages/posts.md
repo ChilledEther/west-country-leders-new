@@ -7,7 +7,7 @@ pagination:
 ---
 
 <div class="page-content">
-  <h1 style="margin-bottom: 30px;">Club Updates & Tournaments</h1>
+  <h1 style="margin-bottom: 30px;">Club Updates</h1>
   
   <div id="posts-grid" class="posts-grid">
     {% for post in paginator.posts %}
