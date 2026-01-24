@@ -31,14 +31,14 @@
   // outline: 6px solid rgba($parchment-border, 0.15);
   // outline-offset: -12px;
   
-  border-radius: 12px;
+  border-radius: 16px;
 }
 
 @media (max-width: $tablet-width) {
   .page-events-content {
     padding: 25px 20px;
-    border-radius: 20px;
-    outline: none; // Save space on mobile
+    // border-radius: 20px; // Removed exaggerated mobile rounding to be consistent
+    outline: none;
   }
 }
 
@@ -86,7 +86,7 @@
   box-shadow: none;
     
   // Full bleed negative margins
-  margin: -40px -40px 30px -40px;
+  margin: -40px -40px 0 -40px; // Reset bottom margin to 0
   padding: 25px 40px;
   
   font-family: $base-font-family;
@@ -109,7 +109,7 @@
 @media (max-width: $tablet-width) {
   .page-events-content h1 {
     font-size: 1.4rem;
-    margin: -25px -20px 25px -20px;
+    margin: -25px -20px 0 -20px; // Reset bottom margin to 0
     padding: 20px 25px;
   }
 }

@@ -10,7 +10,7 @@ $background-color: #f8f9fa;
 $container-width: 1200px;
 $header-breakpoint: $container-width + 40px;
 $nav-breakpoint: 1040px; // Increased to prevent desktop menu wrapping
-$content-max-width: 1000px; // Unified width for pages
+$content-max-width: $container-width; // Unified width matching container/header
 $tablet-width: 768px;
 $phone-width: 480px;
 

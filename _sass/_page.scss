@@ -31,14 +31,39 @@
   // outline: 6px solid rgba($parchment-border, 0.15); // Removed outline to match cleaner header style
   // outline-offset: -12px;
   
-  border-radius: 12px;
+  border-radius: 12px; // Original value, but we might want to match if others are different?
+  // Let's check _home-sections.scss for .featured-tournaments-group and .next-event-banner
+  // .featured-tournaments-group has border-radius: 16px;
+  // .next-event-banner has border-radius: 12px;
+  // Let's standardize on 16px if the user feels this one is "more round" or less round?
+  // User said: "corners of club updates seem to be more round than both upcoming tournaments and next gathering"
+  // Wait, if club updates is 12px and upcoming tournaments is 16px... 16px is ROUNDER.
+  // User says club updates is MORE round.
+  // Ah, let's look at the media query for page-content:
+  /*
+  @media (max-width: $tablet-width) {
+    .page-content {
+      padding: 25px 20px;
+      border-radius: 20px; <--- This is very round on mobile!
+      outline: none; // Save space on mobile
+    }
+  }
+  */
+  // The others don't seem to increase radius on mobile.
+  // .featured-tournaments-group is just 16px.
+  // .next-event-banner is 12px.
+  
+  // So, let's stick to 16px for desktop to match upcoming tournaments, and maybe reduce the mobile one.
+  // Or just set to 16px globally.
+  
+  border-radius: 16px;
 }
 
 @media (max-width: $tablet-width) {
   .page-content {
     padding: 25px 20px;
-    border-radius: 20px;
-    outline: none; // Save space on mobile
+    // border-radius: 20px; // Removed the exaggerated mobile rounding
+    outline: none;
   }
 }
 
@@ -93,7 +118,7 @@
 
   // Full bleed negative margins to counteract parent padding
 
-  margin: -40px -40px 30px -40px;
+  margin: -40px -40px 0 -40px; // Reset bottom margin to 0
   padding: 25px 40px;
   
   font-family: $base-font-family;
@@ -116,7 +141,7 @@
   .page-content h1 {
     font-size: 1.4rem;
     // Adjust negative margins for tablet padding (25px 20px)
-    margin: -25px -20px 25px -20px;
+    margin: -25px -20px 0 -20px; // Reset bottom margin to 0
     padding: 20px 25px;
   }
 }

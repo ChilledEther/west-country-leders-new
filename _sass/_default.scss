@@ -8,8 +8,13 @@
   width: 100%;
   max-width: $container-width;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0; // Remove constricting padding to allow full alignment with header
   box-sizing: border-box;
+
+  @media (max-width: $header-breakpoint) {
+    // Match header/footer mobile behavior exactly
+    width: calc(100% - 20px);
+  }
 }
 
 .content-wrapper {

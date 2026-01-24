@@ -20,6 +20,7 @@ $game-text-muted: #a89cc8;   // Muted purple text
   width: 100%;
   max-width: $content-max-width;
   margin: 0 auto 30px;
+  box-sizing: border-box; // Ensure border doesn't add to width
   background-color: $parchment-base;
   background-image: 
     linear-gradient(rgba($parchment-base, 0.95), rgba($parchment-base, 0.9)),
@@ -233,7 +234,7 @@ $game-text-muted: #a89cc8;   // Muted purple text
   }
   
   border: 2px solid rgba($game-accent, 0.3);
-  border-radius: 12px;
+  border-radius: 16px; // Updated to 16px to match others
   box-shadow: 
     0 4px 20px rgba(0, 0, 0, 0.4),
     0 0 30px rgba($game-accent, 0.1),
@@ -367,8 +368,8 @@ $game-text-muted: #a89cc8;   // Muted purple text
 // ============================================
 
 .home-updates-section {
-  width: 95%;
-  max-width: 1000px;
+  width: 100%; // Full width of container
+  max-width: none; // Remove 1000px limit
   margin: 80px auto 40px;
   
   .section-title {
