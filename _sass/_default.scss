@@ -79,7 +79,7 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 120px; // Reduced height to ensure it ends before content starts
+  height: 100px; // Reduced from 120px
   z-index: 999; // Just below site-header (1000)
   pointer-events: none;
   
@@ -91,8 +91,8 @@
   background-attachment: fixed;
 
   // Mask defines the fade range
-  // Solid behind the header (~80px)
-  // Ends at 110px, which is above the start of page content (114px+)
-  -webkit-mask-image: linear-gradient(to bottom, black 0, black 75px, transparent 110px);
-  mask-image: linear-gradient(to bottom, black 0, black 75px, transparent 110px);
+  // Solid behind the header (~60px to account for top spacing)
+  // Ends at 95px, which aligns perfectly with the header's bottom edge (84px-91px)
+  -webkit-mask-image: linear-gradient(to bottom, black 0, black 60px, transparent 95px);
+  mask-image: linear-gradient(to bottom, black 0, black 60px, transparent 95px);
 }

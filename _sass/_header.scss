@@ -171,13 +171,14 @@
     visibility: hidden;
     opacity: 0;
     position: absolute;
-    // Wood texture background matching the header
+    // Wood texture background
+    // We start the gradient with $wood-medium to better blend with the header's bottom shadow/border
     background-color: $wood-medium;
     background-image: 
       radial-gradient(circle at 12px calc(100% - 12px), rgba(0,0,0,0.4) 2px, transparent 3px),
       radial-gradient(circle at calc(100% - 12px) calc(100% - 12px), rgba(0,0,0,0.4) 2px, transparent 3px),
       repeating-linear-gradient(to bottom, transparent, transparent 1px, rgba(0,0,0,0.02) 1.5px, transparent 2px),
-      linear-gradient(to bottom, $wood-light 0%, $wood-medium 50%, color.adjust($wood-medium, $lightness: -8%) 100%);
+      linear-gradient(to bottom, color.adjust($wood-medium, $lightness: -4%) 0%, $wood-medium 30%, $wood-light 100%);
     background-size: 100% 100%, 100% 100%, 100% 4px, 100% 100%;
     
     min-width: 240px;
@@ -187,7 +188,7 @@
     border-top: none;
     border-radius: 0 0 16px 16px;
     z-index: 1001;
-    top: calc(100% - 6px); // Deeper overlap to blend with header bottom border
+    top: calc(100% - 4px); // Dropped slightly to match the standard border width overlap
     right: 0; 
     text-align: left;
     overflow: hidden;
@@ -200,17 +201,16 @@
       transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1),
       visibility 0.2s;
 
-    // Physical connection bridge
+    // Physical connection bridge - darker to act as a shadow seam
     &::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
-      height: 10px;
-      background: inherit;
+      height: 4px;
+      background: rgba(0,0,0,0.2);
       z-index: 2;
-      border-bottom: 1px solid rgba(0,0,0,0.08);
     }
   }
 
@@ -232,13 +232,13 @@
     color: $wood-dark;
   }
   
-  .dropdown:hover .dropdown-content {
+  .dropdown.is-open .dropdown-content {
     visibility: visible;
     opacity: 1;
     transform: translateY(0);
   }
   
-  .dropdown:hover .dropbtn {
+  .dropdown.is-open .dropbtn {
     color: $wood-dark;
   }
 }
@@ -273,24 +273,26 @@
     position: absolute;
     top: 100%;
     left: 50%;
-    // Wood texture background matching the header
-    background-color: $wood-medium;
+    // Much lighter wood/parchment background
+    background-color: $wood-light;
     background-image: 
-      radial-gradient(circle at 8px 8px, rgba(0,0,0,0.2) 1.5px, transparent 2.5px),
-      radial-gradient(circle at calc(100% - 8px) 8px, rgba(0,0,0,0.2) 1.5px, transparent 2.5px),
-      linear-gradient(to bottom, $wood-light 0%, $wood-medium 50%, color.adjust($wood-medium, $lightness: -8%) 100%);
-    background-size: auto, auto, 100% 100%;
+      radial-gradient(circle at 12px 12px, rgba(0,0,0,0.2) 1.5px, transparent 2.5px),
+      radial-gradient(circle at calc(100% - 12px) 12px, rgba(0,0,0,0.2) 1.5px, transparent 2.5px),
+      repeating-linear-gradient(to bottom, transparent, transparent 1px, rgba(0,0,0,0.01) 1.5px, transparent 2px),
+      linear-gradient(to bottom, $parchment-base 0%, $wood-light 100%);
+    background-size: 100% 100%, 100% 100%, 100% 4px, 100% 100%;
     
     min-width: 240px;
     border: 3px solid $wood-border;
+    border-bottom-width: 6px; 
     border-top: none; 
     border-radius: 0 0 $border-radius $border-radius; 
     box-shadow: 
-      0 8px 15px rgba(0,0,0,0.2),
-      inset 0 10px 10px -10px rgba(0,0,0,0.3); // Inner shadow to create "sliding out" depth
+      0 8px 20px rgba(0,0,0,0.25),
+      inset 0 10px 10px -10px rgba(0,0,0,0.15); 
     z-index: 1001;
     overflow: hidden;
-    margin-top: 0;
+    margin-top: -7px; 
     padding-top: 5px;
     line-height: 1.4;
     text-align: left;
@@ -431,8 +433,17 @@
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    background-color: rgba($wood-light, 0.1);
-    box-shadow: inset 0 6px 10px -8px rgba(0,0,0,0.25);
+    
+    // Much lighter wood/parchment background
+    background-color: $wood-light;
+    background-image: 
+      radial-gradient(circle at 12px 12px, rgba(0,0,0,0.2) 1.5px, transparent 2.5px),
+      radial-gradient(circle at calc(100% - 12px) 12px, rgba(0,0,0,0.2) 1.5px, transparent 2.5px),
+      repeating-linear-gradient(to bottom, transparent, transparent 1px, rgba(0,0,0,0.01) 1.5px, transparent 2px),
+      linear-gradient(to bottom, $parchment-base 0%, $wood-light 100%);
+    background-size: 100% 100%, 100% 100%, 100% 4px, 100% 100%;
+    
+    box-shadow: inset 0 8px 12px -6px rgba(0,0,0,0.2), inset 0 -8px 12px -6px rgba(0,0,0,0.1);
   }
 
   &.is-open {
@@ -448,18 +459,31 @@
   }
   
   .mobile-dropdown-item {
+    padding: 12px 22px !important;
     padding-left: 40px !important;
-    font-size: 0.95em !important;
+    font-size: 0.95rem !important;
     font-weight: 700 !important;
-    opacity: 0.95;
+    color: $wood-border !important;
     background-color: transparent;
     display: block;
-    padding: 12px 22px;
-    border-bottom: 1px solid rgba($wood-border, 0.05);
+    border-bottom: 1px solid rgba($wood-border, 0.1);
     transition: all 0.2s ease;
+    line-height: 1.4;
+
+    strong {
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .dropdown-meta {
+      font-size: 0.8em;
+      opacity: 0.7;
+      font-weight: 600;
+      display: block;
+    }
 
     &:hover {
-      background-color: rgba($wood-light, 0.25) !important;
+      background-color: rgba($wood-border, 0.08) !important;
       padding-left: 48px !important;
       color: $wood-dark !important;
     }

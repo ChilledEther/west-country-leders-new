@@ -36,8 +36,8 @@
       <a href="{{ item.link }}" class="menu-link" target="_blank"><i class="fa-{{ item.iconType }} fa-{{ item.icon }}" aria-hidden="true"></i></a>
     {% endfor %}
   </nav>
-  <div class="dropdown">
-    <button class="dropbtn"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
+  <div class="dropdown" id="mobile-menu-dropdown">
+    <button class="dropbtn" id="mobile-menu-toggle"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
     <div class="dropdown-content">
       {% for item in site.data.settings.menu %}
         {% if item.dropdown %}
@@ -52,7 +52,8 @@
                 {% assign t_date = tournament.date | date: "%Y%m%d" | plus: 0 %}
                 {% if t_date >= now_unix %}
                   <a href="{{ tournament.url | relative_url }}" class="mobile-dropdown-item">
-                    {{ tournament.title }} ({{ tournament.date | date: "%b %d" }})
+                    <strong>{{ tournament.title }}</strong>
+                    <span class="dropdown-meta">{{ tournament.date | date: "%b %d" }} &bull; {{ tournament.venue }}</span>
                   </a>
                 {% endif %}
               {% endfor %}
@@ -71,6 +72,24 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  const menuDropdown = document.getElementById('mobile-menu-dropdown');
+  const menuToggle = document.getElementById('mobile-menu-toggle');
+
+  if (menuToggle && menuDropdown) {
+    menuToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      menuDropdown.classList.toggle('is-open');
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!menuDropdown.contains(e.target)) {
+        menuDropdown.classList.remove('is-open');
+      }
+    });
+  }
+
   const toggles = document.querySelectorAll('.mobile-section-toggle');
   toggles.forEach(toggle => {
     toggle.addEventListener('click', function(e) {
