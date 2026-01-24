@@ -222,3 +222,27 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.card-action-button {
+  background: rgba(212, 167, 106, 0.1);
+  border: 1px dashed #d4a76a;
+  width: 100%;
+  padding: 8px;
+  text-align: center;
+  transition: all 0.2s ease;
+  border-radius: 4px;
+
+  span {
+    font-weight: 800;
+    color: #6e4c2f;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+  }
+
+  &:hover {
+    background: rgba(212, 167, 106, 0.25);
+    border-style: solid;
+    transform: translateY(-2px);
+  }
+}

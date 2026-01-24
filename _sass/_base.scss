@@ -2,6 +2,15 @@
 @use "sass:color";
 
 /*
+  Global box-sizing reset
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/*
   Reset some basic elements
 */
 
