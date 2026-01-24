@@ -4,7 +4,7 @@ Welcome to the repository for the **West Country Leders** website! This is where
 
 ## 🔗 Quick Links
 - **🌍 Live Website:** [westcountryleders.com](https://westcountryleders.com) (or relevant URL)
-- **🏗️ Staging Site:** [Staging Environment](https://github.com/ChilledEther/west-country-leders-new)
+- **🏗️ Staging Site:** [Staging Environment](https://chilledether.github.io/west-country-leders-new/)
 
 ---
 
