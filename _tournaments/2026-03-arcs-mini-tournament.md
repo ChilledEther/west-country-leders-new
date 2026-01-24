@@ -1,11 +1,11 @@
 ---
 title: "Arcs Mini Tournament"
 date: 2026-03-20
-venue: "The Games Hub"
-address: "123 High St, Bristol, BS1 1AB"
+venue: "Excelsior! Games"
+address: "Broadmead"
 time: "12:00 - 18:00"
 reg_start: 2026-01-01
-reg_end: 2026-03-19
+reg_end: 2025-03-19
 signup_url: "https://docs.google.com/forms/..."
 layout: tournament
 ---
