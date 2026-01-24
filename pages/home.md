@@ -10,7 +10,7 @@ pagination:
 {% include featured-tournament.html %}
 
 <div class="page-content">
-  <h1 style="margin-bottom: 30px;">Club Updates</h1>
+  <h1>Club Updates</h1>
   
   {% include infinite-scroll.html %}
 </div>
