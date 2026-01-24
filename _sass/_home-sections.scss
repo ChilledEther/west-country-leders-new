@@ -93,7 +93,7 @@ $game-text-muted: #a89cc8;   // Muted purple text
       flex-direction: row;
       align-items: center;
       justify-content: flex-start;
-      gap: 15px;
+      gap: 6px;
       flex-grow: 1;
       min-width: 0;
     }
@@ -176,11 +176,11 @@ $game-text-muted: #a89cc8;   // Muted purple text
         flex-direction: column;
         align-items: center;
         width: 100%;
-        margin-bottom: 10px;
+        margin-bottom: 4px;
       }
 
       .item-title {
-        margin-bottom: 4px;
+        margin-bottom: 0;
         white-space: normal;
       }
 
@@ -263,7 +263,7 @@ $game-text-muted: #a89cc8;   // Muted purple text
       flex-direction: column;
       align-items: center;
       text-align: center;
-      gap: 15px;
+      gap: 10px;
     }
   }
 
@@ -271,7 +271,7 @@ $game-text-muted: #a89cc8;   // Muted purple text
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 20px;
+    gap: 6px;
     flex-wrap: wrap;
     flex: 1;
     min-width: 0;
@@ -280,7 +280,7 @@ $game-text-muted: #a89cc8;   // Muted purple text
     @media (max-width: $tablet-width) {
       flex-direction: column;
       align-items: center;
-      gap: 10px;
+      gap: 2px;
     }
     
     .event-title {
@@ -350,7 +350,7 @@ $game-text-muted: #a89cc8;   // Muted purple text
     @media (max-width: $tablet-width) {
       width: auto;
       min-width: 160px; // Ensure a nice minimum presence
-      margin-top: 10px;
+      margin-top: 2px;
     }
   }
 }
