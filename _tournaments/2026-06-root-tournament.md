@@ -1,11 +1,11 @@
 ---
 title: "Root Tournament 2026"
 date: 2026-02-15
-venue: "Kiln Workshop"
-address: "63 North Rd, Bishopston, BS6 5AD"
-time: "18:15 - 23:00"
-reg_start: 2026-01-01
-reg_end: 2026-02-14
+venue: "Excelsior! Games, Bristol"
+address: "51 - 53 Merchant Street. Bristol. BS1 3EE"
+time: "10:00 - 22:00"
+reg_start: 2026-01-20
+reg_end: 2026--06-12
 signup_url: "https://docs.google.com/forms/d/e/1FAIpQLSd5Bvo_SID4aZnT3GAhLE440nKz_Gs1J7Py2ObZ3I5OoV97mg/viewform"
 layout: tournament
 ---
