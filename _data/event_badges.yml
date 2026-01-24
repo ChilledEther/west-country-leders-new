@@ -1,0 +1,19 @@
+# Event Badge Configuration
+# Define keywords that trigger specific badge text and styles on the Events page.
+# Available colors: red, green, blue, light-blue, orange, yellow, purple, pink, teal, brown, grey, black
+
+- keywords: ["tournament", "cup", "championship", "qualifier"]
+  text: "Tournament"
+  style: "red"
+
+- keywords: ["social", "meetup", "gathering", "casual", "pub"]
+  text: "Social"
+  style: "green"
+
+- keywords: ["league", "campaign", "legacy"]
+  text: "Campaign"
+  style: "purple"
+
+- keywords: ["learn to play", "teaching", "demo"]
+  text: "Learn to Play"
+  style: "teal"

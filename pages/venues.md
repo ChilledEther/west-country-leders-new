@@ -7,46 +7,264 @@ permalink: /venues
 
 Alongside our more spontaneous events, we also organise a number of regular board game meet ups at specific venues. If you would like to come along to any of them, please let us know via Discord or email!
 
-| Venue                           | Frequency              | Time        | Price  |
-| ------------------------------- | ---------------------- | ----------- | ------ |
-| [Kiln Workshop](#kiln-workshop) | 1st Sunday. Monthly.   | 18:15-23:00 | Free   |
-| [The Old Duke](#the-old-duke)   | 3rd Saturday. Monthly. | 18:00-01:00 | Free   |
-| [Replay](#replay)               | 4th Saturday. Monthly. | 18:00-23:00 | 80p/hr |
+<!-- Grid of Cards (Click trigger) -->
+<div class="events-grid">
+  {% for venue in site.data.venues %}
+  <div class="event-card-wrapper" onclick="openVenueModal('venue-modal-{{ forloop.index }}')">
+    <div class="event-card" style="cursor: pointer;">
+      <div class="card-header-badge" style="background-color: {{ venue.badge_style | default: 'orange' }};">
+        {{ venue.badge }}
+      </div>
+      <div class="card-content">
+        <div class="event-title">{{ venue.title }}</div>
+        <div class="event-location">
+          <i class="fa-solid fa-calendar-days"></i> {{ venue.frequency }}
+        </div>
+        <div class="stat-block">
+            <div class="stat-box">
+              <span class="stat-label">Time</span>
+              <span class="stat-value">{{ venue.time }}</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-label">Price</span>
+              <span class="stat-value">{{ venue.price }}</span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
 
-### **Kiln Workshop**
+<!-- Modal Structures (Hidden by default) -->
+{% for venue in site.data.venues %}
+<div id="venue-modal-{{ forloop.index }}" class="venue-modal-overlay" onclick="closeVenueModal(event, 'venue-modal-{{ forloop.index }}')">
+  <div class="venue-modal-content">
+    <button class="venue-modal-close" onclick="closeVenueModal(event, 'venue-modal-{{ forloop.index }}')">&times;</button>
+    
+    <div class="venue-modal-header">
+      <h2>{{ venue.title }}</h2>
+      <div class="venue-modal-badges">
+        <span class="venue-badge" style="background-color: {{ venue.badge_style | default: 'orange' }}">{{ venue.badge }}</span>
+      </div>
+    </div>
 
-![kiln]({{ '/assets/img/kiln.png' | relative_url }})
+    <div class="venue-modal-body">
+      {% if venue.image %}
+      <img src="{{ venue.image | relative_url }}" alt="{{ venue.title }}" class="venue-modal-image">
+      {% endif %}
+      
+      <div class="venue-details">
+        <p class="venue-description">{{ venue.description }}</p>
+        
+        <div class="venue-info-grid">
+           <div class="venue-info-item">
+             <i class="fa-solid fa-location-dot"></i>
+             <strong>Address:</strong> {{ venue.address }}
+           </div>
+           <div class="venue-info-item">
+             <i class="fa-solid fa-clock"></i>
+             <strong>Time:</strong> {{ venue.time }}
+           </div>
+           <div class="venue-info-item">
+             <i class="fa-solid fa-calendar-days"></i>
+             <strong>Frequency:</strong> {{ venue.frequency }}
+           </div>
+           <div class="venue-info-item">
+             <i class="fa-solid fa-coins"></i>
+             <strong>Price:</strong> {{ venue.price }}
+           </div>
+        </div>
 
-The owners of the Kiln Studio let us use their pottery studio once a month. It's a really nice cosy little space, with large tables and great lighting! Good for larger euros, and table hogs!
+        {% if venue.map_iframe and venue.map_iframe != "" %}
+        <div class="venue-map-container">
+          {{ venue.map_iframe }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
 
-**Location:** Kiln Workshop. 63 North Rd, Bishopston, BS6 5AD
+<style>
+/* Modal Styles */
+.venue-map-container {
+  margin-top: 25px;
+  width: 100%;
+  height: 350px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  display: flex;
+}
 
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2485.257440040249!2d-2.5941152344580214!3d51.47178869976014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48718e094906bdeb%3A0xa731fe12077321d3!2sKiln%20Workshop!5e0!3m2!1sen!2suk!4v1738507570951!5m2!1sen!2suk" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+.venue-map-container iframe {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+  border: none;
+  margin: 0 !important;
+  box-shadow: none !important;
+  border-radius: 8px !important;
+  max-width: none !important;
+  filter: sepia(20%); 
+}
+.venue-modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(44, 62, 80, 0.85); /* Dark dim */
+  z-index: 9999;
+  overflow-y: auto; /* Allow scrolling on small screens */
+  padding: 20px;
+  box-sizing: border-box;
+  backdrop-filter: blur(5px);
+  animation: fadeIn 0.2s ease-out;
+}
 
-### **The Old Duke**
+.venue-modal-content {
+  background: #fcf8f3; /* Parchment base */
+  border: 4px solid #6e4c2f;
+  border-radius: 8px;
+  max-width: 800px;
+  margin: 40px auto;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  animation: slideUp 0.3s ease-out;
+}
 
-![Old Duke]({{ '/assets/img/Old Duke Combine.png' | relative_url }})
+.venue-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #6e4c2f;
+  cursor: pointer;
+  z-index: 10;
+  line-height: 1;
+}
 
-A really fun venue above the Jazz bar on King Street! We can stay late, and play loud! Perfect for negotiation and social deduction games!
+.venue-modal-header {
+  background: #e8dcc5;
+  padding: 20px 30px;
+  border-bottom: 2px solid #6e4c2f;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+}
 
-**Location:** 45 King St, BS1 4ER
+.venue-modal-header h2 {
+  margin: 0;
+  font-family: "Inter", sans-serif; /* Using base font instead of undefined serif */
+  font-weight: 800;
+  color: #4d2d18;
+  font-size: 1.8rem;
+}
 
- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2486.3508239506004!2d-2.5952421315019274!3d51.45171494607229!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48718e78fa6c82df%3A0x3ebd917be8c31326!2sThe%20Old%20Duke!5e0!3m2!1sen!2suk!4v1738507590582!5m2!1sen!2suk" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+.venue-badge {
+  color: white;
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  box-shadow: 1px 1px 0 rgba(0,0,0,0.2);
+}
 
-### **Replay**
+.venue-modal-body {
+  padding: 30px;
+}
 
-![Replay]({{ '/assets/img/Replay combine.png' | relative_url }})
+.venue-modal-image {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 2px solid #d4a76a;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
 
-Replay give WCL members cheaper gaming (less than £1/hour!) one Saturday a month! One of the nicest gaming cafés in Bristol. Booking is required for this venue, so see the Discord for more information.
+.venue-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  color: #333;
+}
 
-**Location:** 196 Cheltenham Rd, Montpelier, BS6 5RB
+.venue-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  background: rgba(212, 167, 106, 0.15);
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px dashed #d4a76a;
+}
 
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5911.537230877614!2d-2.5973041727780974!3d51.46742346539875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48718e0b9ea095cf%3A0x8a40fd52ead5f683!2sReplay%20Bristol%20Board%20Game%20Cafe!5e0!3m2!1sen!2suk!4v1738507615351!5m2!1sen!2suk" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+.venue-info-item i {
+  color: #d4a76a;
+  margin-right: 8px;
+  width: 20px;
+  text-align: center;
+}
 
-### **Board Game Arena (BGA)**
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
-![board-game-arena]({{ '/assets/img/board-game-arena.webp' | relative_url }})
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
 
-We also host regular Board Game Arena evenings online.
+@media (max-width: 600px) {
+  .venue-modal-content {
+    margin: 10px auto;
+  }
+  .venue-modal-body {
+    padding: 20px;
+  }
+  .venue-modal-header h2 {
+    font-size: 1.4rem;
+  }
+}
+</style>
 
-**Location:** [BGA](https://boardgamearena.com/welcome)
+<script>
+function openVenueModal(modalId) {
+  document.getElementById(modalId).style.display = 'block';
+  document.body.style.overflow = 'hidden'; // Prevent background scrolling
+}
+
+function closeVenueModal(event, modalId) {
+  // Close if clicked content close button OR clicked the overlay background
+  if (event.target.classList.contains('venue-modal-overlay') || 
+      event.target.classList.contains('venue-modal-close')) {
+    document.getElementById(modalId).style.display = 'none';
+    document.body.style.overflow = 'auto'; // Restore scrolling
+  }
+}
+
+// Close on Escape key
+document.addEventListener('keydown', function(event) {
+  if (event.key === "Escape") {
+    const modals = document.querySelectorAll('.venue-modal-overlay');
+    modals.forEach(modal => {
+      modal.style.display = 'none';
+    });
+    document.body.style.overflow = 'auto';
+  }
+});
+</script>

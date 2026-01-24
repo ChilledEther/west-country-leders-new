@@ -39,20 +39,19 @@ To add a new tournament page:
 ---
 
 ## ⚙️ Settings for Non-Developers
-You can tweak how the site behaves by editing the `_config.yml` file.
 
 ### 🏷️ Configuring Event Badges
-Want to change which words trigger the "Tournament" red badge? Look for the `events_badges` section in `_config.yml`:
+We have moved the badge settings to a dedicated file to make it cleaner!
+Go to the `_data/` folder and edit **`event_badges.yml`**.
 
 ```yaml
-events_badges:
-  - keywords: ["tournament", "cup"]  # If title has these words...
-    text: "Tournament"               # ...show this text...
-    style: "red"                     # ...in Red!
+- keywords: ["tournament", "cup"]  # If title has these words...
+  text: "Tournament"               # ...show this text...
+  style: "red"                     # ...in Red!
     
-  - keywords: ["newbie"]
-    text: "New Players"
-    style: "teal"
+- keywords: ["newbie"]
+  text: "New Players"
+  style: "teal"
 ```
 
 ### 🎨 Available Colors

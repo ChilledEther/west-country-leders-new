@@ -34,8 +34,8 @@ layout: default
 
 <script>
   (function() {
-    // Inject configuration from _config.yml
-    const badgeRules = {{ site.events_badges | jsonify }};
+    // Inject configuration from _data/event_badges.yml
+    const badgeRules = {{ site.data.event_badges | jsonify }};
     
     const colorPalette = {
       'red': '#c0392b',
