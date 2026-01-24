@@ -36,6 +36,25 @@ To add a new tournament page:
 2. Create a new file with the date in the name: `YYYY-MM-DD-your-title.md`.
 3. Write your update!
 
+### 📍 Venues & Locations
+To add or update a venue (like a new pub or cafe):
+1. Go to the `_data` folder and edit **`venues.yml`**.
+2. Copy an existing venue block and just update the details:
+   ```yaml
+   - title: "New Gaming Pub"
+     frequency: "Every Monday"
+     time: "18:00 - 23:00"
+     price: "Free"
+     url: "#new-pub"
+     badge: "Pub"
+     badge_style: "green"
+     address: "123 Board Game Lane, Bristol"
+     image: "/assets/img/new-pub.jpg"
+     description: "A lovely place to roll dice."
+     map_iframe: '<iframe src="..."></iframe>' 
+   ```
+   *(To get the map iframe: Go to Google Maps -> Share -> Embed a map -> Copy HTML)*
+
 ---
 
 ## ⚙️ Settings for Non-Developers
