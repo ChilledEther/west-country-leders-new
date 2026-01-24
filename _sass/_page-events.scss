@@ -1,4 +1,5 @@
 @use "variables" as *;
+@use "sass:color";
 
 .page-events-content {
   max-width: $content-max-width;
@@ -30,6 +31,73 @@
     padding: 25px 20px;
     border-radius: 20px;
     outline: none; // Save space on mobile
+  }
+}
+
+// Ensure content clips to border radius
+.page-events-content {
+  overflow: hidden;
+}
+
+// Accent Header Style (Consistent with Pages)
+.page-events-content h1 {
+  // Enhanced Wooden Plank Effect (Matches Header/Footer)
+  background-color: $wood-medium;
+  background-image: 
+    // Hand-hammered Nails
+    radial-gradient(circle at 12px 50%, rgba(0,0,0,0.4) 2.5px, transparent 3.5px),
+    radial-gradient(circle at calc(100% - 12px) 50%, rgba(0,0,0,0.4) 2.5px, transparent 3.5px),
+    
+    // Natural Wood Knots
+    radial-gradient(ellipse at 20% 40%, rgba(0,0,0,0.05) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 60%, rgba(0,0,0,0.05) 0%, transparent 60%),
+    
+    // Fine Horizontal Grain Lines
+    repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 1px,
+      rgba(0,0,0,0.03) 1.5px,
+      transparent 2px
+    ),
+    
+    // Warm Wood Base Gradient
+    linear-gradient(to bottom, $wood-light 0%, $wood-medium 50%, color.adjust($wood-medium, $lightness: -8%) 100%);
+  
+  background-size: 100% 100%, 100% 100%, 300px 50px, 400px 60px, 100% 4px, 100% 100%;
+  background-repeat: no-repeat, no-repeat, repeat-x, repeat-x, repeat, no-repeat;
+  
+  // Text Styling
+  color: $wood-border;
+  font-weight: 800;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+  
+  // Full bleed negative margins
+  margin: -40px -40px 30px -40px;
+  padding: 25px 40px;
+  
+  font-family: $base-font-family;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 1.8rem;
+  line-height: 1.2;
+  
+  border-bottom: 2px solid rgba(77, 45, 24, 0.2);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  
+  // Flex layout to ensure centered alignment
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+@media (max-width: $tablet-width) {
+  .page-events-content h1 {
+    font-size: 1.4rem;
+    margin: -25px -20px 25px -20px;
+    padding: 20px 25px;
   }
 }
 
