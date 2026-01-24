@@ -164,16 +164,25 @@
   .dropdown-content {
     display: none;
     position: absolute;
-    background-color: $wood-light;
-    min-width: 160px;
-    box-shadow: $box-shadow;
-    border: 2px solid $wood-border;
-    border-radius: $border-radius;
+    // Wood texture background matching the header
+    background-color: $wood-medium;
+    background-image: 
+      radial-gradient(circle at 8px 8px, rgba(0,0,0,0.2) 1.5px, transparent 2.5px),
+      radial-gradient(circle at calc(100% - 8px) 8px, rgba(0,0,0,0.2) 1.5px, transparent 2.5px),
+      linear-gradient(to bottom, $wood-light 0%, $wood-medium 50%, color.adjust($wood-medium, $lightness: -8%) 100%);
+    background-size: auto, auto, 100% 100%;
+    
+    min-width: 200px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    border: 3px solid $wood-border;
+    border-top: none;
+    border-radius: 0 0 $border-radius $border-radius;
     z-index: 1001;
-    top: $header-thickness;
-    right: 0;
+    top: 100%;
+    right: 0; // Fix alignment to the right edge of the container
     text-align: left;
     overflow: hidden;
+    margin-top: -4px;
   }
   
   .dropdown-content a {
@@ -182,15 +191,12 @@
     text-decoration: none;
     display: block;
     border-bottom: 1px solid rgba($wood-border, 0.1);
-  }
-  
-  .dropdown-content a:last-child {
-    border-bottom: none;
+    font-weight: 700; // Bold text to stand out on wood
   }
   
   .dropdown-content a:hover {
-    background-color: $wood-medium;
-    color: white;
+    background-color: rgba($wood-border, 0.1); // Darken on hover instead of switching color
+    color: $wood-dark;
   }
   
   .dropdown:hover .dropdown-content {
@@ -232,22 +238,40 @@
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
-    background-color: $wood-light;
+    // Wood texture background matching the header
+    background-color: $wood-medium;
+    background-image: 
+      radial-gradient(circle at 8px 8px, rgba(0,0,0,0.2) 1.5px, transparent 2.5px),
+      radial-gradient(circle at calc(100% - 8px) 8px, rgba(0,0,0,0.2) 1.5px, transparent 2.5px),
+      linear-gradient(to bottom, $wood-light 0%, $wood-medium 50%, color.adjust($wood-medium, $lightness: -8%) 100%);
+    background-size: auto, auto, 100% 100%;
+    
     min-width: 240px;
     border: 3px solid $wood-border;
-    border-radius: $border-radius;
-    box-shadow: $box-shadow;
+    border-top: none; 
+    border-radius: 0 0 $border-radius $border-radius; 
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
     z-index: 1001;
     overflow: hidden;
     margin-top: 0;
-    padding-top: 15px; // Create bridge between trigger and content
+    padding-top: 5px;
     line-height: 1.4;
     text-align: left;
     
-    // Hand-hammered Nails effect for dropdown
-    background-image: 
-      radial-gradient(circle at 8px 8px, rgba(0,0,0,0.2) 1.5px, transparent 2.5px),
-      radial-gradient(circle at calc(100% - 8px) 8px, rgba(0,0,0,0.2) 1.5px, transparent 2.5px);
+    // Physical connection effect
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background-color: rgba($wood-border, 0.1); 
+      pointer-events: none;
+    }
+    
+    // Hand-hammered Nails effect logic moved to background-image above to combine with gradient
+
     
     a {
       display: block;
@@ -270,8 +294,8 @@
       }
       
       &:hover {
-        background-color: rgba($wood-medium, 0.4);
-        transform: none !important; // Disable the default hover transform for dropdown items
+        background-color: rgba($wood-border, 0.1); // Subtle darkening
+        transform: none !important; 
       }
       
       &.all-link {
@@ -283,8 +307,8 @@
         border-bottom: none;
         
         &:hover {
-          background-color: $wood-medium;
-          color: white !important;
+          background-color: rgba($wood-border, 0.15);
+          color: $wood-dark !important;
         }
       }
     }
