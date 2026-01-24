@@ -9,6 +9,24 @@
   padding: 20px 0 0 0; 
 }
 
+// Styles for Infinite Scroll elements to ensure proper spacing
+.infinite-scroll-status,
+.infinite-scroll-fallback {
+  text-align: center;
+  
+  // Collapse completely when empty to avoid whitespace issues
+  &:empty {
+    display: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  // Only add margin if they have content and are displayed
+  &:not(:empty) {
+    margin-top: 30px; // Match grid gap
+  }
+}
+
 .post-card {
   display: flex;
   flex-direction: column;
