@@ -10,19 +10,7 @@ signup_url: "https://docs.google.com/forms/d/e/1FAIpQLSd5Bvo_SID4aZnT3GAhLE440nK
 layout: tournament
 ---
 
-Join us for the West Country Leders Root League 2026! Battle it out across the Woodland to determine the ultimate champion.
+We’re excited to announce that sign up for our first 2026 Root tournament is now open!
+Please submit the below form if you would like to sign up for our June ‘26 Root tournament!
 
-## Format
-
-- Swiss rounds followed by a cut to top 4
-- 4 player games throughout
-- All factions and maps available
-
-## Registration
-
-Contact us on Discord or email to register your interest.
-
-## What to Bring
-
-- Your favourite faction (if you have a preference)
-- Snacks to share (optional but appreciated!)
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd5Bvo_SID4aZnT3GAhLE440nKz_Gs1J7Py2ObZ3I5OoV97mg/viewform?embedded=true" width="100%" height="5492" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
