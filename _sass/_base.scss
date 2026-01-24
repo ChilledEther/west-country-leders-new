@@ -97,19 +97,37 @@ body {
 /* Images & Iframes */
 body img,
 iframe {
-  margin: 20px auto;
+  margin: 0 auto;
   display: block;
   max-width: 100%;
-  width: 100%; // Ensure it fills container
+  width: auto; // Changed from 100% to auto to prevent small images from stretching
   border: none;
-  border-radius: $border-radius;
-  box-shadow: $box-shadow;
   transition: transform 0.3s ease;
 
   // Prevent double scrollbars where possible
   &[src*="docs.google.com"] {
     overflow: hidden;
   }
+}
+
+// Apply shadow and radius only to images likely intended as standalone content
+article img,
+.page-content img,
+.page-events-content img {
+  margin: 20px auto;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  width: 100%; // Keep full width for post content images
+}
+
+// Ensure images inside specific bordered containers don't double-up on styles
+.featured-image img,
+.event-card img,
+.post-card-image img,
+.hero-glass-card img {
+  margin: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
 }
 
 // Ensure the container doesn't scroll horizontally
