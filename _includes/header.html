@@ -8,14 +8,22 @@
         <div class="nav-dropdown">
           <a href="{{ item.url | relative_url }}" class="menu-link nav-dropdown-trigger">{{ item.name }} <i class="fa-solid fa-chevron-down"></i></a>
           <div class="nav-dropdown-content">
-            {% assign upcoming = site.tournaments | where_exp: "t", "t.date >= site.time" | sort: "date" %}
+            {% assign now_unix = site.time | date: "%Y%m%d" | plus: 0 %}
+            {% assign upcoming = site.tournaments | where_exp: "t", "t.date" %}
+            {% assign shown_count = 0 %}
+            
             {% for tournament in upcoming %}
-              <a href="{{ tournament.url | relative_url }}">
-                <strong>{{ tournament.title }}</strong>
-                <span class="dropdown-meta">{{ tournament.date | date: "%b %d" }} &bull; {{ tournament.venue }}</span>
-              </a>
+              {% assign t_date = tournament.date | date: "%Y%m%d" | plus: 0 %}
+              {% if t_date >= now_unix %}
+                <a href="{{ tournament.url | relative_url }}">
+                  <strong>{{ tournament.title }}</strong>
+                  <span class="dropdown-meta">{{ tournament.date | date: "%b %d" }} &bull; {{ tournament.venue }}</span>
+                </a>
+                {% assign shown_count = shown_count | plus: 1 %}
+              {% endif %}
             {% endfor %}
-            {% if upcoming.size == 0 %}
+
+            {% if shown_count == 0 %}
               <span class="dropdown-empty">No upcoming tournaments</span>
             {% endif %}
           </div>
@@ -36,14 +44,17 @@
           <div class="mobile-dropdown-section">
             <div class="mobile-dropdown-header">
               <a href="{{ item.url | relative_url }}" class="menu-link"><strong>{{ item.name }}</strong></a>
-              <button class="mobile-section-toggle" aria-label="Toggle section"><i class="fa-solid fa-plus"></i></button>
+              <button class="mobile-section-toggle" aria-label="Toggle section"><i class="fa-solid fa-chevron-down"></i></button>
             </div>
             <div class="mobile-dropdown-collapsible">
-              {% assign upcoming = site.tournaments | where_exp: "t", "t.date >= site.time" | sort: "date" %}
-              {% for tournament in upcoming %}
-                <a href="{{ tournament.url | relative_url }}" class="mobile-dropdown-item">
-                  {{ tournament.title }} ({{ tournament.date | date: "%b %d" }})
-                </a>
+              {% assign now_unix = site.time | date: "%Y%m%d" | plus: 0 %}
+              {% for tournament in site.tournaments %}
+                {% assign t_date = tournament.date | date: "%Y%m%d" | plus: 0 %}
+                {% if t_date >= now_unix %}
+                  <a href="{{ tournament.url | relative_url }}" class="mobile-dropdown-item">
+                    {{ tournament.title }} ({{ tournament.date | date: "%b %d" }})
+                  </a>
+                {% endif %}
               {% endfor %}
             </div>
           </div>

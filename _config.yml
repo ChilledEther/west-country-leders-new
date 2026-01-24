@@ -1,4 +1,5 @@
 # Site Build Settings
+timezone: Europe/London
 
 # Pagination settings (v2)
 pagination:

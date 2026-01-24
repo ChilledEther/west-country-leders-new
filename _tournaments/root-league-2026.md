@@ -4,7 +4,10 @@ date: 2026-02-15
 venue: "Kiln Workshop"
 address: "63 North Rd, Bishopston, BS6 5AD"
 time: "18:15 - 23:00"
-layout: page
+reg_start: 2026-01-01
+reg_end: 2026-02-14
+signup_url: "https://docs.google.com/forms/d/e/1FAIpQLSd5Bvo_SID4aZnT3GAhLE440nKz_Gs1J7Py2ObZ3I5OoV97mg/viewform"
+layout: tournament
 ---
 
 Join us for the West Country Leders Root League 2026! Battle it out across the Woodland to determine the ultimate champion.

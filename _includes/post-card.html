@@ -11,7 +11,24 @@
       {{ post.excerpt | strip_html | truncate: 160 }}
     </div>
     <div class="post-card-footer">
-      <span>{% if post.collection == 'tournaments' %}Sign up!{% else %}Read Update{% endif %}</span>
+      <span>
+        {% if post.collection == 'tournaments' %}
+          {% assign now_ts = site.time | date: '%s' | plus: 0 %}
+          {% assign start_ts = post.reg_start | date: '%s' | plus: 0 %}
+          {% assign end_ts = post.reg_end | date: '%s' | plus: 0 %}
+          {% if post.reg_start and post.reg_end %}
+            {% if now_ts >= start_ts and now_ts <= end_ts %}
+              Sign up!
+            {% else %}
+              View Tournament
+            {% endif %}
+          {% else %}
+            Sign up!
+          {% endif %}
+        {% else %}
+          Read Update
+        {% endif %}
+      </span>
     </div>
   </div>
 </a>

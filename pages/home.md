@@ -7,6 +7,7 @@ pagination:
 ---
 
 {% include next-gathering.html %}
+{% include featured-tournament.html %}
 
 <div class="page-content">
   <h1 style="margin-bottom: 30px;">Club Updates</h1>

@@ -16,6 +16,118 @@ $game-text-muted: #a89cc8;   // Muted purple text
 // Styled as a board game night ticket
 // ============================================
 
+.featured-tournament-hero {
+  position: relative;
+  width: 100%;
+  max-width: $content-max-width; // Match page content width
+  margin: 0 auto 40px; // Center it
+  min-height: 250px;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: 40px;
+  box-sizing: border-box;
+  color: white;
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+    transition: transform 0.5s ease;
+  }
+
+  &:hover .hero-bg {
+    transform: scale(1.03);
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%);
+    z-index: 2;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 600px;
+
+    .hero-tag {
+      display: inline-block;
+      background: $accent-color;
+      color: white;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+      margin: 0 0 15px 0;
+      font-size: 2rem;
+      font-weight: 900;
+      
+      a {
+        color: white;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 25px;
+      opacity: 0.9;
+
+      .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.95rem;
+        font-weight: 600;
+
+        i {
+          color: $accent-color;
+        }
+      }
+    }
+
+    .hero-actions {
+      .pagination-button {
+        margin: 0;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      }
+    }
+  }
+
+  @media (max-width: $tablet-width) {
+    min-height: 200px;
+    padding: 30px 20px;
+    
+    .hero-content {
+      h2 {
+        font-size: 1.5rem;
+      }
+      
+      .hero-meta {
+        gap: 15px;
+        font-size: 0.85rem;
+      }
+    }
+  }
+}
+
 .next-event-banner {
   display: flex;
   align-items: center;
