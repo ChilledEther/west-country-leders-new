@@ -4,7 +4,33 @@
   </h3>
   <nav class="menu-list">
     {% for item in site.data.settings.menu %}
-      <a href="{{ item.url | relative_url }}" class="menu-link">{{ item.name }}</a>
+      {% if item.dropdown %}
+        <div class="nav-dropdown">
+          <a href="{{ item.url | relative_url }}" class="menu-link nav-dropdown-trigger">{{ item.name }} <i class="fa-solid fa-chevron-down"></i></a>
+          <div class="nav-dropdown-content">
+            {% assign now_unix = site.time | date: "%Y%m%d" | plus: 0 %}
+            {% assign upcoming = site.tournaments | where_exp: "t", "t.date" %}
+            {% assign shown_count = 0 %}
+            
+            {% for tournament in upcoming %}
+              {% assign t_date = tournament.date | date: "%Y%m%d" | plus: 0 %}
+              {% if t_date >= now_unix %}
+                <a href="{{ tournament.url | relative_url }}">
+                  <strong>{{ tournament.title }}</strong>
+                  <span class="dropdown-meta">{{ tournament.date | date: "%b %d" }} &bull; {{ tournament.venue }}</span>
+                </a>
+                {% assign shown_count = shown_count | plus: 1 %}
+              {% endif %}
+            {% endfor %}
+
+            {% if shown_count == 0 %}
+              <span class="dropdown-empty">No upcoming tournaments</span>
+            {% endif %}
+          </div>
+        </div>
+      {% else %}
+        <a href="{{ item.url | relative_url }}" class="menu-link">{{ item.name }}</a>
+      {% endif %}
     {% endfor %}
     {% for item in site.data.settings.social %}
       <a href="{{ item.link }}" class="menu-link" target="_blank"><i class="fa-{{ item.iconType }} fa-{{ item.icon }}" aria-hidden="true"></i></a>
@@ -14,7 +40,27 @@
     <button class="dropbtn"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
     <div class="dropdown-content">
       {% for item in site.data.settings.menu %}
-        <a href="{{ item.url | relative_url }}" class="menu-link">{{ item.name }}</a>
+        {% if item.dropdown %}
+          <div class="mobile-dropdown-section">
+            <div class="mobile-dropdown-header">
+              <a href="{{ item.url | relative_url }}" class="menu-link"><strong>{{ item.name }}</strong></a>
+              <button class="mobile-section-toggle" aria-label="Toggle section"><i class="fa-solid fa-chevron-down"></i></button>
+            </div>
+            <div class="mobile-dropdown-collapsible">
+              {% assign now_unix = site.time | date: "%Y%m%d" | plus: 0 %}
+              {% for tournament in site.tournaments %}
+                {% assign t_date = tournament.date | date: "%Y%m%d" | plus: 0 %}
+                {% if t_date >= now_unix %}
+                  <a href="{{ tournament.url | relative_url }}" class="mobile-dropdown-item">
+                    {{ tournament.title }} ({{ tournament.date | date: "%b %d" }})
+                  </a>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        {% else %}
+          <a href="{{ item.url | relative_url }}" class="menu-link">{{ item.name }}</a>
+        {% endif %}
       {% endfor %}
       {% for item in site.data.settings.social %}
         <a href="{{ item.link }}" class="menu-link" target="_blank"><i class="fa-{{ item.iconType }} fa-{{ item.icon }}" aria-hidden="true"></i></a>
@@ -22,3 +68,17 @@
     </div>
   </div>
 </header>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const toggles = document.querySelectorAll('.mobile-section-toggle');
+  toggles.forEach(toggle => {
+    toggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const section = this.closest('.mobile-dropdown-section');
+      section.classList.toggle('is-open');
+    });
+  });
+});
+</script>

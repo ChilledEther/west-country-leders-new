@@ -1,0 +1,61 @@
+---
+layout: default
+---
+
+<div class="page-content">
+  <div class="minimal-card" style="margin-top: 10px;">
+    <div class="card-header">
+      <h1>{{ page.title }}</h1>
+    </div>
+
+    <div class="card-details">
+      <div class="card-item">
+        <span class="card-label">Date</span>
+        <span class="card-value">{{ page.date | date: "%B %d, %Y" }}</span>
+      </div>
+      <div class="card-item">
+        <span class="card-label">Venue</span>
+        <div class="card-value">
+          {{ page.venue }}
+          {% if page.address %}<small>{{ page.address }}</small>{% endif %}
+        </div>
+      </div>
+      {% if page.time %}
+      <div class="card-item">
+        <span class="card-label">Time</span>
+        <span class="card-value">{{ page.time }}</span>
+      </div>
+      {% endif %}
+    </div>
+
+    {% if page.signup_url %}
+      {% assign now_ts = site.time | date: '%s' | plus: 0 %}
+      {% assign start_ts = page.reg_start | date: '%s' | plus: 0 %}
+      {% assign end_ts = page.reg_end | date: '%s' | plus: 0 %}
+      {% assign show_signup = false %}
+      
+      {% if page.reg_start and page.reg_end %}
+        {% if now_ts >= start_ts and now_ts <= end_ts %}
+          {% assign show_signup = true %}
+        {% endif %}
+      {% else %}
+        {% assign show_signup = true %}
+      {% endif %}
+
+      {% if show_signup %}
+        <div class="card-accent-footer">
+          <span class="card-footer-text">Registration is currently open!</span>
+          <a href="{{ page.signup_url }}" class="pagination-button pagination-active" target="_blank">Sign up now →</a>
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>
+
+  <article>
+    {{ content }}
+  </article>
+  
+  <div style="margin-top: 40px;">
+    <a href="{{ '/tournaments/' | relative_url }}" class="pagination-button">← Back to all tournaments</a>
+  </div>
+</div>

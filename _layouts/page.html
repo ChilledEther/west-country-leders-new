@@ -10,3 +10,42 @@ layout: default
     {{ content }}
   </article>
 </div>
+
+<script>
+  // Auto-wrap and resize iframes
+  (function() {
+    const iframes = document.querySelectorAll('.page-content iframe');
+    iframes.forEach(iframe => {
+      // Check if already wrapped
+      if (!iframe.parentElement.classList.contains('responsive-iframe-container')) {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'responsive-iframe-container';
+        iframe.parentNode.insertBefore(wrapper, iframe);
+        wrapper.appendChild(iframe);
+      }
+      
+      // Google Forms specific enhancements
+      if (iframe.src.includes('docs.google.com/forms')) {
+        iframe.style.width = '100%';
+        
+        // Use attribute height if present, else default to ample screen space
+        let targetHeight = iframe.getAttribute('height');
+        if (!targetHeight || targetHeight < 500) {
+            iframe.style.height = '80vh';
+        } else {
+             // If manual height is set, respect it but ensure it's responsive
+             iframe.style.height = targetHeight + 'px';
+        }
+      }
+
+      // Sway and other embeds
+      if (iframe.src.includes('sway.cloud.microsoft') || iframe.src.includes('sway.office.com')) {
+        iframe.style.width = '100%';
+        if (!iframe.getAttribute('height')) {
+          iframe.style.height = '600px';
+          iframe.style.maxHeight = '70vh';
+        }
+      }
+    });
+  })();
+</script>

@@ -3,31 +3,6 @@ layout: default
 ---
 
 <section class="hero-section">
-    <!-- Next Event Banner - flows naturally, no overlap -->
-    <div id="next-event-banner" class="next-event-banner">
-      <div class="event-banner-icon">
-        <i class="fa-solid fa-dice-d20"></i>
-      </div>
-      <div class="event-banner-content">
-        <span class="event-banner-label">Next Gathering:</span>
-        <!-- Default content shown before JS loads or if JS fails -->
-        <span id="event-banner-title" class="event-banner-title">See what's coming up!</span>
-        <span id="event-banner-date" class="event-banner-date">Click Events for details →</span>
-        <!-- NoScript fallback for JS-disabled browsers -->
-        <noscript>
-          <style>
-            #event-banner-title, #event-banner-date { display: none !important; }
-          </style>
-          <span class="event-banner-title">Join our next game night!</span>
-          <span class="event-banner-date">View all events →</span>
-        </noscript>
-      </div>
-      <a href="{{ '/events' | relative_url }}" class="event-banner-button">
-        <i class="fa-solid fa-calendar-days"></i>
-        <span>Events</span>
-      </a>
-    </div>
-
     <!-- Main Hero Card -->
     <div class="hero-glass-card">
       <div class="hero-content">
@@ -36,87 +11,5 @@ layout: default
       </div>
     </div>
   </section>
-
-  <script>
-    (function() {
-      const calendarEmail = "westcountryleders@gmail.com";
-      const icalUrl = "https://calendar.google.com/calendar/ical/" + encodeURIComponent(calendarEmail) + "/public/basic.ics";
-      const proxyUrl = "https://corsproxy.io/?" + encodeURIComponent(icalUrl);
-      
-      const titleEl = document.getElementById('event-banner-title');
-      const dateEl = document.getElementById('event-banner-date');
-
-      // No need for fallback function - the HTML already has friendly defaults
-      // JS only updates if we successfully fetch calendar data
-
-      function parseIcsDate(icsDate) {
-        if (!icsDate) return null;
-        const val = icsDate.trim();
-        const year = val.substring(0, 4);
-        const month = parseInt(val.substring(4, 6)) - 1;
-        const day = val.substring(6, 8);
-        const hour = val.includes('T') ? val.substring(9, 11) : 0;
-        const min = val.includes('T') ? val.substring(11, 13) : 0;
-        return new Date(Date.UTC(year, month, day, hour, min));
-      }
-
-      function formatShortDate(date) {
-        return date.toLocaleDateString('en-GB', { 
-          weekday: 'short', 
-          day: 'numeric', 
-          month: 'short',
-          hour: '2-digit',
-          minute: '2-digit'
-        });
-      }
-
-      fetch(proxyUrl)
-        .then(function(res) { 
-          if (!res.ok) throw new Error('Proxy error');
-          return res.text(); 
-        })
-        .then(function(content) {
-          // If no events data, just keep the friendly defaults
-          if (!content || !content.includes('BEGIN:VEVENT')) {
-            return;
-          }
-
-          const unfoldedContent = content.replace(/\r\n[ \t]/g, '').replace(/\n[ \t]/g, '');
-          const events = [];
-          const chunks = unfoldedContent.split('BEGIN:VEVENT');
-          const now = new Date();
-
-          for (let i = 1; i < chunks.length; i++) {
-            const chunk = chunks[i];
-            const summary = (chunk.match(/SUMMARY(?:;[^:]*)?:([^\r\n]+)/) || [])[1];
-            const dtstart = (chunk.match(/DTSTART(?:;[^:]*)?:([^\r\n]+)/) || [])[1];
-
-            if (dtstart) {
-              const start = parseIcsDate(dtstart);
-              if (start && start >= now) {
-                events.push({
-                  title: (summary || "Event").trim().replace(/\\/g, ''),
-                  start: start
-                });
-              }
-            }
-          }
-
-          events.sort(function(a, b) { return a.start - b.start; });
-
-          // Only update if we have actual events to show
-          if (events.length > 0) {
-            const next = events[0];
-            if (titleEl) titleEl.textContent = next.title;
-            if (dateEl) dateEl.textContent = '• ' + formatShortDate(next.start);
-          }
-          // Otherwise, keep the friendly defaults from HTML
-        })
-        .catch(function(err) {
-          // On error, just keep the friendly defaults - no need to do anything
-          console.error("Calendar fetch error:", err);
-        });
-    })();
-  </script>
 
 

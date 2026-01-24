@@ -57,6 +57,10 @@
   padding: 0 40px;
   box-sizing: border-box;
   border-radius: 15px; 
+
+  @media (max-width: 1100px) {
+    padding: 0 20px;
+  }
 }
 
 @media (max-width: $header-breakpoint) {
@@ -108,6 +112,10 @@
   font-weight: 800;
   position: relative;
   display: inline-block; 
+
+  @media (max-width: 1100px) {
+    padding: 0 10px;
+  }
 }
 
 /*
@@ -191,5 +199,177 @@
   
   .dropdown:hover .dropbtn {
     color: $wood-dark;
+  }
+}
+
+// Desktop navigation dropdown
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+  
+  .nav-dropdown-trigger {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    
+    i {
+      font-size: 0.6em;
+      margin-left: 6px;
+      transition: transform 0.3s ease;
+      display: inline-block;
+      vertical-align: middle;
+      margin-top: 1px;
+    }
+  }
+  
+  &:hover .nav-dropdown-trigger i {
+    transform: rotate(180deg);
+  }
+
+  .nav-dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: $wood-light;
+    min-width: 240px;
+    border: 3px solid $wood-border;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    z-index: 1001;
+    overflow: hidden;
+    margin-top: 0;
+    padding-top: 15px; // Create bridge between trigger and content
+    line-height: 1.4;
+    text-align: left;
+    
+    // Hand-hammered Nails effect for dropdown
+    background-image: 
+      radial-gradient(circle at 8px 8px, rgba(0,0,0,0.2) 1.5px, transparent 2.5px),
+      radial-gradient(circle at calc(100% - 8px) 8px, rgba(0,0,0,0.2) 1.5px, transparent 2.5px);
+    
+    a {
+      display: block;
+      padding: 12px 16px;
+      color: $wood-border !important;
+      border-bottom: 1px solid rgba($wood-border, 0.1);
+      font-weight: 700;
+      font-size: 0.95rem;
+      
+      strong {
+        display: block;
+        margin-bottom: 2px;
+      }
+      
+      .dropdown-meta {
+        font-size: 0.8em;
+        opacity: 0.7;
+        font-weight: 600;
+        display: block;
+      }
+      
+      &:hover {
+        background-color: rgba($wood-medium, 0.4);
+        transform: none !important; // Disable the default hover transform for dropdown items
+      }
+      
+      &.all-link {
+        text-align: center;
+        background-color: rgba($wood-border, 0.05);
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        border-bottom: none;
+        
+        &:hover {
+          background-color: $wood-medium;
+          color: white !important;
+        }
+      }
+    }
+    
+    hr {
+      margin: 0;
+      border: none;
+      border-top: 2px solid rgba($wood-border, 0.1);
+    }
+    
+    .dropdown-empty {
+      display: block;
+      padding: 16px;
+      color: rgba($wood-border, 0.6);
+      font-style: italic;
+      text-align: center;
+    }
+  }
+  
+  &:hover .nav-dropdown-content {
+    display: block;
+  }
+}
+
+// Mobile dropdown enhancements
+.mobile-dropdown-section {
+  border-bottom: 2px solid rgba($wood-border, 0.1);
+  background-color: rgba($wood-border, 0.02);
+  
+  &:last-of-type {
+    border-bottom: none;
+  }
+
+  .mobile-dropdown-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 10px;
+
+    .menu-link {
+      flex-grow: 1;
+    }
+  }
+
+  .mobile-section-toggle {
+    background: transparent;
+    border: none;
+    color: $wood-border;
+    cursor: pointer;
+    padding: 10px 15px;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    i {
+      transition: transform 0.3s ease;
+    }
+  }
+
+  .mobile-dropdown-collapsible {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  &.is-open {
+    .mobile-dropdown-collapsible {
+      max-height: 500px; // Large enough for tournament list
+    }
+    .mobile-section-toggle i {
+      transform: rotate(180deg);
+    }
+  }
+  
+  .mobile-dropdown-item {
+    padding-left: 30px !important;
+    font-size: 0.9em !important;
+    font-weight: 600 !important;
+    opacity: 0.9;
+    background-color: white;
+    display: block;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba($wood-border, 0.05);
   }
 }

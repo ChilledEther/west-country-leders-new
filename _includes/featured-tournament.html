@@ -1,0 +1,56 @@
+{% assign now_unix = site.time | date: "%Y%m%d" | plus: 0 %}
+{% assign featured_tournaments = site.tournaments | where_exp: "t", "t.date" | sort: "date" %}
+{% assign featured = nil %}
+
+{% for t in featured_tournaments %}
+  {% assign t_date = t.date | date: "%Y%m%d" | plus: 0 %}
+  {% if t_date >= now_unix %}
+    {% assign featured = t %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% if featured %}
+<section class="featured-tournament-hero shadow-container">
+  {% if featured.image %}
+    <div class="hero-bg" style="background-image: url('{{ '/assets/img/' | append: featured.image | relative_url }}');"></div>
+  {% endif %}
+  
+  <div class="hero-icon-area">
+    <i class="fa-solid fa-trophy"></i>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-tag">Upcoming Tournament</div>
+    <h2><a href="{{ featured.url | relative_url }}">{{ featured.title }}</a></h2>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <i class="fa-solid fa-calendar-days"></i>
+        <span>{{ featured.date | date: "%B %d" }}</span>
+      </div>
+      <div class="meta-item">
+        <i class="fa-solid fa-location-dot"></i>
+        <span>{{ featured.venue }}</span>
+      </div>
+    </div>
+  </div>
+
+  {% if featured.signup_url %}
+    {% assign start_ts = featured.reg_start | date: '%s' | plus: 0 %}
+    {% assign end_ts = featured.reg_end | date: '%s' | plus: 0 %}
+    {% assign now_ts = site.time | date: '%s' | plus: 0 %}
+    {% assign show_signup = false %}
+    {% if featured.reg_start and featured.reg_end %}
+      {% if now_ts >= start_ts and now_ts <= end_ts %}{% assign show_signup = true %}{% endif %}
+    {% else %}
+      {% assign show_signup = true %}
+    {% endif %}
+
+    {% if show_signup %}
+      <div class="hero-actions">
+        <a href="{{ featured.signup_url }}" class="pagination-button pagination-active" target="_blank">Sign up →</a>
+      </div>
+    {% endif %}
+  {% endif %}
+</section>
+{% endif %}
