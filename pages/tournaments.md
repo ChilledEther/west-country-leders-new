@@ -49,7 +49,7 @@ We organise competitive tournaments throughout the year for various games. Check
       {% if show_signup %}
       <div class="card-accent-footer">
         <span class="card-footer-text">Registration is currently open!</span>
-        <a href="{{ t.signup_url }}" class="pagination-button pagination-active" target="_blank">Sign up now →</a>
+        <a href="{{ t.signup_url }}" class="pagination-button pagination-active" target="_blank">Sign up →</a>
       </div>
       {% endif %}
     {% endif %}

@@ -1,56 +1,85 @@
 {% assign now_unix = site.time | date: "%Y%m%d" | plus: 0 %}
-{% assign featured_tournaments = site.tournaments | where_exp: "t", "t.date" | sort: "date" %}
-{% assign featured = nil %}
+{% assign now_ts = site.time | date: '%s' | plus: 0 %}
+{% assign all_tournaments = site.tournaments | sort: "date" %}
 
-{% for t in featured_tournaments %}
+{% assign open_registrations = "" | split: "" %}
+{% assign next_upcoming = nil %}
+
+{% for t in all_tournaments %}
   {% assign t_date = t.date | date: "%Y%m%d" | plus: 0 %}
   {% if t_date >= now_unix %}
-    {% assign featured = t %}
-    {% break %}
+    {% if next_upcoming == nil %}
+      {% assign next_upcoming = t %}
+    {% endif %}
+    
+    {% if t.signup_url %}
+      {% assign start_ts = t.reg_start | date: '%s' | plus: 0 %}
+      {% assign end_ts = t.reg_end | date: '%s' | plus: 0 %}
+      
+      {% assign is_open = false %}
+      {% if t.reg_start and t.reg_end %}
+        {% if now_ts >= start_ts and now_ts <= end_ts %}
+          {% assign is_open = true %}
+        {% endif %}
+      {% else %}
+        {% assign is_open = true %}
+      {% endif %}
+      
+      {% if is_open %}
+        {% assign open_registrations = open_registrations | push: t %}
+      {% endif %}
+    {% endif %}
   {% endif %}
 {% endfor %}
 
-{% if featured %}
-<section class="featured-tournament-hero shadow-container">
-  {% if featured.image %}
-    <div class="hero-bg" style="background-image: url('{{ '/assets/img/' | append: featured.image | relative_url }}');"></div>
-  {% endif %}
-  
-  <div class="hero-icon-area">
+{% comment %} Decide which tournaments to show {% endcomment %}
+{% assign display_list = "" | split: "" %}
+{% if open_registrations.size > 0 %}
+  {% assign display_list = open_registrations %}
+{% elsif next_upcoming %}
+  {% assign display_list = display_list | push: next_upcoming %}
+{% endif %}
+
+{% if display_list.size > 0 %}
+<div class="featured-tournaments-group shadow-container">
+  <a href="{{ '/tournaments/' | relative_url }}" class="group-header" style="text-decoration: none; display: flex;">
     <i class="fa-solid fa-trophy"></i>
+    <span>Upcoming Tournaments</span>
+    <i class="fa-solid fa-chevron-right" style="margin-left: auto; font-size: 0.7rem; opacity: 0.6;"></i>
+  </a>
+
+  <div class="tournament-items">
+    {% for featured in display_list %}
+      <div class="tournament-item">
+        <div class="item-main">
+          <h3 class="item-title"><a href="{{ featured.url | relative_url }}">{{ featured.title }}</a></h3>
+          <div class="item-meta">
+            <span>{{ featured.date | date: "%b %d" }}</span>
+            <span class="meta-sep">•</span>
+            <span>{{ featured.venue }}</span>
+          </div>
+        </div>
+
+        <div class="item-actions">
+          {% assign start_ts = featured.reg_start | date: '%s' | plus: 0 %}
+          {% assign end_ts = featured.reg_end | date: '%s' | plus: 0 %}
+          {% assign is_open = false %}
+          {% if featured.signup_url %}
+            {% if featured.reg_start and featured.reg_end %}
+              {% if now_ts >= start_ts and now_ts <= end_ts %}{% assign is_open = true %}{% endif %}
+            {% else %}
+              {% assign is_open = true %}
+            {% endif %}
+          {% endif %}
+
+          {% if is_open %}
+            <a href="{{ featured.signup_url }}" class="pagination-button pagination-active" target="_blank">Sign up →</a>
+          {% else %}
+            <a href="{{ featured.url | relative_url }}" class="pagination-button" style="background: rgba(0,0,0,0.05) !important; color: #555 !important; border-color: #ccc !important; box-shadow: none;">Details</a>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
   </div>
-
-  <div class="hero-content">
-    <div class="hero-tag">Upcoming Tournament</div>
-    <h2><a href="{{ featured.url | relative_url }}">{{ featured.title }}</a></h2>
-    <div class="hero-meta">
-      <div class="meta-item">
-        <i class="fa-solid fa-calendar-days"></i>
-        <span>{{ featured.date | date: "%B %d" }}</span>
-      </div>
-      <div class="meta-item">
-        <i class="fa-solid fa-location-dot"></i>
-        <span>{{ featured.venue }}</span>
-      </div>
-    </div>
-  </div>
-
-  {% if featured.signup_url %}
-    {% assign start_ts = featured.reg_start | date: '%s' | plus: 0 %}
-    {% assign end_ts = featured.reg_end | date: '%s' | plus: 0 %}
-    {% assign now_ts = site.time | date: '%s' | plus: 0 %}
-    {% assign show_signup = false %}
-    {% if featured.reg_start and featured.reg_end %}
-      {% if now_ts >= start_ts and now_ts <= end_ts %}{% assign show_signup = true %}{% endif %}
-    {% else %}
-      {% assign show_signup = true %}
-    {% endif %}
-
-    {% if show_signup %}
-      <div class="hero-actions">
-        <a href="{{ featured.signup_url }}" class="pagination-button pagination-active" target="_blank">Sign up →</a>
-      </div>
-    {% endif %}
-  {% endif %}
-</section>
+</div>
 {% endif %}
