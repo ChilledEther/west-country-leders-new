@@ -5,7 +5,7 @@
   max-width: $content-max-width;
   display: block;
   margin: 0 auto;
-  padding: 40px;
+  padding: 40px 40px 20px;
   width: 100%;
   box-sizing: border-box;
 
@@ -61,7 +61,7 @@
 
 @media (max-width: $tablet-width) {
   .page-content {
-    padding: 25px 20px;
+    padding: 25px 20px 15px;
     // border-radius: 20px; // Removed the exaggerated mobile rounding
     outline: none;
   }
@@ -70,6 +70,10 @@
 // Ensure content clips to border radius so the full-bleed header looks right
 .page-content {
   overflow: hidden;
+
+  article > *:last-child {
+    margin-bottom: 0;
+  }
 }
 
 // Accent Header Style for Page Titles
