@@ -1,4 +1,4 @@
-<div id="posts-grid" class="posts-grid">
+<div id="posts-grid" class="events-grid">
   {% for post in paginator.posts %}
     {% include post-card.html %}
   {% endfor %}
@@ -52,7 +52,8 @@ document.addEventListener("DOMContentLoaded", function() {
       .then(data => {
         var parser = new DOMParser();
         var doc = parser.parseFromString(data, 'text/html');
-        var newPosts = doc.querySelectorAll('#posts-grid .post-card');
+        // Updated selector to match new card wrapper class
+        var newPosts = doc.querySelectorAll('#posts-grid .event-card-wrapper');
         
         // Append new posts to the current grid
         newPosts.forEach(function(post) {
