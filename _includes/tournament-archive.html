@@ -2,64 +2,90 @@
 
 {% assign upcoming = site.tournaments | where_exp: "t", "t.date >= site.time" | sort: "date" %}
 {% if upcoming.size > 0 %}
-<div class="tournaments-list">
+<div class="events-grid">
   {% for t in upcoming %}
-  <div class="minimal-card">
-    <div class="card-header">
-      <h3><a href="{{ t.url | relative_url }}">{{ t.title }}</a></h3>
-    </div>
-    
-    <div class="card-details">
-      <div class="card-item">
-        <span class="card-label">Date</span>
-        <span class="card-value">{{ t.date | date: "%B %d, %Y" }}</span>
-      </div>
-      <div class="card-item">
-        <span class="card-label">Venue</span>
-        <div class="card-value">
-          {{ t.venue }}
-          {% if t.address %}<small>{{ t.address }}</small>{% endif %}
+  <div class="event-card-wrapper">
+    <a href="{{ t.url | relative_url }}" style="text-decoration: none; color: inherit; display: block; height: 100%;">
+      <div class="event-card">
+        <!-- Force Tournament Badge -->
+        <div class="card-header-badge badge-tournament">Tournament</div>
+        
+        <div class="card-content">
+          <div class="event-title">{{ t.title }}</div>
+          
+          <div class="event-location">
+            <i class="fa-solid fa-map-pin"></i> {{ t.venue }}
+          </div>
+
+          <!-- Registration Logic -->
+          {% assign now_ts = site.time | date: '%s' | plus: 0 %}
+          {% assign start_ts = t.reg_start | date: '%s' | plus: 0 %}
+          {% assign end_ts = t.reg_end | date: '%s' | plus: 0 %}
+          {% assign show_signup = false %}
+          {% if t.reg_start and t.reg_end %}
+            {% if now_ts >= start_ts and now_ts <= end_ts %}{% assign show_signup = true %}{% endif %}
+          {% else %}
+            <!-- If no dates specified, assume open if future? Or manual flag? defaulting to true if url exists -->
+            {% if t.signup_url %}{% assign show_signup = true %}{% endif %}
+          {% endif %}
+
+          {% if t.signup_url and show_signup %}
+          <div style="margin-bottom: 15px; text-align: center;">
+             <span style="background: #27ae60; color: white; padding: 4px 12px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; text-transform: uppercase;">
+               Registration Open!
+             </span>
+          </div>
+          {% endif %}
+
+          <div class="stat-block">
+             <div class="stat-box">
+                <span class="stat-label">Date</span>
+                <span class="stat-value">{{ t.date | date: "%d %b" }}</span>
+             </div>
+             <div class="stat-box">
+                <span class="stat-label">Time</span>
+                <span class="stat-value">{{ t.time }}</span>
+             </div>
+          </div>
         </div>
       </div>
-      <div class="card-item">
-        <span class="card-label">Time</span>
-        <span class="card-value">{{ t.time }}</span>
-      </div>
-    </div>
-
-    {% if t.signup_url %}
-      {% assign now_ts = site.time | date: '%s' | plus: 0 %}
-      {% assign start_ts = t.reg_start | date: '%s' | plus: 0 %}
-      {% assign end_ts = t.reg_end | date: '%s' | plus: 0 %}
-      {% assign show_signup = false %}
-      {% if t.reg_start and t.reg_end %}
-        {% if now_ts >= start_ts and now_ts <= end_ts %}{% assign show_signup = true %}{% endif %}
-      {% else %}
-        {% assign show_signup = true %}
-      {% endif %}
-
-      {% if show_signup %}
-      <div class="card-accent-footer">
-        <span class="card-footer-text">Registration is currently open!</span>
-        <a href="{{ t.signup_url }}" class="pagination-button pagination-active" target="_blank">Sign up →</a>
-      </div>
-      {% endif %}
-    {% endif %}
+    </a>
   </div>
   {% endfor %}
 </div>
 {% else %}
-*No upcoming tournaments scheduled. Check back soon!*
+<p style="text-align: center; font-style: italic; margin: 40px 0;">No upcoming tournaments scheduled. Check back soon!</p>
 {% endif %}
+
+<hr style="border: 0; border-top: 2px solid rgba(110, 76, 47, 0.15); margin: 60px 0 40px;">
 
 ## Past Tournaments
 
 {% assign past = site.tournaments | where_exp: "t", "t.date < site.time" | sort: "date" | reverse %}
 {% if past.size > 0 %}
-| Tournament | Date | Venue |
-|------------|------|-------|
-{% for t in past %}| [{{ t.title }}]({{ t.url | relative_url }}) | {{ t.date | date: "%B %d, %Y" }} | {{ t.venue }} |
-{% endfor %}
+<div class="events-grid">
+  {% for t in past %}
+  <div class="event-card-wrapper" style="opacity: 0.7;">
+    <a href="{{ t.url | relative_url }}" style="text-decoration: none; color: inherit; display: block; height: 100%;">
+      <div class="event-card">
+        <div class="card-header-badge" style="background-color: #7f8c8d;">Concluded</div>
+        <div class="card-content">
+          <div class="event-title">{{ t.title }}</div>
+          <div class="event-location">
+            <i class="fa-solid fa-map-pin"></i> {{ t.venue }}
+          </div>
+          <div class="stat-block">
+             <div class="stat-box" style="background: #f0f0f0;">
+                <span class="stat-label">Date</span>
+                <span class="stat-value">{{ t.date | date: "%d %b %Y" }}</span>
+             </div>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+  {% endfor %}
+</div>
 {% else %}
-*No past tournaments yet.*
+<p>No past tournaments yet.</p>
 {% endif %}

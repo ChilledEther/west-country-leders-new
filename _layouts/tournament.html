@@ -2,32 +2,45 @@
 layout: default
 ---
 
-<div class="page-content">
-  <div class="minimal-card" style="margin-top: 10px;">
-    <div class="card-header">
-      <h1>{{ page.title }}</h1>
+<div class="page-events-content">
+  <h1>{{ page.title }}</h1>
+
+  <div style="max-width: 800px; margin: 0 auto;">
+    
+    <!-- Info Grid (Reusing the nice Venues style if possible, or recreating it) -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 40px; padding: 20px; border-top: 1px solid rgba(110, 76, 47, 0.15); border-bottom: 1px solid rgba(110, 76, 47, 0.15);">
+       <div style="display: flex; align-items: center; gap: 12px; color: #4d2d18;">
+         <div style="width: 40px; height: 40px; background: rgba(212, 167, 106, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+           <i class="fa-solid fa-calendar-days" style="color: #d4a76a;"></i>
+         </div>
+         <div style="display: flex; flex-direction: column;">
+           <span style="font-size: 0.7rem; text-transform: uppercase; font-weight: 700; opacity: 0.7;">Date</span>
+           <span style="font-weight: 600;">{{ page.date | date: "%B %d, %Y" }}</span>
+         </div>
+       </div>
+
+       <div style="display: flex; align-items: center; gap: 12px; color: #4d2d18;">
+         <div style="width: 40px; height: 40px; background: rgba(212, 167, 106, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+           <i class="fa-solid fa-clock" style="color: #d4a76a;"></i>
+         </div>
+         <div style="display: flex; flex-direction: column;">
+           <span style="font-size: 0.7rem; text-transform: uppercase; font-weight: 700; opacity: 0.7;">Time</span>
+           <span style="font-weight: 600;">{{ page.time }}</span>
+         </div>
+       </div>
+
+       <div style="display: flex; align-items: center; gap: 12px; color: #4d2d18;">
+         <div style="width: 40px; height: 40px; background: rgba(212, 167, 106, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+           <i class="fa-solid fa-map-pin" style="color: #d4a76a;"></i>
+         </div>
+         <div style="display: flex; flex-direction: column;">
+           <span style="font-size: 0.7rem; text-transform: uppercase; font-weight: 700; opacity: 0.7;">Venue</span>
+           <span style="font-weight: 600;">{{ page.venue }}</span>
+         </div>
+       </div>
     </div>
 
-    <div class="card-details">
-      <div class="card-item">
-        <span class="card-label">Date</span>
-        <span class="card-value">{{ page.date | date: "%B %d, %Y" }}</span>
-      </div>
-      <div class="card-item">
-        <span class="card-label">Venue</span>
-        <div class="card-value">
-          {{ page.venue }}
-          {% if page.address %}<small>{{ page.address }}</small>{% endif %}
-        </div>
-      </div>
-      {% if page.time %}
-      <div class="card-item">
-        <span class="card-label">Time</span>
-        <span class="card-value">{{ page.time }}</span>
-      </div>
-      {% endif %}
-    </div>
-
+    <!-- Registration Button Logic -->
     {% if page.signup_url %}
       {% assign now_ts = site.time | date: '%s' | plus: 0 %}
       {% assign start_ts = page.reg_start | date: '%s' | plus: 0 %}
@@ -43,19 +56,36 @@ layout: default
       {% endif %}
 
       {% if show_signup %}
-        <div class="card-accent-footer">
-          <span class="card-footer-text">Registration is currently open!</span>
-          <a href="{{ page.signup_url }}" class="pagination-button pagination-active" target="_blank">Sign up →</a>
+        <div style="text-align: center; margin-bottom: 40px;">
+          <a href="{{ page.signup_url }}" target="_blank" style="
+            display: inline-block;
+            background: #27ae60;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 4px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            box-shadow: 0 4px 0 #1e8449;
+            transition: transform 0.2s;
+          " onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+            <i class="fa-solid fa-pencil" style="margin-right: 10px;"></i> Register Now
+          </a>
+          <p style="margin-top: 10px; font-size: 0.9rem; color: #666; font-style: italic;">Registration closes {{ page.reg_end | date: "%d %b" }}</p>
         </div>
       {% endif %}
     {% endif %}
-  </div>
 
-  <article>
-    {{ content }}
-  </article>
-  
-  <div style="margin-top: 40px;">
-    <a href="{{ '/tournaments/' | relative_url }}" class="pagination-button">← Back to all tournaments</a>
+    <article style="font-size: 1.1rem; line-height: 1.7; color: #333;">
+      {{ content }}
+    </article>
+    
+    <div style="margin-top: 60px; padding-top: 20px; border-top: 1px dashed rgba(110, 76, 47, 0.3);">
+      <a href="{{ '/tournaments/' | relative_url }}" style="font-weight: bold; color: #6e4c2f; text-decoration: none;">
+        <i class="fa-solid fa-arrow-left"></i> Back to Tournaments
+      </a>
+    </div>
+
   </div>
 </div>
