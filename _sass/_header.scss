@@ -397,7 +397,7 @@
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease-out;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba($wood-light, 0.2);
   }
 
   &.is-open {
@@ -414,9 +414,13 @@
     font-size: 0.9em !important;
     font-weight: 600 !important;
     opacity: 0.9;
-    background-color: white;
+    background-color: rgba($wood-light, 0.4);
     display: block;
     padding: 12px 16px;
-    border-bottom: 1px solid rgba($wood-border, 0.05);
+    border-bottom: 1px solid rgba($wood-border, 0.1);
+
+    &:hover {
+      background-color: rgba($wood-light, 0.6) !important;
+    }
   }
 }
