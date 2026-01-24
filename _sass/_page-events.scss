@@ -258,3 +258,50 @@
     transform: translateY(-2px);
   }
 }
+
+.registration-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: #27ae60;
+  color: white !important;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none !important;
+  border: 3px solid #1e8449;
+  box-shadow: 3px 3px 0 #1e8449;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+
+  &:hover {
+    background-color: #2ecc71;
+    transform: translateY(-2px);
+    box-shadow: 5px 5px 0 #1e8449;
+  }
+
+  &:active {
+    transform: translateY(1px);
+    box-shadow: 1px 1px 0 #1e8449;
+  }
+}
+
+.registration-deadline {
+  margin-top: 15px;
+  font-size: 0.85rem;
+  color: #c0392b;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  i {
+    font-size: 1rem;
+  }
+}

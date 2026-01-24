@@ -57,22 +57,12 @@ layout: default
 
       {% if show_signup %}
         <div style="text-align: center; margin-bottom: 40px;">
-          <a href="{{ page.signup_url }}" target="_blank" style="
-            display: inline-block;
-            background: #27ae60;
-            color: white;
-            padding: 15px 30px;
-            border-radius: 4px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-decoration: none;
-            box-shadow: 0 4px 0 #1e8449;
-            transition: transform 0.2s;
-          " onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-            <i class="fa-solid fa-pencil" style="margin-right: 10px;"></i> Register Now
+          <a href="{{ page.signup_url }}" target="_blank" class="registration-button">
+            <i class="fa-solid fa-pencil"></i> Register Now
           </a>
-          <p style="margin-top: 10px; font-size: 0.9rem; color: #666; font-style: italic;">Registration closes {{ page.reg_end | date: "%d %b" }}</p>
+          <div class="registration-deadline">
+            <i class="fa-solid fa-clock"></i> Registration closes {{ page.reg_end | date: "%d %b" }}
+          </div>
         </div>
       {% endif %}
     {% endif %}
