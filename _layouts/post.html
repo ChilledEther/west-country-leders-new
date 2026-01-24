@@ -40,19 +40,24 @@ layout: default
       
       // Google Forms specific enhancements
       if (iframe.src.includes('docs.google.com/forms')) {
-        // Revert to standard scrolling behavior as per user request.
-        // We ensure it is full width and has a decent minimum height, but we respect the embed's scrollbar 
-        // to avoid excessive whitespace.
-        
-        iframe.style.width = '100% !important';
+        iframe.style.width = '100%';
         
         // Use attribute height if present, else default to ample screen space
         let targetHeight = iframe.getAttribute('height');
-        if (!targetHeight) {
-            iframe.style.minHeight = '80vh';
+        if (!targetHeight || targetHeight < 500) {
+            iframe.style.height = '80vh';
         } else {
              // If manual height is set, respect it but ensure it's responsive
              iframe.style.height = targetHeight + 'px';
+        }
+      }
+
+      // Sway and other embeds
+      if (iframe.src.includes('sway.cloud.microsoft') || iframe.src.includes('sway.office.com')) {
+        iframe.style.width = '100%';
+        if (!iframe.getAttribute('height')) {
+          iframe.style.height = '600px';
+          iframe.style.maxHeight = '70vh';
         }
       }
     });

@@ -226,7 +226,8 @@
     box-shadow: $box-shadow;
     z-index: 1001;
     overflow: hidden;
-    margin-top: 5px;
+    margin-top: 0;
+    padding-top: 15px; // Create bridge between trigger and content
     line-height: 1.4;
     text-align: left;
     

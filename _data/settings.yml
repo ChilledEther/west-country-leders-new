@@ -7,7 +7,7 @@ disqus:
 google-ID: "UA-112060364-2"
 
 menu:
-  - { name: "Posts", url: "posts" }
+  - { name: "About Us", url: "about" }
   - { name: "Tournaments", url: "tournaments", dropdown: true }
   - { name: "Events", url: "events" }
   - { name: "Venues", url: "venues" }

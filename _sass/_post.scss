@@ -28,13 +28,28 @@
 // Responsive iframe container to handle tall Google Forms
 .responsive-iframe-container {
   width: 100%;
-  overflow: hidden;
-  margin: 20px 0;
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid $parchment-border;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  max-height: 80vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   
   iframe {
     width: 100% !important;
     border: none;
+    display: block;
   }
+}
+
+.shadow-container {
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .post-date {
