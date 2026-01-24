@@ -6,7 +6,7 @@
     {% for item in site.data.settings.menu %}
       {% if item.dropdown %}
         <div class="nav-dropdown">
-          <span class="menu-link nav-dropdown-trigger">{{ item.name }} <i class="fa-solid fa-chevron-down"></i></span>
+          <a href="{{ item.url | relative_url }}" class="menu-link nav-dropdown-trigger">{{ item.name }} <i class="fa-solid fa-chevron-down"></i></a>
           <div class="nav-dropdown-content">
             {% assign upcoming = site.tournaments | where_exp: "t", "t.date >= site.time" | sort: "date" %}
             {% for tournament in upcoming %}
@@ -18,8 +18,6 @@
             {% if upcoming.size == 0 %}
               <span class="dropdown-empty">No upcoming tournaments</span>
             {% endif %}
-            <hr>
-            <a href="{{ item.url | relative_url }}" class="all-link">View All Tournaments</a>
           </div>
         </div>
       {% else %}
@@ -36,13 +34,18 @@
       {% for item in site.data.settings.menu %}
         {% if item.dropdown %}
           <div class="mobile-dropdown-section">
-            <a href="{{ item.url | relative_url }}" class="menu-link"><strong>{{ item.name }}</strong></a>
-            {% assign upcoming = site.tournaments | where_exp: "t", "t.date >= site.time" | sort: "date" %}
-            {% for tournament in upcoming %}
-              <a href="{{ tournament.url | relative_url }}" class="mobile-dropdown-item">
-                {{ tournament.title }} ({{ tournament.date | date: "%b %d" }})
-              </a>
-            {% endfor %}
+            <div class="mobile-dropdown-header">
+              <a href="{{ item.url | relative_url }}" class="menu-link"><strong>{{ item.name }}</strong></a>
+              <button class="mobile-section-toggle" aria-label="Toggle section"><i class="fa-solid fa-plus"></i></button>
+            </div>
+            <div class="mobile-dropdown-collapsible">
+              {% assign upcoming = site.tournaments | where_exp: "t", "t.date >= site.time" | sort: "date" %}
+              {% for tournament in upcoming %}
+                <a href="{{ tournament.url | relative_url }}" class="mobile-dropdown-item">
+                  {{ tournament.title }} ({{ tournament.date | date: "%b %d" }})
+                </a>
+              {% endfor %}
+            </div>
           </div>
         {% else %}
           <a href="{{ item.url | relative_url }}" class="menu-link">{{ item.name }}</a>
@@ -54,3 +57,17 @@
     </div>
   </div>
 </header>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const toggles = document.querySelectorAll('.mobile-section-toggle');
+  toggles.forEach(toggle => {
+    toggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const section = this.closest('.mobile-dropdown-section');
+      section.classList.toggle('is-open');
+    });
+  });
+});
+</script>

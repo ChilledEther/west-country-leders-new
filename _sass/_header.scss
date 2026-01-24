@@ -304,6 +304,50 @@
   &:last-of-type {
     border-bottom: none;
   }
+
+  .mobile-dropdown-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 10px;
+
+    .menu-link {
+      flex-grow: 1;
+    }
+  }
+
+  .mobile-section-toggle {
+    background: transparent;
+    border: none;
+    color: $wood-border;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    i {
+      transition: transform 0.3s ease;
+    }
+  }
+
+  .mobile-dropdown-collapsible {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  &.is-open {
+    .mobile-dropdown-collapsible {
+      max-height: 500px; // Large enough for tournament list
+    }
+    .mobile-section-toggle i {
+      transform: rotate(45deg); // Plus becomes an X or just rotates
+    }
+  }
   
   .mobile-dropdown-item {
     padding-left: 30px !important;
@@ -311,5 +355,8 @@
     font-weight: 600 !important;
     opacity: 0.9;
     background-color: white;
+    display: block;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba($wood-border, 0.05);
   }
 }

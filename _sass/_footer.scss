@@ -89,13 +89,17 @@
   width: 100%;
   margin-top: 0.75rem;
   color: $wood-border;
-  font-size: clamp(0.65rem, 2vw, 0.8rem); // Responsive text size
+  // Aggressive scaling: 2.5vw ensures ~35-40 chars fit on a 320px screen
+  font-size: clamp(0.4rem, 2.5vw, 0.85rem); 
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
   opacity: 0.8;
-  overflow-wrap: break-word;
-  word-break: break-word;
+  white-space: nowrap;
+  overflow: hidden; // Keep it inside the box
+  text-overflow: clip; 
+  padding: 0 5px; // Extra safety margin
+  box-sizing: border-box;
 }
 
 @media (max-width: $header-breakpoint) {
