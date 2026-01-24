@@ -19,16 +19,31 @@ $game-text-muted: #a89cc8;   // Muted purple text
 .featured-tournament-hero {
   position: relative;
   width: 100%;
-  max-width: $content-max-width; // Match page content width
-  margin: 0 auto 40px; // Center it
-  min-height: 250px;
-  border-radius: 12px;
-  overflow: hidden;
+  max-width: $content-max-width;
+  margin: 0 auto 30px;
   display: flex;
   align-items: center;
-  padding: 40px;
+  justify-content: center; // Match next-gathering centering
+  gap: 18px;
+  padding: 12px 24px;
   box-sizing: border-box;
-  color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  color: $text-color;
+  
+  // Golden Frame
+  border: 3px solid #d4af37;
+  box-shadow: 
+    0 8px 20px rgba(0,0,0,0.1),
+    inset 0 0 10px rgba(212, 175, 55, 0.1);
+
+  // Parchment Background
+  background-color: $parchment-base;
+  background-image: 
+    linear-gradient(rgba($parchment-base, 0.95), rgba($parchment-base, 0.9)),
+    url('../img-core/meeple-watercolour.webp');
+  background-size: cover;
+  background-position: center;
 
   .hero-bg {
     position: absolute;
@@ -36,46 +51,42 @@ $game-text-muted: #a89cc8;   // Muted purple text
     background-size: cover;
     background-position: center;
     z-index: 1;
-    transition: transform 0.5s ease;
-  }
-
-  &:hover .hero-bg {
-    transform: scale(1.03);
-  }
-
-  .hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 100%);
-    z-index: 2;
+    opacity: 0.05;
+    pointer-events: none;
   }
 
   .hero-content {
     position: relative;
     z-index: 3;
-    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; // Center text content
+    gap: 4px;
+    text-align: center;
+    flex-grow: 0; // Don't grow, stay centered
 
     .hero-tag {
-      display: inline-block;
-      background: $accent-color;
-      color: white;
-      padding: 4px 12px;
+      background: linear-gradient(to right, #d4af37, #f1c40f);
+      color: #4d2d18;
+      padding: 3px 10px;
       border-radius: 4px;
-      font-size: 0.75rem;
-      font-weight: 800;
+      font-size: 0.6rem;
+      font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      margin-bottom: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      white-space: nowrap;
+      margin-bottom: 2px;
     }
 
     h2 {
-      margin: 0 0 15px 0;
-      font-size: 2rem;
-      font-weight: 900;
+      margin: 0;
+      font-size: 1.1rem;
+      font-weight: 800;
+      line-height: 1.2;
       
       a {
-        color: white;
+        color: $wood-dark;
         text-decoration: none;
         &:hover {
           text-decoration: underline;
@@ -85,44 +96,87 @@ $game-text-muted: #a89cc8;   // Muted purple text
 
     .hero-meta {
       display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin-bottom: 25px;
-      opacity: 0.9;
-
+      gap: 12px;
+      margin: 0;
+      
       .meta-item {
         display: flex;
         align-items: center;
-        gap: 8px;
-        font-size: 0.95rem;
-        font-weight: 600;
+        gap: 6px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: $wood-dark;
+        opacity: 0.7;
 
         i {
-          color: $accent-color;
+          color: #d4af37;
         }
       }
     }
+  }
 
-    .hero-actions {
-      .pagination-button {
-        margin: 0;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  .hero-icon-area {
+    position: relative;
+    z-index: 3;
+    font-size: 1.8rem;
+    color: #d4af37;
+    flex-shrink: 0;
+  }
+
+  .hero-actions {
+    position: relative;
+    z-index: 3;
+    flex-shrink: 0;
+
+    .pagination-button {
+      margin: 0;
+      background: #d4af37 !important;
+      border: 2px solid #4d2d18 !important;
+      color: #4d2d18 !important;
+      font-weight: 800;
+      padding: 10px 18px !important; // Match next-gathering button size
+      font-size: 0.8rem !important;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      box-shadow: 0 4px 0 #927521;
+      
+      &:hover {
+        background: #f1c40f !important;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 0 #927521;
+      }
+
+      &:active {
+        transform: translateY(2px);
+        box-shadow: 0 2px 0 #927521;
       }
     }
   }
 
   @media (max-width: $tablet-width) {
-    min-height: 200px;
-    padding: 30px 20px;
+    gap: 15px;
+    padding: 12px 20px;
+  }
+
+  @media (max-width: $phone-width) {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+    padding: 20px;
     
+    .hero-icon-area {
+      display: none; // Hide icon on very small screens to save vertical space if needed, or keep it
+    }
+
     .hero-content {
-      h2 {
-        font-size: 1.5rem;
-      }
-      
-      .hero-meta {
-        gap: 15px;
-        font-size: 0.85rem;
+      width: 100%;
+    }
+    
+    .hero-actions {
+      width: 100%;
+      .pagination-button {
+        display: block;
+        text-align: center;
       }
     }
   }
