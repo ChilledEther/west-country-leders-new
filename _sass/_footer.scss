@@ -3,9 +3,11 @@
 
 .footer {
   text-align: center;
-  padding: 15px 20px; // Slimmer padding
-  margin: 40px auto;
-  max-width: $container-width; // Exactly matches header width
+  padding: 15px 20px;
+  // Margin auto centers it horizontally
+  // 20px bottom margin gives it breathing room from the bottom of the viewport
+  margin: 0 auto 20px; 
+  max-width: $container-width;
   width: 100%;
   box-sizing: border-box;
   
@@ -105,7 +107,10 @@
 @media (max-width: $header-breakpoint) {
   .footer {
     width: calc(100% - 20px);
-    margin: 30px auto;
+    // Match header mobile spacing:
+    // Header is top: 0, margin-top: 10px -> 10px from top edge
+    // Footer should be 10px from bottom edge
+    margin: 0 auto 10px; 
     border-radius: 20px; // Match mobile header rounding
     padding: 12px 15px; // Tighter padding on mobile
   }

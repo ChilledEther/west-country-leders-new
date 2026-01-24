@@ -13,8 +13,8 @@
 }
 
 .content-wrapper {
-  padding-top: $header-thickness + 80px; // Increased padding to account for fixed header + gap
-  padding-bottom: 60px;
+  padding-top: $header-thickness + 60px; // Results in ~40px visual gap (124px total - 84px header)
+  padding-bottom: 40px; // Matches the 40px visual gap at the top
   margin: 0 auto;
   display: block;
   width: 100%;
@@ -47,13 +47,14 @@
 
 // Optimization for Front Page / Hero layout
 .layout-front-page {
-  .content-wrapper {
-    padding-top: $header-thickness + 80px; // 20px (header top) + 64px (header) + 60px (gap)
-    padding-bottom: 30px; // Total 60px gap to footer below
-  }
+  // Inherit standard spacing from .content-wrapper for consistency
+  // .content-wrapper {
+  //   padding-top: ...
+  //   padding-bottom: ...
+  // }
   
   .footer {
-    margin-top: 30px; 
+    margin-top: 0; 
   }
 
   @media (max-width: $tablet-width) {
