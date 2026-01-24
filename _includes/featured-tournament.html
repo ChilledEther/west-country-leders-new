@@ -41,11 +41,9 @@
 {% endif %}
 
 {% if display_list.size > 0 %}
-<div class="featured-tournaments-group shadow-container">
-  <a href="{{ '/tournaments/' | relative_url }}" class="group-header" style="text-decoration: none; display: flex;">
-    <i class="fa-solid fa-trophy"></i>
-    <span>Upcoming Tournaments</span>
-    <i class="fa-solid fa-chevron-right" style="margin-left: auto; font-size: 0.7rem; opacity: 0.6;"></i>
+<div class="featured-tournaments-group">
+  <a href="{{ '/tournaments/' | relative_url }}" class="card-header-badge badge-tournament-group" style="text-decoration: none;">
+    <i class="fa-solid fa-trophy"></i> Upcoming Tournaments
   </a>
 
   <div class="tournament-items">
@@ -54,8 +52,10 @@
         <div class="item-main">
           <h3 class="item-title"><a href="{{ featured.url | relative_url }}">{{ featured.title }}</a></h3>
           <div class="item-meta">
+            <i class="fa-solid fa-calendar-day"></i>
             <span>{{ featured.date | date: "%b %d" }}</span>
             <span class="meta-sep">•</span>
+            <i class="fa-solid fa-location-dot"></i>
             <span>{{ featured.venue }}</span>
           </div>
         </div>
@@ -73,9 +73,9 @@
           {% endif %}
 
           {% if is_open %}
-            <a href="{{ featured.signup_url }}" class="pagination-button pagination-active" target="_blank">Sign up →</a>
+            <a href="{{ featured.signup_url }}" class="tournament-action-button active" target="_blank">Sign up →</a>
           {% else %}
-            <a href="{{ featured.url | relative_url }}" class="pagination-button" style="background: rgba(0,0,0,0.05) !important; color: #555 !important; border-color: #ccc !important; box-shadow: none;">Details</a>
+            <a href="{{ featured.url | relative_url }}" class="tournament-action-button">Details</a>
           {% endif %}
         </div>
       </div>

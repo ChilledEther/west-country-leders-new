@@ -1,26 +1,41 @@
-<!-- Next Event Banner - flows naturally, no overlap -->
-<div id="next-event-banner" class="next-event-banner">
-  <div class="event-banner-icon">
-    <i class="fa-solid fa-dice-d20"></i>
-  </div>
-  <div class="event-banner-content">
-    <span class="event-banner-label">Next Gathering:</span>
-    <!-- Default content shown before JS loads or if JS fails -->
-    <span id="event-banner-title" class="event-banner-title">See what's coming up!</span>
-    <span id="event-banner-date" class="event-banner-date">Click Events for details →</span>
-    <!-- NoScript fallback for JS-disabled browsers -->
+<!-- Next Gathering Card - Styled consistently with venues and posts -->
+<div class="next-gathering-container">
+  <div class="next-gathering-card">
+    <div class="card-header-badge badge-gathering">
+      <i class="fa-solid fa-dice-d20"></i> Next Gathering
+    </div>
+  
+  <div class="card-content">
+    <div class="gathering-layout">
+      <div class="gathering-info">
+        <div id="event-banner-title" class="event-title">See what's coming up!</div>
+        <div class="gathering-meta">
+          <i class="fa-solid fa-calendar-days"></i>
+          <span id="event-banner-date">Click Events for details →</span>
+        </div>
+      </div>
+      
+      <div class="gathering-actions">
+        <a href="{{ '/events' | relative_url }}" class="gathering-button">
+          <span>View Events</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- NoScript fallback -->
     <noscript>
-      <style>
-        #event-banner-title, #event-banner-date { display: none !important; }
-      </style>
-      <span class="event-banner-title">Join our next game night!</span>
-      <span class="event-banner-date">View all events →</span>
+      <div class="gathering-layout">
+        <div class="gathering-info">
+          <div class="event-title">Join our next game night!</div>
+          <div class="gathering-meta">View all events for details.</div>
+        </div>
+        <div class="gathering-actions">
+          <a href="{{ '/events' | relative_url }}" class="gathering-button">View Events</a>
+        </div>
+      </div>
     </noscript>
   </div>
-  <a href="{{ '/events' | relative_url }}" class="event-banner-button">
-    <i class="fa-solid fa-calendar-days"></i>
-    <span>Events</span>
-  </a>
 </div>
 
 <script>
@@ -89,7 +104,7 @@
         if (events.length > 0) {
           const next = events[0];
           if (titleEl) titleEl.textContent = next.title;
-          if (dateEl) dateEl.textContent = '• ' + formatShortDate(next.start);
+          if (dateEl) dateEl.textContent = formatShortDate(next.start);
         }
       })
       .catch(function(err) {

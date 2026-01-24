@@ -20,71 +20,68 @@ $game-text-muted: #a89cc8;   // Muted purple text
   width: 100%;
   max-width: $content-max-width;
   margin: 0 auto 30px;
-  box-sizing: border-box; // Ensure border doesn't add to width
-  background-color: $parchment-base;
-  background-image: 
-    linear-gradient(rgba($parchment-base, 0.95), rgba($parchment-base, 0.9)),
-    url('../img-core/meeple-watercolour.webp');
-  background-size: cover;
-  background-position: center;
-  border: 3px solid #d4af37;
+  box-sizing: border-box;
+  background-color: $parchment-base; // Back to parchment gold vibe
+  border: 4px solid $wood-border; // Consistent 4px wood border
   border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  overflow: visible; // Allow badge to pop out
+  box-shadow: none !important;
   position: relative;
+  padding: 8px 0 0; // Less tall header area
 
-  .group-header {
-    background: linear-gradient(to right, #d4af37, #f1c40f);
-    padding: 8px 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  .badge-tournament-group {
+    background-color: #d4af37; // Keep gold for tournaments but in the "popping badge" style
     color: #4d2d18;
-    font-weight: 800;
+    position: absolute;
+    top: -16px;
+    left: 16px;
+    padding: 6px 16px;
+    font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-size: 0.75rem;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    border: 3px solid $wood-border;
+    box-shadow: 2px 2px 0 rgba(0,0,0,0.15);
+    transform: rotate(-2deg);
+    z-index: 10;
+    border-radius: 4px;
 
     i {
-      font-size: 0.9rem;
+      margin-right: 8px;
     }
+  }
+
+  .tournament-items {
+    padding: 12px 24px 4px; // Less vertical padding
   }
 
   .tournament-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 20px;
-    border-bottom: 1px solid rgba($parchment-border, 0.3);
+    padding: 8px 0; // Less tall items
+    border-bottom: 1px solid rgba($wood-border, 0.1);
     gap: 15px;
-    transition: background 0.2s ease;
 
     &:last-child {
       border-bottom: none;
     }
 
-    &:hover {
-      background: rgba(255, 255, 255, 0.4);
-    }
-
     .item-main {
       display: flex;
-      align-items: center;
-      gap: 15px;
+      flex-direction: column; // Stack title and meta like the Gathering card
+      gap: 2px;
       flex-grow: 1;
       min-width: 0;
     }
 
     .item-title {
       font-weight: 800;
-      font-size: 0.95rem;
+      font-size: 1.1rem;
       margin: 0;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
       
       a {
-        color: $wood-dark;
+        color: $wood-border; // Back to wood colors
         text-decoration: none;
         &:hover {
           text-decoration: underline;
@@ -94,12 +91,17 @@ $game-text-muted: #a89cc8;   // Muted purple text
 
     .item-meta {
       display: flex;
+      align-items: center;
       gap: 12px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: $wood-dark;
-      opacity: 0.7;
-      white-space: nowrap;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: $wood-medium; // Back to wood colors
+      font-style: italic;
+
+      i {
+        color: $wood-medium;
+        font-size: 0.8rem;
+      }
 
       .meta-sep {
         opacity: 0.3;
@@ -108,260 +110,194 @@ $game-text-muted: #a89cc8;   // Muted purple text
 
     .item-actions {
       flex-shrink: 0;
+    }
+    
+    .tournament-action-button {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 14px; // Smaller button
+      background: rgba(0, 0, 0, 0.05);
+      color: $wood-medium !important;
+      border: 2px solid $wood-medium;
+      border-radius: 4px;
+      font-weight: 800;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      text-decoration: none !important;
+      transition: all 0.2s ease;
 
-      .pagination-button {
-        margin: 0 !important;
-        padding: 4px 10px !important; // Slightly smaller default
-        font-size: 0.75rem !important;
-        background: #d4af37 !important;
+      &.active {
+        background-color: #d4af37; // Gold background
         color: #4d2d18 !important;
-        border-color: #4d2d18 !important;
-        box-shadow: 0 2px 0 #927521;
-        
-        &:hover {
-          background: #f1c40f !important;
-          transform: translateY(-1px);
-          box-shadow: 0 3px 0 #927521;
-        }
+        border-color: #927521;
+        box-shadow: 3px 3px 0 #927521;
       }
     }
   }
 
   @media (max-width: $tablet-width) {
     .tournament-item {
-      .item-main {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 2px;
-      }
+      padding: 15px 0;
       .item-title {
-        white-space: normal;
+        font-size: 1rem;
+      }
+      .item-meta {
+        font-size: 0.75rem;
+        gap: 8px;
       }
     }
   }
 
   @media (max-width: $phone-width) {
+    .tournament-items {
+      padding: 20px 16px 10px;
+    }
     .tournament-item {
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      padding: 10px 15px;
-
-      .item-main {
-        flex: 1;
-        min-width: 0;
-      }
-
-      .item-title {
-        font-size: 0.85rem;
-      }
-
-      .item-meta {
-        font-size: 0.7rem;
-      }
-
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      
       .item-actions {
-        width: auto;
-        
-        .pagination-button {
-          display: inline-block;
-          padding: 4px 10px !important;
-          font-size: 0.65rem !important;
-          white-space: nowrap;
+        width: 100%;
+        .tournament-action-button {
+          width: 100%;
+          justify-content: center;
         }
       }
     }
   }
 }
 
-.next-event-banner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 18px;
+
+// ============================================
+// Next Gathering Card - Styled as a Board Game Box/Card
+// ============================================
+
+.next-gathering-container {
   width: 100%;
   max-width: $content-max-width;
-  margin: 0 auto 20px;
-  padding: 14px 24px;
+  margin: 0 auto 40px;
+  position: relative;
   box-sizing: border-box;
-  position: relative;
-  overflow: hidden;
-  
-  // Board game table felt gradient
-  background: linear-gradient(
-    135deg,
-    $game-primary 0%,
-    color.mix($game-primary, $game-secondary, 60%) 50%,
-    $game-secondary 100%
-  );
-  
-  // Subtle hex grid pattern overlay (like game board)
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    opacity: 0.08;
-    background-image: 
-      radial-gradient(circle at 50% 50%, $game-accent 1px, transparent 1px);
-    background-size: 20px 20px;
-    pointer-events: none;
-  }
-  
-  // Glowing edge accent
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 12px;
-    padding: 2px;
-    background: linear-gradient(
-      135deg,
-      rgba($game-accent, 0.5) 0%,
-      transparent 30%,
-      transparent 70%,
-      rgba($game-highlight, 0.3) 100%
-    );
-    -webkit-mask: 
-      linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    mask: 
-      linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-  }
-  
-  border: 2px solid rgba($game-accent, 0.3);
-  border-radius: 16px; // Updated to 16px to match others
-  box-shadow: 
-    0 4px 20px rgba(0, 0, 0, 0.4),
-    0 0 30px rgba($game-accent, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  
-  @media (max-width: $tablet-width) {
-    flex-wrap: wrap;
-    gap: 12px;
-    padding: 12px 18px;
-  }
-  
-  @media (max-width: $phone-width) {
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
-    padding: 16px 20px;
-  }
 }
 
-.event-banner-icon {
-  font-size: 1.8rem;
-  color: $game-accent;
-  filter: drop-shadow(0 0 8px rgba($game-accent, 0.5));
-  animation: dice-glow 2s ease-in-out infinite alternate;
-  position: relative;
-  z-index: 1;
-  
-  @keyframes dice-glow {
-    0% { filter: drop-shadow(0 0 6px rgba($game-accent, 0.4)); }
-    100% { filter: drop-shadow(0 0 12px rgba($game-accent, 0.7)); }
-  }
-  
-  @media (max-width: $phone-width) {
-    font-size: 1.6rem;
-  }
-}
-
-.event-banner-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  flex-wrap: wrap;
-  justify-content: center;
-  position: relative;
-  z-index: 1;
-}
-
-.event-banner-label {
-  font-weight: 800;
-  font-size: 0.8rem;
-  color: $game-accent;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  text-shadow: 0 0 10px rgba($game-accent, 0.5);
-  
-  @media (max-width: $phone-width) {
-    font-size: 0.7rem;
-  }
-}
-
-.event-banner-title {
-  font-weight: 700;
-  font-size: 1rem;
-  color: $game-text;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  
-  @media (max-width: $phone-width) {
-    font-size: 0.9rem;
-  }
-}
-
-.event-banner-date {
-  font-weight: 600;
-  font-size: 0.8rem;
-  color: $game-text-muted;
-  
-  @media (max-width: $phone-width) {
-    font-size: 0.75rem;
-  }
-}
-
-.event-banner-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 18px;
-  background: linear-gradient(135deg, $game-accent 0%, color.adjust($game-accent, $lightness: -15%) 100%);
-  color: $game-primary !important;
-  border-radius: 8px;
-  text-decoration: none !important;
-  font-weight: 800;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  box-shadow: 
-    0 4px 0 color.adjust($game-accent, $lightness: -25%),
-    0 6px 20px rgba($game-accent, 0.3);
-  transition: all 0.2s ease;
-  flex-shrink: 0;
-  position: relative;
-  z-index: 1;
+.next-gathering-card {
+  margin: 0 auto 40px; // Centered with bottom margin
+  width: 100%;
+  max-width: $content-max-width; // Standardize width with other containers
+  box-sizing: border-box; // Crucial to keep border inside the width
+  background: #f4f0fa; // Slight purple tint (Lavender parchment)
+  border: 4px solid $wood-border; // Consistent border with post cards
+  border-radius: 16px; // Match other large banners and containers
+  display: block; // Ensure it behaves as a block for margin: auto
+  position: relative; // Crucial for absolute badge positioning
+  overflow: visible; // Allow badge to pop out
+  box-shadow: none !important; // Removed shadow as requested
+  transform: none !important; // Removed animation as requested
+  transition: none !important; // Removed transition as requested
   
   &:hover {
-    background: linear-gradient(135deg, color.adjust($game-accent, $lightness: 5%) 0%, $game-accent 100%);
-    transform: translateY(-2px);
-    box-shadow: 
-      0 6px 0 color.adjust($game-accent, $lightness: -25%),
-      0 10px 30px rgba($game-accent, 0.4);
+    box-shadow: none !important;
+    transform: none !important;
   }
   
-  &:active {
-    transform: translateY(2px);
-    box-shadow: 
-      0 2px 0 color.adjust($game-accent, $lightness: -25%),
-      0 4px 10px rgba($game-accent, 0.2);
+  // Custom badge color for the main feature
+  .badge-gathering {
+    background-color: #5d4485; // Deep purple badge to stand out
+    i {
+      margin-right: 8px;
+      color: #e8e0f0;
+    }
   }
-  
-  i {
-    font-size: 0.95rem;
+
+  .card-content {
+    padding: 28px 24px 18px; // Reduced padding to make it smaller
   }
-  
-  @media (max-width: $phone-width) {
-    padding: 8px 16px;
-    font-size: 0.75rem;
+
+  .gathering-layout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 0;
+
+    @media (max-width: $tablet-width) {
+      flex-direction: column;
+      text-align: center;
+      gap: 15px;
+    }
+  }
+
+  .gathering-info {
+    flex: 1;
+    
+    .event-title {
+      font-size: 1.4rem; // Smaller font size
+      margin-bottom: 4px;
+      color: #3b2b5a; // Dark purple-tinted wood
+      
+      @media (max-width: $tablet-width) {
+        font-size: 1.25rem;
+      }
+    }
+  }
+
+  .gathering-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #6a5a8a; // Muted purple meta text
+    font-weight: 700;
+    font-size: 0.95rem; // Smaller font size
+    font-style: italic;
+    
+    i {
+      color: #8e7caf;
+    }
+
+    @media (max-width: $tablet-width) {
+      justify-content: center;
+    }
+  }
+
+  .gathering-actions {
+    flex-shrink: 0;
+  }
+
+  .gathering-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px; // Smaller button
+    background-color: #5d4485; // Deep purple button
+    color: white !important;
+    text-decoration: none !important;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    border: 3px solid #2d1b4e;
+    box-shadow: 4px 4px 0 #2d1b4e;
+    transition: all 0.2s ease;
+    font-size: 0.8rem; // Smaller font
+
+    &:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 #2d1b4e;
+      background-color: color.adjust(#5d4485, $lightness: 5%);
+    }
+
+    &:active {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0 #2d1b4e;
+    }
+    
+    i {
+      font-size: 0.9rem;
+    }
   }
 }
+
 
 // ============================================
 // Recent Updates Section
