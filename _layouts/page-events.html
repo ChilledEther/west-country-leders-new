@@ -20,8 +20,8 @@ layout: default
   </p>
 
   <div id="dynamic-events-container" class="events-grid">
-    <!-- Dynamic torn-paper events will be injected here -->
-    <div id="events-loading" style="text-align: center; padding: 40px;">
+    <!-- Dynamic events will be injected here -->
+    <div id="events-loading" style="text-align: center; padding: 40px; grid-column: 1 / -1;">
       <i class="fa-solid fa-dice-d20 fa-spin" style="font-size: 3rem; color: #d4a76a;"></i>
       <p style="margin-top: 15px; color: #6e4c2f; font-weight: bold;">Unrolling the scrolls...</p>
     </div>
@@ -34,6 +34,9 @@ layout: default
 
 <script>
   (function() {
+    // Inject configuration from _config.yml
+    const badgeRules = {{ site.events_badges | jsonify }};
+    
     const calendarEmail = "westcountryleders@gmail.com";
     const icalUrl = "https://calendar.google.com/calendar/ical/" + encodeURIComponent(calendarEmail) + "/public/basic.ics";
     const proxyUrl = "https://corsproxy.io/?" + encodeURIComponent(icalUrl);
@@ -44,14 +47,12 @@ layout: default
 
     function showFallback() {
       if (loading) loading.style.display = 'none';
-      // If we failed to load dynamic events, show the static iframe
-      if (container && container.children.length <= 1) { // 1 because loading div is inside
+      if (container && container.children.length <= 1) { 
         if (staticCalendar) staticCalendar.style.display = 'block';
         if (container) container.style.display = 'none';
       }
     }
 
-    // Safety timeout
     const safetyTimer = setTimeout(showFallback, 5000);
 
     function parseIcsDate(icsDate) {
@@ -61,7 +62,6 @@ layout: default
       const month = parseInt(val.substring(4, 6)) - 1;
       const day = val.substring(6, 8);
       
-      // Check if it's a date-only string (length 8) or has time
       let hour = 0, min = 0;
       if (val.length > 8 && val.includes('T')) {
           hour = val.substring(9, 11);
@@ -72,14 +72,36 @@ layout: default
     }
 
     function formatEventDate(date) {
-      return date.toLocaleDateString('en-GB', { 
-        weekday: 'short', 
-        day: 'numeric', 
-        month: 'short', 
-        year: 'numeric', 
-        hour: '2-digit', 
-        minute: '2-digit' 
-      });
+      return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+    }
+
+    function formatEventTime(date) {
+      return date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+    }
+
+    function determineBadge(summary, description) {
+      const text = (summary + " " + (description || "")).toLowerCase();
+      
+      // 1. Check for explicit [Badge: Type] tag in description or title
+      const explicitMatch = text.match(/\[badge:\s*([^\]]+)\]/i);
+      if (explicitMatch && explicitMatch[1]) {
+        return { text: explicitMatch[1].trim(), type: 'custom' }; // Default orange for custom unless we map it, but staying simple
+      }
+
+      // 2. Check Configured Rules
+      if (badgeRules && Array.isArray(badgeRules)) {
+        for (const rule of badgeRules) {
+          if (rule.keywords && Array.isArray(rule.keywords)) {
+            // Check if any keyword exists in the text
+            if (rule.keywords.some(keyword => text.includes(keyword.toLowerCase()))) {
+              return { text: rule.text, type: rule.style || 'default' };
+            }
+          }
+        }
+      }
+
+      // Default
+      return { text: 'Event', type: 'default' };
     }
 
     fetch(proxyUrl)
@@ -95,30 +117,31 @@ layout: default
           return;
         }
 
-        // Unfold lines
         const unfoldedContent = content.replace(/\r\n[ \t]/g, '').replace(/\n[ \t]/g, '');
         const chunks = unfoldedContent.split('BEGIN:VEVENT');
         const now = new Date();
+        now.setHours(0,0,0,0);
+        
         const maxDate = new Date();
         maxDate.setMonth(now.getMonth() + 3);
 
         const events = [];
 
-        // Skip header chunk
         for (let i = 1; i < chunks.length; i++) {
           const chunk = chunks[i];
           const summary = (chunk.match(/SUMMARY(?:;[^:]*)?:([^\r\n]+)/) || [])[1];
           const dtstart = (chunk.match(/DTSTART(?:;[^:]*)?:([^\r\n]+)/) || [])[1];
           const location = (chunk.match(/LOCATION(?:;[^:]*)?:([^\r\n]+)/) || [])[1];
+          const description = (chunk.match(/DESCRIPTION(?:;[^:]*)?:(.*?)(\r\n|\n)[A-Z]+:/s) || [])[1] || "";
 
           if (dtstart) {
             const start = parseIcsDate(dtstart);
-            // Show future events within next 3 months
             if (start && start >= now && start <= maxDate) {
               events.push({
                 title: (summary || "Event").trim().replace(/\\/g, ''),
                 start: start,
-                location: (location || "Bristol").trim().replace(/\\,/g, ',').replace(/\\/g, '')
+                location: (location || "Bristol").trim().replace(/\\,/g, ',').replace(/\\/g, ''),
+                description: description.replace(/\\n/g, ' ').replace(/\\/g, '')
               });
             }
           }
@@ -127,46 +150,40 @@ layout: default
         events.sort((a, b) => a.start - b.start);
 
         if (events.length > 0) {
-          // Hide loading
           if (loading) loading.style.display = 'none';
           
           events.forEach(evt => {
+            const badge = determineBadge(evt.title, evt.description);
+            
+            let badgeClass = 'card-header-badge';
+            if (badge.type === 'tournament') badgeClass += ' badge-tournament';
+            if (badge.type === 'social') badgeClass += ' badge-social';
+
             const wrapper = document.createElement('div');
             wrapper.className = 'event-card-wrapper';
             
-            const pinWrapper = document.createElement('div');
-            pinWrapper.className = 'event-paper-pin-wrapper';
-            pinWrapper.innerHTML = `
-              <svg class="event-meeple-pin" viewBox="0 0 100 100">
-                <path d="M50,15.2c-6.1,0-11,4.9-11,11c0,6.1,4.9,11,11,11s11-4.9,11-11C61,20.2,56.1,15.2,50,15.2z M27.8,42.4l-7.2,12.5v16.1h12.3l4.1-12.2h5.1v46h15.9v-46h5.1l4.1,12.2h12.3V54.9l-7.2-12.5H27.8z" fill="currentColor"/>
-              </svg>
+            wrapper.innerHTML = `
+              <div class="event-card">
+                <div class="${badgeClass}">${badge.text}</div>
+                <div class="card-content">
+                  <div class="event-title">${evt.title}</div>
+                  <div class="event-location">
+                    <i class="fa-solid fa-map-pin"></i> ${evt.location}
+                  </div>
+                  <div class="stat-block">
+                     <div class="stat-box">
+                        <span class="stat-label">Date</span>
+                        <span class="stat-value">${formatEventDate(evt.start)}</span>
+                     </div>
+                     <div class="stat-box">
+                        <span class="stat-label">Time</span>
+                        <span class="stat-value">${formatEventTime(evt.start)}</span>
+                     </div>
+                  </div>
+                </div>
+              </div>
             `;
             
-            const card = document.createElement('div');
-            card.className = 'event-paper-card';
-            
-            const title = document.createElement('h3');
-            title.className = 'event-paper-title';
-            title.textContent = evt.title;
-            
-            const meta = document.createElement('div');
-            meta.className = 'event-paper-meta';
-            
-            const dateSpan = document.createElement('span');
-            dateSpan.innerHTML = `<i class="fa-solid fa-calendar-days"></i> ${formatEventDate(evt.start)}`;
-            
-            const locSpan = document.createElement('span');
-            locSpan.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${evt.location}`;
-            
-            meta.appendChild(dateSpan);
-            meta.appendChild(locSpan);
-            
-            // Build card structure
-            card.appendChild(title);
-            card.appendChild(meta);
-            
-            wrapper.appendChild(pinWrapper);
-            wrapper.appendChild(card);
             container.appendChild(wrapper);
           });
         } else {

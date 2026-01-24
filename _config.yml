@@ -24,6 +24,23 @@ collections:
     output: true
     permalink: /tournaments/:name/
 
+# Event Badge Configuration
+# Define keywords that trigger specific badge text and styles on the Events page.
+# styles: 'tournament' (Red), 'social' (Green), 'default' (Orange)
+events_badges:
+  - keywords: ["tournament", "cup", "championship", "qualifier"]
+    text: "Tournament"
+    style: "tournament"
+  - keywords: ["social", "meetup", "gathering", "casual", "pub"]
+    text: "Social"
+    style: "social"
+  - keywords: ["league", "campaign", "legacy"]
+    text: "Campaign"
+    style: "tournament"
+  - keywords: ["learn to play", "teaching", "demo"]
+    text: "Learn to Play"
+    style: "social"
+
 # Customise atom feed settings (this is where Jekyll-Feed gets configuration information)
 title: "West Country Leders"
 description: "Board Gamers"

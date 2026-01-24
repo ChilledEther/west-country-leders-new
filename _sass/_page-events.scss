@@ -9,7 +9,7 @@
   width: 100%;
   box-sizing: border-box;
 
-  // Refined Meeple Watercolour Style
+  // Background - Keep consistent with site
   background-color: $parchment-base;
   background-image: 
     linear-gradient(rgba($parchment-base, 0.85), rgba($parchment-base, 0.85)),
@@ -18,49 +18,31 @@
   background-position: center;
   background-repeat: no-repeat;
 
-  // Board Game Style Border (Matches Header/Footer)
   border: 4px solid $wood-border;
   border-bottom: 7px solid $wood-border;
-  
-  // Shadow Drop
   box-shadow: 
     0 8px 15px rgba(0,0,0,0.3), 
     inset 0 2.5px 0 rgba(255,255,255,0.35), 
     inset 0 -2px 0 rgba(0,0,0,0.2);
   
-  // outline: 6px solid rgba($parchment-border, 0.15);
-  // outline-offset: -12px;
-  
   border-radius: 16px;
+  overflow: hidden;
 }
 
 @media (max-width: $tablet-width) {
   .page-events-content {
     padding: 25px 20px;
-    // border-radius: 20px; // Removed exaggerated mobile rounding to be consistent
-    outline: none;
   }
 }
 
-// Ensure content clips to border radius
-.page-events-content {
-  overflow: hidden;
-}
-
-// Accent Header Style (Consistent with Pages)
+// Header Style
 .page-events-content h1 {
-  // Enhanced Wooden Plank Effect (Matches Header/Footer)
   background-color: $wood-medium;
   background-image: 
-    // Hand-hammered Nails
     radial-gradient(circle at 12px 50%, rgba(0,0,0,0.4) 2.5px, transparent 3.5px),
     radial-gradient(circle at calc(100% - 12px) 50%, rgba(0,0,0,0.4) 2.5px, transparent 3.5px),
-    
-    // Natural Wood Knots
     radial-gradient(ellipse at 20% 40%, rgba(0,0,0,0.05) 0%, transparent 60%),
     radial-gradient(ellipse at 80% 60%, rgba(0,0,0,0.05) 0%, transparent 60%),
-    
-    // Fine Horizontal Grain Lines
     repeating-linear-gradient(
       to bottom,
       transparent,
@@ -68,25 +50,13 @@
       rgba(0,0,0,0.03) 1.5px,
       transparent 2px
     ),
-    
-    // Warm Wood Base Gradient
     linear-gradient(to bottom, $wood-light 0%, $wood-medium 50%, color.adjust($wood-medium, $lightness: -8%) 100%);
   
   background-size: 100% 100%, 100% 100%, 300px 50px, 400px 60px, 100% 4px, 100% 100%;
   background-repeat: no-repeat, no-repeat, repeat-x, repeat-x, repeat, no-repeat;
   
-  // Board Game Token/Plank Borders
-  // Removed heavy borders from H1 since container has them now.
-  // We just want a subtle bottom divider to separate header from content.
-  border: none;
   border-bottom: 2px solid rgba($wood-border, 0.15);
-  
-  // Shadow Drop
-  // Removed heavy shadow since it's flat inside the box now.
-  box-shadow: none;
-    
-  // Full bleed negative margins
-  margin: -40px -40px 0 -40px; // Reset bottom margin to 0
+  margin: -40px -40px 0 -40px; 
   padding: 25px 40px;
   
   font-family: $base-font-family;
@@ -95,195 +65,160 @@
   letter-spacing: 0.1em;
   font-size: 1.8rem;
   line-height: 1.2;
+  text-align: center;
+  color: $text-color;
   
-  border-bottom: 2px solid rgba(77, 45, 24, 0.2);
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-  
-  // Flex layout to ensure centered alignment
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
 }
 
 @media (max-width: $tablet-width) {
   .page-events-content h1 {
     font-size: 1.4rem;
-    margin: -25px -20px 0 -20px; // Reset bottom margin to 0
+    margin: -25px -20px 0 -20px;
     padding: 20px 25px;
   }
 }
 
-// Dynamic Events Layout
+// --- NEW "Woodland Faction" CARD STYLES ---
+
 .events-grid {
   display: grid;
-  // Use min() to ensure cards shrink on screens narrower than 300px
   grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
-  gap: 40px; // Larger gap for torn paper spacing
-  margin-top: 30px;
+  gap: 50px 40px; // More vertical gap for the popping badges
+  margin-top: 50px; // Space for top row badges
   margin-bottom: 40px;
   width: 100%;
   box-sizing: border-box;
-  
-  @media (max-width: $tablet-width) {
-    gap: 30px;
-  }
-  
-  @media (max-width: $phone-width) {
-    gap: 25px;
-    // Single column on very small screens
-    grid-template-columns: 1fr;
-  }
 }
 
 .event-card-wrapper {
+  // Wrapper to handle hover effects cleanly without jitter
+  height: 100%;
+}
+
+.event-card {
+  background: #fdf6e3; // Creamy base
+  border: 4px solid $wood-border;
+  border-radius: 4px;
   position: relative;
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-  // This acts as the grid item
-  transition: transform 0.2s ease;
-  
+  box-shadow: 6px 6px 0 $wood-medium;
+  overflow: visible; // Crucial for the badge to pop out
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
   &:hover {
-    transform: translateY(-5px);
+    transform: translateY(-4px);
+    box-shadow: 8px 8px 0 $wood-medium;
     z-index: 5;
-    
-    .event-paper-card {
-      filter: drop-shadow(0 8px 12px rgba(0,0,0,0.3));
-    }
   }
 }
 
-.event-paper-card {
-  background-color: #f7f1e3;
-  background-image: 
-    // Faint blue notepad lines
-    repeating-linear-gradient(to bottom, transparent, transparent 27px, rgba(173, 216, 230, 0.4) 27px, rgba(173, 216, 230, 0.4) 28px),
-    // Natural aging/stains
-    radial-gradient(circle at 20% 30%, rgba(139, 69, 19, 0.04) 0%, transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(139, 69, 19, 0.04) 0%, transparent 40%),
-    // Paper texture
-    url("https://www.transparenttextures.com/patterns/cream-paper.png");
-  background-size: 100% 28px, 100% 100%, 100% 100%, auto;
-  background-repeat: repeat, no-repeat, no-repeat, repeat;
+.card-header-badge {
+  background: $accent-color;
+  color: white;
+  position: absolute;
+  top: -16px;
+  left: 16px;
+  padding: 6px 16px;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  border: 3px solid $wood-border;
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.15);
+  transform: rotate(-2deg);
+  z-index: 10;
+  font-family: $base-font-family;
+  border-radius: 4px;
+
+  // Alternate colors based on text content could be handled via JS classes if needed,
+  // but we'll stick to one primary style or use modifier classes.
+  &.badge-tournament {
+    background-color: #c0392b; // Red for battle/tournament
+  }
+  &.badge-social {
+    background-color: #27ae60; // Green for social
+  }
+}
+
+.card-content {
+  padding: 35px 24px 24px; // Top padding accounts for badge area
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.event-title {
+  font-family: $base-font-family;
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: $wood-border;
+  line-height: 1.2;
+  margin-bottom: 12px;
+  margin-top: 5px;
   
-  padding: 30px;
-  position: relative;
-  min-height: 200px;
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
+  // Truncate if too long (optional, but good for cards)
+  // display: -webkit-box;
+  // -webkit-line-clamp: 2;
+  // -webkit-box-orient: vertical;
+  // overflow: hidden;
+}
+
+.event-location {
+  font-style: italic;
+  color: #666;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  i {
+    color: $wood-medium;
+    width: 16px;
+    text-align: center;
+  }
+}
+
+.stat-block {
+  display: flex;
+  gap: 12px;
+  margin-top: auto; // Push to bottom
+}
+
+.stat-box {
+  background: color.adjust($parchment-base, $lightness: -5%);
+  border: 2px solid $wood-border;
+  padding: 10px 8px;
+  flex: 1;
+  text-align: center;
+  border-radius: 6px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  text-align: center;
-  
-  // Contain text within card
-  overflow: hidden;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  word-break: break-word;
-  
-  // Torn/Damaged paper effect
-  clip-path: polygon(
-    2% 2%, 15% 1%, 28% 3%, 42% 1%, 55% 2%, 70% 1%, 85% 3%, 98% 2%,
-    99% 15%, 97% 28%, 99% 42%, 98% 55%, 99% 70%, 97% 85%, 98% 97%,
-    85% 99%, 70% 97%, 55% 99%, 42% 98%, 28% 99%, 15% 97%, 2% 98%,
-    1% 85%, 3% 70%, 1% 55%, 2% 42%, 1% 28%, 3% 15%
-  );
-  
-  filter: drop-shadow(0 5px 8px rgba(0,0,0,0.2));
-  transition: filter 0.2s ease;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(0,0,0,0.03) 0%, transparent 50%, rgba(255,255,255,0.1) 100%);
-    pointer-events: none;
-  }
-  
-  @media (max-width: $tablet-width) {
-    padding: 25px 20px;
-    min-height: 180px;
-  }
-  
-  @media (max-width: $phone-width) {
-    padding: 20px 15px;
-    min-height: 150px;
-  }
+  min-width: 0; // Prevent flex item overflow
 }
 
-.event-paper-pin-wrapper {
-  position: absolute;
-  top: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-  filter: drop-shadow(0 5px 8px rgba(0,0,0,0.5));
-  
-  .event-meeple-pin {
-    width: 28px;
-    height: 28px;
-    fill: #e74c3c;
-    display: block;
-  }
-}
-
-
-.event-paper-title {
-  font-family: $base-font-family;
-  font-weight: 800;
-  color: $wood-dark;
-  font-size: clamp(1rem, 4vw, 1.4rem); // Responsive font size
-  margin: 25px 0 10px; // Space for pin
-  line-height: 1.2;
-  width: 100%;
-  max-width: 100%;
-  overflow-wrap: break-word;
-  word-break: break-word;
-}
-
-.event-paper-meta {
-  color: #666;
-  font-weight: 600;
-  font-size: clamp(0.75rem, 2.5vw, 0.9rem); // Responsive font size
-  margin-bottom: 15px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  width: 100%;
-  max-width: 100%;
-  
-  i {
-    color: $wood-medium;
-    margin-right: 5px;
-    width: 20px;
-  }
-}
-
-.event-paper-link {
-  display: inline-block;
-  padding: 8px 20px;
-  background-color: $wood-light;
-  border: 2px solid $wood-border;
-  border-radius: 4px;
-  color: $wood-border;
-  font-weight: 800;
+.stat-label {
+  font-size: 0.7rem;
   text-transform: uppercase;
-  font-size: 0.8rem;
-  text-decoration: none;
-  box-shadow: 0 3px 0 $wood-border;
-  transition: all 0.2s;
-  
-  &:hover {
-    background-color: $wood-medium;
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 0 $wood-border;
-  }
+  font-weight: bold;
+  color: $wood-dark;
+  display: block;
+  margin-bottom: 4px;
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  font-weight: 800;
+  color: $brand-color;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
