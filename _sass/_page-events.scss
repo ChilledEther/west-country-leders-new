@@ -57,14 +57,14 @@
   
   border-bottom: 2px solid rgba($wood-border, 0.15);
   margin: -40px -40px 0 -40px; 
-  padding: 25px 40px;
+  padding: 10px 40px;
   
   font-family: $base-font-family;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  font-size: 1.8rem;
-  line-height: 1.2;
+  font-size: 1.4rem;
+  line-height: 1.1;
   text-align: center;
   color: $text-color;
   
@@ -75,9 +75,9 @@
 
 @media (max-width: $tablet-width) {
   .page-events-content h1 {
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     margin: -25px -20px 0 -20px;
-    padding: 20px 25px;
+    padding: 10px 25px;
   }
 }
 

@@ -2,36 +2,59 @@
 layout: default
 ---
 
-<div class="post-content">
-  <h1>
-    {{ page.title }}
-  </h1>
-  {% if site.hide_post_date != true %}
-    {% include post-date.html %}
-  {% endif %}
-  {% if page.image %}
-    <div class="featured-image">
-      <img src="{{ '/assets/img/' | append: page.image | relative_url }}">
+<div class="page-events-content">
+  <h1>{{ page.title }}</h1>
+
+  <div style="max-width: 800px; margin: 0 auto;">
+    
+    <!-- Meta Info Block (Date/Author) -->
+    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 30px; color: #6e4c2f; font-weight: 600;">
+       <div style="display: flex; align-items: center; gap: 8px;">
+         <i class="fa-solid fa-calendar-days" style="color: #d4a76a;"></i>
+         <span>{{ page.date | date: "%B %-d, %Y" }}</span>
+       </div>
+       {% if page.author %}
+       <div style="display: flex; align-items: center; gap: 8px;">
+         <i class="fa-solid fa-user-pen" style="color: #d4a76a;"></i>
+         <span>{{ page.author }}</span>
+       </div>
+       {% endif %}
     </div>
-  {% endif %}
-  <article>
-    {{ content }}
-  </article>
-  {% if site.hide_post_share != true %}
-    {% include post-share.html %}
-  {% endif %}
-  {% if site.data.settings.disqus.comments %}
-    {% include disqus.html %}
-  {% endif %}
+
+    {% if page.image %}
+    <div class="featured-image" style="margin-bottom: 30px; border-radius: 8px; overflow: hidden; border: 2px solid #d4a76a; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+      <img src="{{ '/assets/img/' | append: page.image | relative_url }}" style="width: 100%; display: block; margin: 0;">
+    </div>
+    {% endif %}
+
+    <article style="font-size: 1.1rem; line-height: 1.7; color: #333;">
+      {{ content }}
+    </article>
+    
+    {% if site.hide_post_share != true %}
+      {% include post-share.html %}
+    {% endif %}
+    
+    {% if site.data.settings.disqus.comments %}
+      {% include disqus.html %}
+    {% endif %}
+
+    <div style="margin-top: 60px; padding-top: 20px; border-top: 1px dashed rgba(110, 76, 47, 0.3);">
+      <a href="{{ '/' | relative_url }}" style="font-weight: bold; color: #6e4c2f; text-decoration: none;">
+        <i class="fa-solid fa-arrow-left"></i> Back to Home
+      </a>
+    </div>
+
+  </div>
 </div>
 
 <script>
   // Auto-wrap and resize iframes
   (function() {
-    const iframes = document.querySelectorAll('.post-content iframe');
+    const iframes = document.querySelectorAll('.page-events-content iframe');
     iframes.forEach(iframe => {
       // Check if already wrapped
-      if (!iframe.parentElement.classList.contains('responsive-iframe-container')) {
+      if (!iframe.parentElement.classList.contains('responsive-iframe-container') && !iframe.parentElement.classList.contains('venue-map-container')) {
         const wrapper = document.createElement('div');
         wrapper.className = 'responsive-iframe-container';
         iframe.parentNode.insertBefore(wrapper, iframe);
