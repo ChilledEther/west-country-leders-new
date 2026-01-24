@@ -68,3 +68,31 @@
     }
   }
 }
+
+/*
+  Header Fade Overlay
+  Creates a fixed bridge at the top of the viewport that matches the site background.
+  Content scrolling under the header will hit this overlay and fade out into the background.
+*/
+.site-header-fade-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px; // Reduced height to ensure it ends before content starts
+  z-index: 999; // Just below site-header (1000)
+  pointer-events: none;
+  
+  // Exactly match body background settings from _base.scss
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("../img-core/wcl-tin.webp");
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+
+  // Mask defines the fade range
+  // Solid behind the header (~80px)
+  // Ends at 110px, which is above the start of page content (114px+)
+  -webkit-mask-image: linear-gradient(to bottom, black 0, black 75px, transparent 110px);
+  mask-image: linear-gradient(to bottom, black 0, black 75px, transparent 110px);
+}
