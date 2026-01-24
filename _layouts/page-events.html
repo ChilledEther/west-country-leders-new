@@ -37,6 +37,21 @@ layout: default
     // Inject configuration from _config.yml
     const badgeRules = {{ site.events_badges | jsonify }};
     
+    const colorPalette = {
+      'red': '#c0392b',
+      'green': '#27ae60',
+      'blue': '#2980b9',
+      'light-blue': '#3498db',
+      'orange': '#e67e22',
+      'yellow': '#f1c40f',
+      'purple': '#8e44ad',
+      'pink': '#e84393',
+      'teal': '#16a085',
+      'brown': '#795548',
+      'grey': '#7f8c8d',
+      'black': '#2c3e50'
+    };
+
     const calendarEmail = "westcountryleders@gmail.com";
     const icalUrl = "https://calendar.google.com/calendar/ical/" + encodeURIComponent(calendarEmail) + "/public/basic.ics";
     const proxyUrl = "https://corsproxy.io/?" + encodeURIComponent(icalUrl);
@@ -85,7 +100,7 @@ layout: default
       // 1. Check for explicit [Badge: Type] tag in description or title
       const explicitMatch = text.match(/\[badge:\s*([^\]]+)\]/i);
       if (explicitMatch && explicitMatch[1]) {
-        return { text: explicitMatch[1].trim(), type: 'custom' }; // Default orange for custom unless we map it, but staying simple
+        return { text: explicitMatch[1].trim(), type: 'custom' }; 
       }
 
       // 2. Check Configured Rules
@@ -156,15 +171,29 @@ layout: default
             const badge = determineBadge(evt.title, evt.description);
             
             let badgeClass = 'card-header-badge';
-            if (badge.type === 'tournament') badgeClass += ' badge-tournament';
-            if (badge.type === 'social') badgeClass += ' badge-social';
+            let badgeStyle = '';
+
+            // Handle styles via Palette or direct
+            let styleKey = (badge.type || '').toLowerCase();
+            
+            // Map legacy class names to colors for simplicity if user types 'tournament'
+            if (styleKey === 'tournament') styleKey = 'red';
+            if (styleKey === 'social') styleKey = 'green';
+            if (styleKey === 'default') styleKey = 'orange';
+
+            if (colorPalette[styleKey]) {
+              badgeStyle = `background-color: ${colorPalette[styleKey]};`;
+            } else if (styleKey && styleKey !== 'custom') {
+               // Fallback: If it's a hex or unlisted name, try to use it directly
+               badgeStyle = `background-color: ${badge.type};`;
+            }
 
             const wrapper = document.createElement('div');
             wrapper.className = 'event-card-wrapper';
             
             wrapper.innerHTML = `
               <div class="event-card">
-                <div class="${badgeClass}">${badge.text}</div>
+                <div class="${badgeClass}" style="${badgeStyle}">${badge.text}</div>
                 <div class="card-content">
                   <div class="event-title">${evt.title}</div>
                   <div class="event-location">

@@ -48,12 +48,30 @@ Want to change which words trigger the "Tournament" red badge? Look for the `eve
 events_badges:
   - keywords: ["tournament", "cup"]  # If title has these words...
     text: "Tournament"               # ...show this text...
-    style: "tournament"              # ...in Red!
+    style: "red"                     # ...in Red!
+    
+  - keywords: ["newbie"]
+    text: "New Players"
+    style: "teal"
 ```
-**Styles available:**
-- `tournament` (🔴 Red)
-- `social` (🟢 Green)
-- `default` (🟠 Orange - standard wood color)
+
+### 🎨 Available Colors
+You can use any of these predefined names for the `style` setting:
+
+| Color Name | Hex | Vibe |
+| :--- | :--- | :--- |
+| **red** | 🔴 | Battles, Tournaments |
+| **green** | 🟢 | Social, Friendly |
+| **blue** | 🔵 | Official, Standard |
+| **light-blue**| 🧊 | Ice, Cold |
+| **orange** | 🟠 | Default, Warn |
+| **yellow** | 🟡 | Gold, Winner |
+| **purple** | 🟣 | Royal, Campaign |
+| **pink** | 🌸 | Fun, Light |
+| **teal** | 🧼 | Teaching, New |
+| **brown** | 🟤 | Wood, Earth |
+| **grey** | ⚪ | Neutral, Info |
+| **black** | ⚫ | Serious, Night |
 
 ---
 
