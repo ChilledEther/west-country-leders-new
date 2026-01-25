@@ -1,6 +1,6 @@
 ---
 title: "Arcs Mini Tournament"
-date: 2026-03-20
+date: 2025-03-20
 venue: "Excelsior! Games"
 address: "Broadmead"
 time: "12:00 - 18:00"
