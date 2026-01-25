@@ -1,6 +1,6 @@
 ---
 title: "Twilight Imperium Tournaments 2026"
-date: 2026-06-15 test
+date: 2026-03-28
 venue: "Tobacco Factory, Bristol"
 address: "Tobacco Factory Raleigh Rd Bristol BS3 1TF"
 time: "09:00 - 23:00"
