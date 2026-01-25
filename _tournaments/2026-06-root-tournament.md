@@ -1,6 +1,6 @@
 ---
 title: "Root Tournament 2026"
-date: 2026-02-15
+date: 2026-06-13
 venue: "Excelsior! Games, Bristol"
 address: "51 - 53 Merchant Street. Bristol. BS1 3EE"
 time: "10:00 - 22:00"
