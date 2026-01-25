@@ -6,7 +6,7 @@ address: "Tobacco Factory Raleigh Rd Bristol BS3 1TF"
 time: "09:00 - 23:00"
 reg_start: 2026-01-01
 reg_end: 2026-10-09
-signup_url: "https://docs.google.com/forms/d/e/1FAIpQLSd5Bvo_SID4aZnT3GAhLE440nKz_Gs1J7Py2ObZ3I5OoV97mg/viewform](https://docs.google.com/forms/d/1DCJyGIhWufmSQU5DzsNJGAQn9s1NV0XU4LuOe71Cv68/edit?usp=forms_home&ouid=106502357233194792149&ths=true"
+signup_url: "https://docs.google.com/forms/d/e/1FAIpQLSd5Bvo_SID4aZnT3GAhLE440nKz_Gs1J7Py2ObZ3I5OoV97mg/viewform](https://docs.google.com/forms/d/1DCJyGIhWufmSQU5DzsNJGAQn9s1NV0XU4LuOe71Cv68/edit?usp=forms_home&ouid=106502357233194792149&ths=true](https://docs.google.com/forms/d/e/1FAIpQLScnrIY4tRanlw7Qqlsqn7YkI6wfSHtuFRFAjnJGKNmDuaYEfA/viewform?usp=header)
 layout: tournament
 ---
 
